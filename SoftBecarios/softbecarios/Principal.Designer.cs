@@ -180,6 +180,7 @@
             this.btnCalificaciones.Text = "Calificaciones";
             this.btnCalificaciones.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnCalificaciones.UseVisualStyleBackColor = false;
+            this.btnCalificaciones.Click += new System.EventHandler(this.btnCalificaciones_Click);
             // 
             // btnEscuelas
             // 

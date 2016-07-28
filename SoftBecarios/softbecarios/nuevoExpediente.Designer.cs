@@ -61,9 +61,7 @@
             this.metroTextBox8 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
@@ -74,7 +72,6 @@
             this.metroTextBox6 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox5 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
@@ -118,6 +115,9 @@
             this.metroTextBox13 = new MetroFramework.Controls.MetroTextBox();
             this.metroComboBox10 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel43 = new MetroFramework.Controls.MetroLabel();
+            this.metroDateTime5 = new MetroFramework.Controls.MetroDateTime();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.metroPanel1.SuspendLayout();
             this.tabExpedienteNuevo.SuspendLayout();
             this.tabPersonales.SuspendLayout();
@@ -194,7 +194,7 @@
             this.tabExpedienteNuevo.Controls.Add(this.tabMedicos);
             this.tabExpedienteNuevo.HotTrack = true;
             this.tabExpedienteNuevo.ItemSize = new System.Drawing.Size(200, 40);
-            this.tabExpedienteNuevo.Location = new System.Drawing.Point(3, 3);
+            this.tabExpedienteNuevo.Location = new System.Drawing.Point(4, 3);
             this.tabExpedienteNuevo.Name = "tabExpedienteNuevo";
             this.tabExpedienteNuevo.SelectedIndex = 0;
             this.tabExpedienteNuevo.Size = new System.Drawing.Size(944, 378);
@@ -205,6 +205,9 @@
             // 
             // tabPersonales
             // 
+            this.tabPersonales.Controls.Add(this.metroDateTime2);
+            this.tabPersonales.Controls.Add(this.metroDateTime1);
+            this.tabPersonales.Controls.Add(this.metroDateTime5);
             this.tabPersonales.Controls.Add(this.metroComboBox12);
             this.tabPersonales.Controls.Add(this.metroLabel49);
             this.tabPersonales.Controls.Add(this.metroComboBox11);
@@ -232,9 +235,7 @@
             this.tabPersonales.Controls.Add(this.metroTextBox8);
             this.tabPersonales.Controls.Add(this.metroTextBox7);
             this.tabPersonales.Controls.Add(this.metroLabel16);
-            this.tabPersonales.Controls.Add(this.dateTimePicker3);
             this.tabPersonales.Controls.Add(this.metroLabel14);
-            this.tabPersonales.Controls.Add(this.dateTimePicker2);
             this.tabPersonales.Controls.Add(this.metroComboBox3);
             this.tabPersonales.Controls.Add(this.metroLabel15);
             this.tabPersonales.Controls.Add(this.metroLabel13);
@@ -245,7 +246,6 @@
             this.tabPersonales.Controls.Add(this.metroTextBox6);
             this.tabPersonales.Controls.Add(this.metroTextBox5);
             this.tabPersonales.Controls.Add(this.metroTextBox4);
-            this.tabPersonales.Controls.Add(this.dateTimePicker1);
             this.tabPersonales.Controls.Add(this.metroLabel10);
             this.tabPersonales.Controls.Add(this.metroLabel9);
             this.tabPersonales.Controls.Add(this.metroLabel8);
@@ -684,16 +684,6 @@
             this.metroLabel16.TabIndex = 29;
             this.metroLabel16.Text = "Teléfono:";
             // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(481, 159);
-            this.dateTimePicker3.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker3.MinimumSize = new System.Drawing.Size(210, 29);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(210, 29);
-            this.dateTimePicker3.TabIndex = 28;
-            // 
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
@@ -702,16 +692,6 @@
             this.metroLabel14.Size = new System.Drawing.Size(80, 19);
             this.metroLabel14.TabIndex = 25;
             this.metroLabel14.Text = "Fecha Inicio:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(481, 124);
-            this.dateTimePicker2.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.MinimumSize = new System.Drawing.Size(210, 29);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(210, 29);
-            this.dateTimePicker2.TabIndex = 27;
             // 
             // metroComboBox3
             // 
@@ -890,16 +870,6 @@
             this.metroTextBox4.UseSelectable = true;
             this.metroTextBox4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(134, 194);
-            this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.MinimumSize = new System.Drawing.Size(210, 29);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(210, 29);
-            this.dateTimePicker1.TabIndex = 16;
             // 
             // metroLabel10
             // 
@@ -1117,7 +1087,7 @@
             this.tabTallas.Controls.Add(this.metroLabel29);
             this.tabTallas.HorizontalScrollbarBarColor = true;
             this.tabTallas.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabTallas.HorizontalScrollbarSize = 6;
+            this.tabTallas.HorizontalScrollbarSize = 2;
             this.tabTallas.Location = new System.Drawing.Point(4, 44);
             this.tabTallas.Name = "tabTallas";
             this.tabTallas.Size = new System.Drawing.Size(936, 330);
@@ -1125,7 +1095,7 @@
             this.tabTallas.Text = "Tallas";
             this.tabTallas.VerticalScrollbarBarColor = true;
             this.tabTallas.VerticalScrollbarHighlightOnWheel = false;
-            this.tabTallas.VerticalScrollbarSize = 7;
+            this.tabTallas.VerticalScrollbarSize = 3;
             // 
             // metroComboBox8
             // 
@@ -1316,7 +1286,7 @@
             this.tabReferencia.Controls.Add(this.metroLabel34);
             this.tabReferencia.HorizontalScrollbarBarColor = true;
             this.tabReferencia.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabReferencia.HorizontalScrollbarSize = 6;
+            this.tabReferencia.HorizontalScrollbarSize = 2;
             this.tabReferencia.Location = new System.Drawing.Point(4, 44);
             this.tabReferencia.Name = "tabReferencia";
             this.tabReferencia.Size = new System.Drawing.Size(936, 330);
@@ -1324,7 +1294,7 @@
             this.tabReferencia.Text = "Referencia";
             this.tabReferencia.VerticalScrollbarBarColor = true;
             this.tabReferencia.VerticalScrollbarHighlightOnWheel = false;
-            this.tabReferencia.VerticalScrollbarSize = 7;
+            this.tabReferencia.VerticalScrollbarSize = 3;
             // 
             // metroLabel39
             // 
@@ -1371,7 +1341,7 @@
             // 
             this.metroTextBox11.CustomButton.Image = null;
             this.metroTextBox11.CustomButton.Location = new System.Drawing.Point(85, 1);
-            this.metroTextBox11.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox11.CustomButton.Margin = new System.Windows.Forms.Padding(1);
             this.metroTextBox11.CustomButton.Name = "";
             this.metroTextBox11.CustomButton.Size = new System.Drawing.Size(18, 16);
             this.metroTextBox11.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1422,7 +1392,7 @@
             // 
             this.metroTextBox10.CustomButton.Image = null;
             this.metroTextBox10.CustomButton.Location = new System.Drawing.Point(182, 1);
-            this.metroTextBox10.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox10.CustomButton.Margin = new System.Windows.Forms.Padding(1);
             this.metroTextBox10.CustomButton.Name = "";
             this.metroTextBox10.CustomButton.Size = new System.Drawing.Size(18, 16);
             this.metroTextBox10.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1468,7 +1438,7 @@
             this.tabMedicos.Controls.Add(this.metroLabel43);
             this.tabMedicos.HorizontalScrollbarBarColor = true;
             this.tabMedicos.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabMedicos.HorizontalScrollbarSize = 6;
+            this.tabMedicos.HorizontalScrollbarSize = 2;
             this.tabMedicos.Location = new System.Drawing.Point(4, 44);
             this.tabMedicos.Name = "tabMedicos";
             this.tabMedicos.Size = new System.Drawing.Size(936, 330);
@@ -1476,7 +1446,7 @@
             this.tabMedicos.Text = "Datos Médicos";
             this.tabMedicos.VerticalScrollbarBarColor = true;
             this.tabMedicos.VerticalScrollbarHighlightOnWheel = false;
-            this.tabMedicos.VerticalScrollbarSize = 7;
+            this.tabMedicos.VerticalScrollbarSize = 3;
             // 
             // metroLabel46
             // 
@@ -1494,7 +1464,7 @@
             // 
             this.metroTextBox15.CustomButton.Image = null;
             this.metroTextBox15.CustomButton.Location = new System.Drawing.Point(211, 1);
-            this.metroTextBox15.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox15.CustomButton.Margin = new System.Windows.Forms.Padding(1);
             this.metroTextBox15.CustomButton.Name = "";
             this.metroTextBox15.CustomButton.Size = new System.Drawing.Size(18, 16);
             this.metroTextBox15.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1537,7 +1507,7 @@
             // 
             this.metroTextBox14.CustomButton.Image = null;
             this.metroTextBox14.CustomButton.Location = new System.Drawing.Point(211, 1);
-            this.metroTextBox14.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox14.CustomButton.Margin = new System.Windows.Forms.Padding(1);
             this.metroTextBox14.CustomButton.Name = "";
             this.metroTextBox14.CustomButton.Size = new System.Drawing.Size(18, 16);
             this.metroTextBox14.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1580,7 +1550,7 @@
             // 
             this.metroTextBox13.CustomButton.Image = null;
             this.metroTextBox13.CustomButton.Location = new System.Drawing.Point(211, 1);
-            this.metroTextBox13.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox13.CustomButton.Margin = new System.Windows.Forms.Padding(1);
             this.metroTextBox13.CustomButton.Name = "";
             this.metroTextBox13.CustomButton.Size = new System.Drawing.Size(18, 16);
             this.metroTextBox13.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1641,6 +1611,33 @@
             this.metroLabel43.TabIndex = 4;
             this.metroLabel43.Text = "Tipo de sangre:";
             // 
+            // metroDateTime5
+            // 
+            this.metroDateTime5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime5.Location = new System.Drawing.Point(134, 194);
+            this.metroDateTime5.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime5.Name = "metroDateTime5";
+            this.metroDateTime5.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime5.TabIndex = 58;
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime1.Location = new System.Drawing.Point(481, 124);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime1.TabIndex = 59;
+            // 
+            // metroDateTime2
+            // 
+            this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime2.Location = new System.Drawing.Point(481, 159);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.Name = "metroDateTime2";
+            this.metroDateTime2.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime2.TabIndex = 60;
+            // 
             // nuevoExpediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
@@ -1688,9 +1685,7 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox8;
         private MetroFramework.Controls.MetroTextBox metroTextBox7;
         private MetroFramework.Controls.MetroLabel metroLabel16;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private MetroFramework.Controls.MetroComboBox metroComboBox3;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel13;
@@ -1701,7 +1696,6 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox6;
         private MetroFramework.Controls.MetroTextBox metroTextBox5;
         private MetroFramework.Controls.MetroTextBox metroTextBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
@@ -1763,6 +1757,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel47;
         private MetroFramework.Controls.MetroComboBox metroComboBox12;
         private MetroFramework.Controls.MetroLabel metroLabel49;
+        private MetroFramework.Controls.MetroDateTime metroDateTime2;
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroDateTime metroDateTime5;
 
     }
 }
