@@ -71,11 +71,23 @@
     <Compile Include="mostrarExpedientes.Designer.cs">
       <DependentUpon>mostrarExpedientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="nuevaEscuela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nuevaEscuela.Designer.cs">
+      <DependentUpon>nuevaEscuela.cs</DependentUpon>
+    </Compile>
     <Compile Include="nuevoExpediente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="nuevoExpediente.Designer.cs">
       <DependentUpon>nuevoExpediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nuevoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nuevoUsuario.Designer.cs">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="perfilExpediente.cs">
       <SubType>Form</SubType>
@@ -118,8 +130,14 @@
     <EmbeddedResource Include="mostrarExpedientes.resx">
       <DependentUpon>mostrarExpedientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="nuevaEscuela.resx">
+      <DependentUpon>nuevaEscuela.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="nuevoExpediente.resx">
       <DependentUpon>nuevoExpediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nuevoUsuario.resx">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="perfilExpediente.resx">
       <DependentUpon>perfilExpediente.cs</DependentUpon>
