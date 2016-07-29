@@ -17,5 +17,11 @@ namespace SoftBecarios
         {
             InitializeComponent();
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            nuevoUsuario abrir = new nuevoUsuario();
+            abrir.Show();
+        }
     }
 }
