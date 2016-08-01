@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 using Datos;
 using Entidades;
 
@@ -11,18 +12,17 @@ namespace Negocio
 {
     public class modelo
     {
-        /*
+        
         conexion conector = new conexion("localhost", "becarios", "root", "");
         funciones funcion = new funciones();
 
         MySqlDataReader leer;
-        MySqlDataReader leer2;
-        MySqlDataReader leer3;
-        MySqlDataReader reader;
+        
+
         public bool login(Session log)
         {
             bool encontrado = false;
-            string sql = string.Format("SELECT * FROM medicos WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Pass);
+            string sql = string.Format("SELECT * FROM medicos WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Password);
             leer = conector.executeReader(sql);
             if (leer.Read())
             {
@@ -32,12 +32,49 @@ namespace Negocio
             conector.abrirConexion();
             if (encontrado == true)
             {
-                sql = string.Format("UPDATE medicos SET activo = 1 WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Pass);
+                sql = string.Format("UPDATE medicos SET activo = 1 WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Password);
                 conector.executeSQL(sql);
             }
             leer.Close();
             return encontrado;
         }
-         * */
+
+
+        #region Escuelas
+
+        public void cargarDataGridEscuela(System.Windows.Forms.DataGridView datagrid)
+        {
+            string sql = "SELECT escuela as 'Nombre de la Escuela' FROM escuelas";
+            funcion.LlenarDataGrid(datagrid, sql);
+        }
+
+        #endregion
+
+        #region Expedientes
+
+        public void comboTipoAlumno(System.Windows.Forms.ComboBox combobox)
+        {
+            string sql = "SELECT id, tipo FROM tipo_alumnos";
+            funcion.llenarCombos(combobox, sql, "id", "tipo");
+        }
+
+        public void comboEscuelas(System.Windows.Forms.ComboBox combobox)
+        {
+            string sql = "SELECT id, escuela FROM escuelas ORDER BY escuela";
+            funcion.llenarCombos(combobox, sql, "id", "escuela");
+        }
+
+        public void comboReligion(System.Windows.Forms.ComboBox combobox)
+        {
+            string sql = "SELECT id, religion FROM creencias";
+            funcion.llenarCombos(combobox, sql, "id", "religion");
+        }
+
+        public void comboServicios(System.Windows.Forms.ComboBox combobox, int id)
+        {
+            string sql = "SELECT id, especialidad FROM especialidades WHERE tipo_alumnos_id = " + id + " ORDER BY especialidad";
+            funcion.llenarCombos(combobox, sql, "id", "especialidad");
+        }
+        #endregion
     }
 }

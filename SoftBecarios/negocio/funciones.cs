@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using Datos;
 using System.Data;
 using System.Drawing;
@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Negocio
 {
-    class funciones
+    public class funciones
     {
-        /*
+        
         conexion conector = new conexion("localhost", "becarios", "root", "");
         public BindingSource BindingSource1 = new BindingSource();
         public MySqlDataAdapter da;
@@ -93,6 +93,6 @@ namespace Negocio
             }
 
         }
-         */
+         
     }
 }

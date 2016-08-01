@@ -34,9 +34,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabExpedienteNuevo = new MetroFramework.Controls.MetroTabControl();
             this.tabPersonales = new MetroFramework.Controls.MetroTabPage();
-            this.metroComboBox12 = new MetroFramework.Controls.MetroComboBox();
+            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroDateTime5 = new MetroFramework.Controls.MetroDateTime();
+            this.cbServicio = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel49 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox11 = new MetroFramework.Controls.MetroComboBox();
+            this.cbGuardia = new MetroFramework.Controls.MetroComboBox();
             this.metroTextBox16 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel48 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel47 = new MetroFramework.Controls.MetroLabel();
@@ -44,7 +47,7 @@
             this.metroLabel41 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox12 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel40 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox9 = new MetroFramework.Controls.MetroComboBox();
+            this.cbEscuelas = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel27 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel26 = new MetroFramework.Controls.MetroLabel();
@@ -62,13 +65,13 @@
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
+            this.cbReligion = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
+            this.cbGenero = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.cbCivil = new MetroFramework.Controls.MetroComboBox();
             this.metroTextBox6 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox5 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
@@ -115,9 +118,6 @@
             this.metroTextBox13 = new MetroFramework.Controls.MetroTextBox();
             this.metroComboBox10 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel43 = new MetroFramework.Controls.MetroLabel();
-            this.metroDateTime5 = new MetroFramework.Controls.MetroDateTime();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.metroPanel1.SuspendLayout();
             this.tabExpedienteNuevo.SuspendLayout();
             this.tabPersonales.SuspendLayout();
@@ -208,9 +208,9 @@
             this.tabPersonales.Controls.Add(this.metroDateTime2);
             this.tabPersonales.Controls.Add(this.metroDateTime1);
             this.tabPersonales.Controls.Add(this.metroDateTime5);
-            this.tabPersonales.Controls.Add(this.metroComboBox12);
+            this.tabPersonales.Controls.Add(this.cbServicio);
             this.tabPersonales.Controls.Add(this.metroLabel49);
-            this.tabPersonales.Controls.Add(this.metroComboBox11);
+            this.tabPersonales.Controls.Add(this.cbGuardia);
             this.tabPersonales.Controls.Add(this.metroTextBox16);
             this.tabPersonales.Controls.Add(this.metroLabel48);
             this.tabPersonales.Controls.Add(this.metroLabel47);
@@ -218,7 +218,7 @@
             this.tabPersonales.Controls.Add(this.metroLabel41);
             this.tabPersonales.Controls.Add(this.metroTextBox12);
             this.tabPersonales.Controls.Add(this.metroLabel40);
-            this.tabPersonales.Controls.Add(this.metroComboBox9);
+            this.tabPersonales.Controls.Add(this.cbEscuelas);
             this.tabPersonales.Controls.Add(this.metroLabel28);
             this.tabPersonales.Controls.Add(this.metroLabel27);
             this.tabPersonales.Controls.Add(this.metroLabel26);
@@ -236,13 +236,13 @@
             this.tabPersonales.Controls.Add(this.metroTextBox7);
             this.tabPersonales.Controls.Add(this.metroLabel16);
             this.tabPersonales.Controls.Add(this.metroLabel14);
-            this.tabPersonales.Controls.Add(this.metroComboBox3);
+            this.tabPersonales.Controls.Add(this.cbReligion);
             this.tabPersonales.Controls.Add(this.metroLabel15);
             this.tabPersonales.Controls.Add(this.metroLabel13);
             this.tabPersonales.Controls.Add(this.metroLabel12);
-            this.tabPersonales.Controls.Add(this.metroComboBox2);
+            this.tabPersonales.Controls.Add(this.cbGenero);
             this.tabPersonales.Controls.Add(this.metroLabel11);
-            this.tabPersonales.Controls.Add(this.metroComboBox1);
+            this.tabPersonales.Controls.Add(this.cbCivil);
             this.tabPersonales.Controls.Add(this.metroTextBox6);
             this.tabPersonales.Controls.Add(this.metroTextBox5);
             this.tabPersonales.Controls.Add(this.metroTextBox4);
@@ -273,23 +273,50 @@
             this.tabPersonales.VerticalScrollbarHighlightOnWheel = false;
             this.tabPersonales.VerticalScrollbarSize = 10;
             // 
-            // metroComboBox12
+            // metroDateTime2
             // 
-            this.metroComboBox12.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox12.FormattingEnabled = true;
-            this.metroComboBox12.ItemHeight = 23;
-            this.metroComboBox12.Items.AddRange(new object[] {
+            this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime2.Location = new System.Drawing.Point(481, 159);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.Name = "metroDateTime2";
+            this.metroDateTime2.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime2.TabIndex = 60;
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime1.Location = new System.Drawing.Point(481, 124);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime1.TabIndex = 59;
+            // 
+            // metroDateTime5
+            // 
+            this.metroDateTime5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime5.Location = new System.Drawing.Point(134, 194);
+            this.metroDateTime5.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime5.Name = "metroDateTime5";
+            this.metroDateTime5.Size = new System.Drawing.Size(210, 29);
+            this.metroDateTime5.TabIndex = 58;
+            // 
+            // cbServicio
+            // 
+            this.cbServicio.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbServicio.FormattingEnabled = true;
+            this.cbServicio.ItemHeight = 23;
+            this.cbServicio.Items.AddRange(new object[] {
             "A",
             "B",
             "C"});
-            this.metroComboBox12.Location = new System.Drawing.Point(790, 89);
-            this.metroComboBox12.Name = "metroComboBox12";
-            this.metroComboBox12.Size = new System.Drawing.Size(143, 29);
-            this.metroComboBox12.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox12.TabIndex = 56;
-            this.metroComboBox12.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox12.UseSelectable = true;
+            this.cbServicio.Location = new System.Drawing.Point(790, 89);
+            this.cbServicio.Name = "cbServicio";
+            this.cbServicio.Size = new System.Drawing.Size(143, 29);
+            this.cbServicio.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbServicio.TabIndex = 56;
+            this.cbServicio.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbServicio.UseSelectable = true;
             // 
             // metroLabel49
             // 
@@ -300,23 +327,23 @@
             this.metroLabel49.TabIndex = 55;
             this.metroLabel49.Text = "Servicio:";
             // 
-            // metroComboBox11
+            // cbGuardia
             // 
-            this.metroComboBox11.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox11.FormattingEnabled = true;
-            this.metroComboBox11.ItemHeight = 23;
-            this.metroComboBox11.Items.AddRange(new object[] {
+            this.cbGuardia.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbGuardia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbGuardia.FormattingEnabled = true;
+            this.cbGuardia.ItemHeight = 23;
+            this.cbGuardia.Items.AddRange(new object[] {
             "A",
             "B",
             "C"});
-            this.metroComboBox11.Location = new System.Drawing.Point(790, 19);
-            this.metroComboBox11.Name = "metroComboBox11";
-            this.metroComboBox11.Size = new System.Drawing.Size(143, 29);
-            this.metroComboBox11.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox11.TabIndex = 54;
-            this.metroComboBox11.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox11.UseSelectable = true;
+            this.cbGuardia.Location = new System.Drawing.Point(790, 19);
+            this.cbGuardia.Name = "cbGuardia";
+            this.cbGuardia.Size = new System.Drawing.Size(143, 29);
+            this.cbGuardia.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbGuardia.TabIndex = 54;
+            this.cbGuardia.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbGuardia.UseSelectable = true;
             // 
             // metroTextBox16
             // 
@@ -428,19 +455,19 @@
             this.metroLabel40.TabIndex = 46;
             this.metroLabel40.Text = "Escuela:";
             // 
-            // metroComboBox9
+            // cbEscuelas
             // 
-            this.metroComboBox9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox9.FormattingEnabled = true;
-            this.metroComboBox9.ItemHeight = 23;
-            this.metroComboBox9.Location = new System.Drawing.Point(134, 301);
-            this.metroComboBox9.Name = "metroComboBox9";
-            this.metroComboBox9.Size = new System.Drawing.Size(210, 29);
-            this.metroComboBox9.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox9.TabIndex = 45;
-            this.metroComboBox9.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox9.UseSelectable = true;
+            this.cbEscuelas.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbEscuelas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEscuelas.FormattingEnabled = true;
+            this.cbEscuelas.ItemHeight = 23;
+            this.cbEscuelas.Location = new System.Drawing.Point(134, 301);
+            this.cbEscuelas.Name = "cbEscuelas";
+            this.cbEscuelas.Size = new System.Drawing.Size(210, 29);
+            this.cbEscuelas.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbEscuelas.TabIndex = 45;
+            this.cbEscuelas.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbEscuelas.UseSelectable = true;
             // 
             // metroLabel28
             // 
@@ -693,19 +720,19 @@
             this.metroLabel14.TabIndex = 25;
             this.metroLabel14.Text = "Fecha Inicio:";
             // 
-            // metroComboBox3
+            // cbReligion
             // 
-            this.metroComboBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox3.FormattingEnabled = true;
-            this.metroComboBox3.ItemHeight = 23;
-            this.metroComboBox3.Location = new System.Drawing.Point(481, 89);
-            this.metroComboBox3.Name = "metroComboBox3";
-            this.metroComboBox3.Size = new System.Drawing.Size(210, 29);
-            this.metroComboBox3.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox3.TabIndex = 25;
-            this.metroComboBox3.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox3.UseSelectable = true;
+            this.cbReligion.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbReligion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbReligion.FormattingEnabled = true;
+            this.cbReligion.ItemHeight = 23;
+            this.cbReligion.Location = new System.Drawing.Point(481, 89);
+            this.cbReligion.Name = "cbReligion";
+            this.cbReligion.Size = new System.Drawing.Size(210, 29);
+            this.cbReligion.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbReligion.TabIndex = 25;
+            this.cbReligion.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbReligion.UseSelectable = true;
             // 
             // metroLabel15
             // 
@@ -734,22 +761,22 @@
             this.metroLabel12.TabIndex = 23;
             this.metroLabel12.Text = "RFC:";
             // 
-            // metroComboBox2
+            // cbGenero
             // 
-            this.metroComboBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 23;
-            this.metroComboBox2.Items.AddRange(new object[] {
+            this.cbGenero.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbGenero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbGenero.FormattingEnabled = true;
+            this.cbGenero.ItemHeight = 23;
+            this.cbGenero.Items.AddRange(new object[] {
             "Masculino",
             "Femenino"});
-            this.metroComboBox2.Location = new System.Drawing.Point(134, 159);
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(210, 29);
-            this.metroComboBox2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox2.TabIndex = 22;
-            this.metroComboBox2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox2.UseSelectable = true;
+            this.cbGenero.Location = new System.Drawing.Point(134, 159);
+            this.cbGenero.Name = "cbGenero";
+            this.cbGenero.Size = new System.Drawing.Size(210, 29);
+            this.cbGenero.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbGenero.TabIndex = 22;
+            this.cbGenero.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbGenero.UseSelectable = true;
             // 
             // metroLabel11
             // 
@@ -760,23 +787,23 @@
             this.metroLabel11.TabIndex = 21;
             this.metroLabel11.Text = "CURP:";
             // 
-            // metroComboBox1
+            // cbCivil
             // 
-            this.metroComboBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Items.AddRange(new object[] {
+            this.cbCivil.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbCivil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCivil.FormattingEnabled = true;
+            this.cbCivil.ItemHeight = 23;
+            this.cbCivil.Items.AddRange(new object[] {
             "Soltero(a)",
             "Casado(a)",
             "Unión Libre"});
-            this.metroComboBox1.Location = new System.Drawing.Point(134, 264);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(210, 29);
-            this.metroComboBox1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBox1.TabIndex = 20;
-            this.metroComboBox1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox1.UseSelectable = true;
+            this.cbCivil.Location = new System.Drawing.Point(134, 264);
+            this.cbCivil.Name = "cbCivil";
+            this.cbCivil.Size = new System.Drawing.Size(210, 29);
+            this.cbCivil.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cbCivil.TabIndex = 20;
+            this.cbCivil.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbCivil.UseSelectable = true;
             // 
             // metroTextBox6
             // 
@@ -1063,6 +1090,7 @@
             this.cbTipo.TabIndex = 3;
             this.cbTipo.Theme = MetroFramework.MetroThemeStyle.Light;
             this.cbTipo.UseSelectable = true;
+            this.cbTipo.SelectedIndexChanged += new System.EventHandler(this.cbTipo_SelectedIndexChanged);
             // 
             // metroLabel1
             // 
@@ -1087,7 +1115,7 @@
             this.tabTallas.Controls.Add(this.metroLabel29);
             this.tabTallas.HorizontalScrollbarBarColor = true;
             this.tabTallas.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabTallas.HorizontalScrollbarSize = 2;
+            this.tabTallas.HorizontalScrollbarSize = 1;
             this.tabTallas.Location = new System.Drawing.Point(4, 44);
             this.tabTallas.Name = "tabTallas";
             this.tabTallas.Size = new System.Drawing.Size(936, 330);
@@ -1095,7 +1123,7 @@
             this.tabTallas.Text = "Tallas";
             this.tabTallas.VerticalScrollbarBarColor = true;
             this.tabTallas.VerticalScrollbarHighlightOnWheel = false;
-            this.tabTallas.VerticalScrollbarSize = 3;
+            this.tabTallas.VerticalScrollbarSize = 1;
             // 
             // metroComboBox8
             // 
@@ -1286,7 +1314,7 @@
             this.tabReferencia.Controls.Add(this.metroLabel34);
             this.tabReferencia.HorizontalScrollbarBarColor = true;
             this.tabReferencia.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabReferencia.HorizontalScrollbarSize = 2;
+            this.tabReferencia.HorizontalScrollbarSize = 1;
             this.tabReferencia.Location = new System.Drawing.Point(4, 44);
             this.tabReferencia.Name = "tabReferencia";
             this.tabReferencia.Size = new System.Drawing.Size(936, 330);
@@ -1294,7 +1322,7 @@
             this.tabReferencia.Text = "Referencia";
             this.tabReferencia.VerticalScrollbarBarColor = true;
             this.tabReferencia.VerticalScrollbarHighlightOnWheel = false;
-            this.tabReferencia.VerticalScrollbarSize = 3;
+            this.tabReferencia.VerticalScrollbarSize = 1;
             // 
             // metroLabel39
             // 
@@ -1438,7 +1466,7 @@
             this.tabMedicos.Controls.Add(this.metroLabel43);
             this.tabMedicos.HorizontalScrollbarBarColor = true;
             this.tabMedicos.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabMedicos.HorizontalScrollbarSize = 2;
+            this.tabMedicos.HorizontalScrollbarSize = 1;
             this.tabMedicos.Location = new System.Drawing.Point(4, 44);
             this.tabMedicos.Name = "tabMedicos";
             this.tabMedicos.Size = new System.Drawing.Size(936, 330);
@@ -1446,7 +1474,7 @@
             this.tabMedicos.Text = "Datos Médicos";
             this.tabMedicos.VerticalScrollbarBarColor = true;
             this.tabMedicos.VerticalScrollbarHighlightOnWheel = false;
-            this.tabMedicos.VerticalScrollbarSize = 3;
+            this.tabMedicos.VerticalScrollbarSize = 1;
             // 
             // metroLabel46
             // 
@@ -1611,33 +1639,6 @@
             this.metroLabel43.TabIndex = 4;
             this.metroLabel43.Text = "Tipo de sangre:";
             // 
-            // metroDateTime5
-            // 
-            this.metroDateTime5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime5.Location = new System.Drawing.Point(134, 194);
-            this.metroDateTime5.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime5.Name = "metroDateTime5";
-            this.metroDateTime5.Size = new System.Drawing.Size(210, 29);
-            this.metroDateTime5.TabIndex = 58;
-            // 
-            // metroDateTime1
-            // 
-            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime1.Location = new System.Drawing.Point(481, 124);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(210, 29);
-            this.metroDateTime1.TabIndex = 59;
-            // 
-            // metroDateTime2
-            // 
-            this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime2.Location = new System.Drawing.Point(481, 159);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(210, 29);
-            this.metroDateTime2.TabIndex = 60;
-            // 
             // nuevoExpediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
@@ -1655,6 +1656,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Agregar Nuevo Expediente";
+            this.Load += new System.EventHandler(this.nuevoExpediente_Load);
             this.metroPanel1.ResumeLayout(false);
             this.tabExpedienteNuevo.ResumeLayout(false);
             this.tabPersonales.ResumeLayout(false);
@@ -1686,13 +1688,13 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox7;
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private MetroFramework.Controls.MetroComboBox metroComboBox3;
+        private MetroFramework.Controls.MetroComboBox cbReligion;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
+        private MetroFramework.Controls.MetroComboBox cbGenero;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox cbCivil;
         private MetroFramework.Controls.MetroTextBox metroTextBox6;
         private MetroFramework.Controls.MetroTextBox metroTextBox5;
         private MetroFramework.Controls.MetroTextBox metroTextBox4;
@@ -1734,7 +1736,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel41;
         private MetroFramework.Controls.MetroTextBox metroTextBox12;
         private MetroFramework.Controls.MetroLabel metroLabel40;
-        private MetroFramework.Controls.MetroComboBox metroComboBox9;
+        private MetroFramework.Controls.MetroComboBox cbEscuelas;
         private MetroFramework.Controls.MetroLabel metroLabel39;
         private MetroFramework.Controls.MetroLabel metroLabel38;
         private MetroFramework.Controls.MetroLabel metroLabel37;
@@ -1751,11 +1753,11 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox13;
         private MetroFramework.Controls.MetroComboBox metroComboBox10;
         private MetroFramework.Controls.MetroLabel metroLabel43;
-        private MetroFramework.Controls.MetroComboBox metroComboBox11;
+        private MetroFramework.Controls.MetroComboBox cbGuardia;
         private MetroFramework.Controls.MetroTextBox metroTextBox16;
         private MetroFramework.Controls.MetroLabel metroLabel48;
         private MetroFramework.Controls.MetroLabel metroLabel47;
-        private MetroFramework.Controls.MetroComboBox metroComboBox12;
+        private MetroFramework.Controls.MetroComboBox cbServicio;
         private MetroFramework.Controls.MetroLabel metroLabel49;
         private MetroFramework.Controls.MetroDateTime metroDateTime2;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;

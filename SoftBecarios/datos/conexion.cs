@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Datos
 {
     public class conexion
     {
-        /*
+        
         public string StrConexion;
         public MySqlCommand cm;
         public MySqlDataReader reader;
@@ -142,6 +142,6 @@ namespace Datos
 
             }
         }
-         * */
+         
     }
 }
