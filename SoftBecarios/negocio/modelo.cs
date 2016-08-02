@@ -75,6 +75,31 @@ namespace Negocio
             string sql = "SELECT id, especialidad FROM especialidades WHERE tipo_alumnos_id = " + id + " ORDER BY especialidad";
             funcion.llenarCombos(combobox, sql, "id", "especialidad");
         }
+
+        public int contadorExp()
+        {
+            int valor = 0;
+            string sql = "SELECT COUNT(*) as Contador FROM alumnos";
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                valor = Convert.ToInt16(dato["Contador"]);
+            }
+            if(valor == 0)
+            {
+                valor = 1;
+            }
+            else
+            {
+                sql = "SELECT numero FROM alumnos";
+                dato = conector.executeReader(sql);
+                while(dato.Read())
+                {
+                    valor = Convert.ToInt16(dato["numero"]) + 1;
+                }
+            }
+            return valor;
+        }
         #endregion
     }
 }
