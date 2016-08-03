@@ -143,9 +143,96 @@ namespace SoftBecarios
             {
                 if(validaFechas())
                 {
+                    if(Validar.ComprobarEmail(txtMail.Text))
+                    {
 
+                    }
+                    else
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "El correo electrónico no es válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtApellidoP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtApellidoM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtLugar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtRFC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtCURP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.telefono(e.KeyChar);
+        }
+
+        private void txtMail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.correo(e.KeyChar);
+        }
+
+        private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtColonia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloNumeros(e.KeyChar);
+        }
+
+        private void txtNombreReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtTelefonoReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.telefono(e.KeyChar);
+        }
+
+        private void txtAlergia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtEnferCronica_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtMedCronica_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
         }
 
     }
