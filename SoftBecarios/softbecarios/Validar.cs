@@ -20,6 +20,21 @@ namespace SoftBecarios
                 return true;
         }
 
+        public static bool letrasynumeros(char e)
+        {
+            int tecla = (int)e;
+            if (tecla >= 48 && tecla <= 57)
+                return false;
+            else if (tecla >= 65 && tecla <= 90)
+                return false;
+            else if (tecla >= 97 && tecla <= 122)
+                return false;
+            else if (tecla == 8)
+                return false;
+            else
+                return true;
+        }
+
         public static bool soloLetras(char e)
         {
             int tecla = (int)e;

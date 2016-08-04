@@ -177,12 +177,12 @@ namespace SoftBecarios
 
         private void txtRFC_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            e.Handled = Validar.letrasynumeros(e.KeyChar);
         }
 
         private void txtCURP_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = Validar.letrasynumeros(e.KeyChar);
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
@@ -197,12 +197,12 @@ namespace SoftBecarios
 
         private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            e.Handled = Validar.letrasSignos(e.KeyChar);
         }
 
         private void txtColonia_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = Validar.soloLetras(e.KeyChar);
         }
 
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
