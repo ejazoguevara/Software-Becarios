@@ -13,10 +13,10 @@ namespace Entidades
         private string nombre;
         private string apellidop;
         private string apellidom;
-        private int genero;
+        private string genero;
         private string nacimiento;
         private string lugar;
-        private int civil;
+        private string civil;
         private int escuela;
         private string rfc;
         private string curp;
@@ -27,17 +27,17 @@ namespace Entidades
         private string mail;
         private string domicilio;
         private string colonia;
-        private int guardia;
+        private string guardia;
         private string cedula;
         private int servicio;
-        private int turno;
-        private double t_pantalon;
-        private double t_filipina;
-        private double t_bata;
+        private string turno;
+        private int t_pantalon;
+        private int t_filipina;
+        private int t_bata;
         private double t_zapato;
         private string per_referencia;
         private string tel_referencia;
-        private int tipo_sangre;
+        private string tipo_sangre;
         private string alergias;
         private string enf_cronica;
         private string med_cronico;
@@ -52,10 +52,10 @@ namespace Entidades
         public string Nombre { get { return nombre; } set { nombre = value; } }
         public string ApellidoP { get { return apellidop; } set { apellidop = value; } }
         public string ApellidoM { get { return apellidom; } set { apellidom = value; } }
-        public int Genero { get { return genero; } set { genero = value; } }
+        public string Genero { get { return genero; } set { genero = value; } }
         public string Nacimiento { get { return nacimiento; } set { nacimiento = value; } }
         public string Lugar { get { return lugar; } set { lugar = value; } }
-        public int Civil { get { return civil; } set { civil = value; } }
+        public string Civil { get { return civil; } set { civil = value; } }
         public int Escuela { get { return escuela; } set { escuela = value; } }
         public string RFC { get { return rfc; } set { rfc = value; } }
         public string CURP { get { return curp; } set { curp = value; } }
@@ -66,17 +66,17 @@ namespace Entidades
         public string Mail { get { return mail; } set { mail = value; } }
         public string Domicilio { get { return domicilio; } set { domicilio = value; } }
         public string Colonia { get { return colonia; } set { colonia = value; } }
-        public int Guardia { get { return guardia; } set { guardia = value; } }
+        public string Guardia { get { return guardia; } set { guardia = value; } }
         public string Cedula { get { return cedula; } set { cedula = value; } }
         public int Servicio { get { return servicio; } set { servicio = value; } }
-        public int Turno { get { return turno; } set { turno = value; } }
-        public double T_Pantalon { get { return t_pantalon; } set { t_pantalon = value; } }
-        public double T_Filipina { get { return t_filipina; } set { t_filipina = value; } }
-        public double T_Bata { get { return t_bata; } set { t_bata = value; } }
+        public string Turno { get { return turno; } set { turno = value; } }
+        public int T_Pantalon { get { return t_pantalon; } set { t_pantalon = value; } }
+        public int T_Filipina { get { return t_filipina; } set { t_filipina = value; } }
+        public int T_Bata { get { return t_bata; } set { t_bata = value; } }
         public double T_Zapato { get { return t_zapato; } set { t_zapato = value; } }
         public string Per_Referencia { get { return per_referencia; } set { per_referencia = value; } }
         public string Tel_Referencia { get { return tel_referencia; } set { tel_referencia = value; } }
-        public int Tipo_Sangre { get { return tipo_sangre; } set { tipo_sangre = value; } }
+        public string Tipo_Sangre { get { return tipo_sangre; } set { tipo_sangre = value; } }
         public string Alergias { get { return alergias; } set { alergias = value; } }
         public string Enf_Cronica { get { return enf_cronica; } set { enf_cronica = value; } }
         public string Med_Cronico { get { return med_cronico; } set { med_cronico = value; } }

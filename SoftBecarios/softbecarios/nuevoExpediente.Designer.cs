@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevoExpediente));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.tabExpedienteNuevo = new MetroFramework.Controls.MetroTabControl();
             this.tabPersonales = new MetroFramework.Controls.MetroTabPage();
@@ -93,8 +94,6 @@
             this.tabTallas = new MetroFramework.Controls.MetroTabPage();
             this.cbTallaZ = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
-            this.cbTallaD = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel32 = new MetroFramework.Controls.MetroLabel();
             this.cbTallaB = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel31 = new MetroFramework.Controls.MetroLabel();
             this.cbTallaF = new MetroFramework.Controls.MetroComboBox();
@@ -130,6 +129,7 @@
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.metroPanel1.Controls.Add(this.btnLimpiar);
             this.metroPanel1.Controls.Add(this.btnGuardar);
             this.metroPanel1.Controls.Add(this.tabExpedienteNuevo);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -148,6 +148,25 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
+            this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimpiar.Location = new System.Drawing.Point(161, 438);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(135, 50);
+            this.btnLimpiar.TabIndex = 37;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -265,7 +284,7 @@
             this.cbTurno.FormattingEnabled = true;
             this.cbTurno.ItemHeight = 23;
             this.cbTurno.Items.AddRange(new object[] {
-            "Maturino",
+            "Matutino",
             "Vespertino",
             "Jornada A."});
             this.cbTurno.Location = new System.Drawing.Point(790, 124);
@@ -345,6 +364,7 @@
             this.cbGuardia.FormattingEnabled = true;
             this.cbGuardia.ItemHeight = 23;
             this.cbGuardia.Items.AddRange(new object[] {
+            "S/A",
             "A",
             "B",
             "C"});
@@ -371,7 +391,8 @@
             this.txtCedula.CustomButton.UseSelectable = true;
             this.txtCedula.CustomButton.Visible = false;
             this.txtCedula.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtCedula.Lines = new string[0];
+            this.txtCedula.Lines = new string[] {
+        "S/N"};
             this.txtCedula.Location = new System.Drawing.Point(790, 54);
             this.txtCedula.MaxLength = 32767;
             this.txtCedula.Name = "txtCedula";
@@ -383,10 +404,12 @@
             this.txtCedula.ShortcutsEnabled = true;
             this.txtCedula.Size = new System.Drawing.Size(143, 29);
             this.txtCedula.TabIndex = 22;
+            this.txtCedula.Text = "S/N";
             this.txtCedula.UseSelectable = true;
             this.txtCedula.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtCedula.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
+            this.txtCedula.Leave += new System.EventHandler(this.txtCedula_Leave);
             // 
             // metroLabel48
             // 
@@ -904,7 +927,7 @@
             this.txtLugar.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtLugar.Lines = new string[0];
             this.txtLugar.Location = new System.Drawing.Point(134, 229);
-            this.txtLugar.MaxLength = 40;
+            this.txtLugar.MaxLength = 60;
             this.txtLugar.Name = "txtLugar";
             this.txtLugar.PasswordChar = '\0';
             this.txtLugar.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1130,8 +1153,6 @@
             // 
             this.tabTallas.Controls.Add(this.cbTallaZ);
             this.tabTallas.Controls.Add(this.metroLabel33);
-            this.tabTallas.Controls.Add(this.cbTallaD);
-            this.tabTallas.Controls.Add(this.metroLabel32);
             this.tabTallas.Controls.Add(this.cbTallaB);
             this.tabTallas.Controls.Add(this.metroLabel31);
             this.tabTallas.Controls.Add(this.cbTallaF);
@@ -1177,7 +1198,7 @@
             "31",
             "31.5",
             "32"});
-            this.cbTallaZ.Location = new System.Drawing.Point(97, 199);
+            this.cbTallaZ.Location = new System.Drawing.Point(97, 153);
             this.cbTallaZ.Name = "cbTallaZ";
             this.cbTallaZ.Size = new System.Drawing.Size(100, 29);
             this.cbTallaZ.Style = MetroFramework.MetroColorStyle.Orange;
@@ -1188,36 +1209,11 @@
             // metroLabel33
             // 
             this.metroLabel33.AutoSize = true;
-            this.metroLabel33.Location = new System.Drawing.Point(3, 205);
+            this.metroLabel33.Location = new System.Drawing.Point(3, 159);
             this.metroLabel33.Name = "metroLabel33";
             this.metroLabel33.Size = new System.Drawing.Size(59, 19);
             this.metroLabel33.TabIndex = 12;
             this.metroLabel33.Text = "Zapatos:";
-            // 
-            // cbTallaD
-            // 
-            this.cbTallaD.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cbTallaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTallaD.FormattingEnabled = true;
-            this.cbTallaD.ItemHeight = 23;
-            this.cbTallaD.Items.AddRange(new object[] {
-            "0"});
-            this.cbTallaD.Location = new System.Drawing.Point(97, 154);
-            this.cbTallaD.Name = "cbTallaD";
-            this.cbTallaD.Size = new System.Drawing.Size(100, 29);
-            this.cbTallaD.Style = MetroFramework.MetroColorStyle.Orange;
-            this.cbTallaD.TabIndex = 28;
-            this.cbTallaD.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.cbTallaD.UseSelectable = true;
-            // 
-            // metroLabel32
-            // 
-            this.metroLabel32.AutoSize = true;
-            this.metroLabel32.Location = new System.Drawing.Point(3, 160);
-            this.metroLabel32.Name = "metroLabel32";
-            this.metroLabel32.Size = new System.Drawing.Size(43, 19);
-            this.metroLabel32.TabIndex = 10;
-            this.metroLabel32.Text = "Falda:";
             // 
             // cbTallaB
             // 
@@ -1759,8 +1755,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel19;
         private MetroFramework.Controls.MetroComboBox cbTallaZ;
         private MetroFramework.Controls.MetroLabel metroLabel33;
-        private MetroFramework.Controls.MetroComboBox cbTallaD;
-        private MetroFramework.Controls.MetroLabel metroLabel32;
         private MetroFramework.Controls.MetroComboBox cbTallaB;
         private MetroFramework.Controls.MetroLabel metroLabel31;
         private MetroFramework.Controls.MetroComboBox cbTallaF;
@@ -1799,6 +1793,7 @@
         private MetroFramework.Controls.MetroDateTime dtNacimiento;
         private MetroFramework.Controls.MetroComboBox cbTurno;
         private MetroFramework.Controls.MetroLabel metroLabel50;
+        private System.Windows.Forms.Button btnLimpiar;
 
     }
 }
