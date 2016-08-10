@@ -132,6 +132,8 @@
             this.metroLabel50 = new MetroFramework.Controls.MetroLabel();
             this.tabCalificaciones = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.lblCalFinalRes = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel94 = new MetroFramework.Controls.MetroLabel();
             this.txtCalRes6 = new MetroFramework.Controls.MetroTextBox();
             this.txtCalRes5 = new MetroFramework.Controls.MetroTextBox();
             this.txtCalRes4 = new MetroFramework.Controls.MetroTextBox();
@@ -207,8 +209,6 @@
             this.txtCom3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel69 = new MetroFramework.Controls.MetroLabel();
             this.txtCom1 = new MetroFramework.Controls.MetroTextBox();
-            this.lblCalFinalRes = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel94 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.tabExpedienteNuevo.SuspendLayout();
             this.tabPersonales.SuspendLayout();
@@ -363,7 +363,7 @@
             // 
             this.metroDateTime7.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime7.Location = new System.Drawing.Point(481, 159);
-            this.metroDateTime7.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime7.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime7.Name = "metroDateTime7";
             this.metroDateTime7.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime7.TabIndex = 59;
@@ -372,7 +372,7 @@
             // 
             this.metroDateTime6.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime6.Location = new System.Drawing.Point(481, 124);
-            this.metroDateTime6.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime6.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime6.Name = "metroDateTime6";
             this.metroDateTime6.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime6.TabIndex = 58;
@@ -381,7 +381,7 @@
             // 
             this.metroDateTime5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime5.Location = new System.Drawing.Point(134, 194);
-            this.metroDateTime5.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime5.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime5.Name = "metroDateTime5";
             this.metroDateTime5.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime5.TabIndex = 57;
@@ -1762,7 +1762,7 @@
             // 
             this.metroDateTime3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime3.Location = new System.Drawing.Point(81, 105);
-            this.metroDateTime3.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime3.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime3.Name = "metroDateTime3";
             this.metroDateTime3.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime3.TabIndex = 25;
@@ -1771,7 +1771,7 @@
             // 
             this.metroDateTime4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime4.Location = new System.Drawing.Point(81, 70);
-            this.metroDateTime4.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime4.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime4.Name = "metroDateTime4";
             this.metroDateTime4.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime4.TabIndex = 24;
@@ -1826,7 +1826,7 @@
             // 
             this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime2.Location = new System.Drawing.Point(81, 105);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime2.TabIndex = 23;
@@ -1835,7 +1835,7 @@
             // 
             this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime1.Location = new System.Drawing.Point(81, 70);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(210, 29);
             this.metroDateTime1.TabIndex = 22;
@@ -1910,6 +1910,28 @@
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // lblCalFinalRes
+            // 
+            this.lblCalFinalRes.AutoSize = true;
+            this.lblCalFinalRes.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblCalFinalRes.Location = new System.Drawing.Point(148, 102);
+            this.lblCalFinalRes.Name = "lblCalFinalRes";
+            this.lblCalFinalRes.Size = new System.Drawing.Size(37, 19);
+            this.lblCalFinalRes.Style = MetroFramework.MetroColorStyle.Red;
+            this.lblCalFinalRes.TabIndex = 39;
+            this.lblCalFinalRes.Text = "00.0";
+            this.lblCalFinalRes.UseStyleColors = true;
+            // 
+            // metroLabel94
+            // 
+            this.metroLabel94.AutoSize = true;
+            this.metroLabel94.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel94.Location = new System.Drawing.Point(10, 102);
+            this.metroLabel94.Name = "metroLabel94";
+            this.metroLabel94.Size = new System.Drawing.Size(125, 19);
+            this.metroLabel94.TabIndex = 38;
+            this.metroLabel94.Text = "Calificación Final:";
             // 
             // txtCalRes6
             // 
@@ -3509,28 +3531,6 @@
             this.txtCom1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCom1_KeyPress);
             this.txtCom1.Leave += new System.EventHandler(this.txtCom1_Leave);
             // 
-            // lblCalFinalRes
-            // 
-            this.lblCalFinalRes.AutoSize = true;
-            this.lblCalFinalRes.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblCalFinalRes.Location = new System.Drawing.Point(148, 102);
-            this.lblCalFinalRes.Name = "lblCalFinalRes";
-            this.lblCalFinalRes.Size = new System.Drawing.Size(37, 19);
-            this.lblCalFinalRes.Style = MetroFramework.MetroColorStyle.Red;
-            this.lblCalFinalRes.TabIndex = 39;
-            this.lblCalFinalRes.Text = "00.0";
-            this.lblCalFinalRes.UseStyleColors = true;
-            // 
-            // metroLabel94
-            // 
-            this.metroLabel94.AutoSize = true;
-            this.metroLabel94.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel94.Location = new System.Drawing.Point(10, 102);
-            this.metroLabel94.Name = "metroLabel94";
-            this.metroLabel94.Size = new System.Drawing.Size(125, 19);
-            this.metroLabel94.TabIndex = 38;
-            this.metroLabel94.Text = "Calificación Final:";
-            // 
             // perfilExpediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3546,6 +3546,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Perfil del Expediente";
+            this.Load += new System.EventHandler(this.perfilExpediente_Load);
             this.metroPanel1.ResumeLayout(false);
             this.tabExpedienteNuevo.ResumeLayout(false);
             this.tabPersonales.ResumeLayout(false);

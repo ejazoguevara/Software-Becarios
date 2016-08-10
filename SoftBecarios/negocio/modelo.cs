@@ -78,6 +78,13 @@ namespace Negocio
             funcion.llenarCombos(combobox, sql, "id", "especialidad");
         }
         
+        public void llenarDataGridExpedientes(System.Windows.Forms.DataGridView datagrid, int id)
+        {
+            string sql = "SELECT alumnos.numero as '#', CONCAT(alumnos.nombre, ' ', alumnos.apellido_paterno, ' ', alumnos.apellido_materno) "
+                + "as 'Nombre Completo', alumnos.guardia as Guardia, escuelas.corto as Universidad, especialidades.especialidad as Servicio FROM "
+                + "especialidades INNER JOIN alumnos on alumnos.especialidades_id = especialidades.id INNER JOIN escuelas on escuelas.id = alumnos.escuelas_id WHERE alumnos.tipo_alumnos_id = " + id;
+            funcion.LlenarDataGrid(datagrid, sql);
+        }
 
 
         // Obtiene el número del siguiente alumno
@@ -125,6 +132,11 @@ namespace Negocio
                 flag = true;
             }
             return flag;
+        }
+
+        public void mostrarExpediente(Expediente expe)
+        {
+
         }
         #endregion
     }

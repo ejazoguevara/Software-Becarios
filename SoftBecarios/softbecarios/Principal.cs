@@ -80,8 +80,7 @@ namespace SoftBecarios
 
         private void btnCalificaciones_Click(object sender, EventArgs e)
         {
-            perfilExpediente abrir = new perfilExpediente();
-            abrir.Show();
+            
         }
 
     }

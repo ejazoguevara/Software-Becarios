@@ -9,15 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
+using Entidades;
+using Negocio;
 
 namespace SoftBecarios
 {
     public partial class perfilExpediente : MetroForm
     {
-        public perfilExpediente()
+        Expediente expe;
+        modelo model = new modelo();
+        public perfilExpediente(Expediente expe)
         {
             InitializeComponent();
+            this.expe = expe;
         }
+
 
         private void txtCom1_TextChanged(object sender, EventArgs e)
         {
@@ -674,6 +680,12 @@ namespace SoftBecarios
             {
                 lblCalFinalRes.Text = Convert.ToString(Math.Round(((Convert.ToDouble(txtCalRes1.Text) + Convert.ToDouble(txtCalRes2.Text) + Convert.ToDouble(txtCalRes3.Text) + Convert.ToDouble(txtCalRes4.Text) + Convert.ToDouble(txtCalRes5.Text) + Convert.ToDouble(txtCalRes6.Text)) / 6), 2));
             }
+        }
+
+        private void perfilExpediente_Load(object sender, EventArgs e)
+        {
+            model.mostrarExpediente(expe);
+            MetroFramework.MetroMessageBox.Show(this, Convert.ToString(expe.Numero));
         }
 
        
