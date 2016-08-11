@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
+using MetroFramework.Controls;
 using Entidades;
 using Negocio;
 
@@ -18,10 +19,132 @@ namespace SoftBecarios
     {
         Expediente expe;
         modelo model = new modelo();
+        DateTime date = DateTime.Today;
+        int inicial = 0;
+
         public perfilExpediente(Expediente expe)
         {
             InitializeComponent();
             this.expe = expe;
+        }
+
+        private void perfilExpediente_Load(object sender, EventArgs e)
+        {
+            tabPerfilExpediente.SelectTab(0);
+            dtNacimiento.MaxDate = date;
+            dtTermino.MinDate = date;
+            dtTermino.MaxDate = date.AddYears(1);
+            dtInicio.MinDate = date.AddMonths(-2);
+            dtInicio.MaxDate = date;
+            dtVac1Inicio.MinDate = date.AddMonths(-1);
+            dtVac2Inicio.MinDate = date.AddMonths(-1);
+            dtVac1Termino.MaxDate = date.AddYears(1);
+            dtVac2Termino.MaxDate = date.AddYears(1);
+            model.mostrarExpediente(expe);
+            combos();
+            asignaValores();
+            switch (Convert.ToInt16(cbTipo.SelectedValue))
+            {
+                case 1: { panelCalMip.Visible = false; break; }
+                case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false;  break; }
+                case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
+                case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
+                case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
+            }
+        }
+
+        public void asignaValores()
+        {
+            cbTipo.SelectedValue = expe.Tipo;
+            txtNombre.Text = expe.Nombre;
+            txtApellidoP.Text = expe.ApellidoP;
+            txtApellidoM.Text = expe.ApellidoM;
+            lblNumero.Text = expe.Numero.ToString();
+            txtLugar.Text = expe.Lugar;
+            dtNacimiento.Text = expe.Nacimiento;
+            dtInicio.Text = expe.Fec_Inicio;
+            dtTermino.Text = expe.Fec_Termino;
+            cbGenero.SelectedItem = expe.Genero;
+            txtRFC.Text = expe.RFC;
+            txtCURP.Text = expe.CURP;
+            txtDomicilio.Text = expe.Domicilio;
+            txtColonia.Text = expe.Colonia;
+            txtTelefono.Text = expe.Telefono;
+            txtMail.Text = expe.Mail;
+            cbCivil.SelectedItem = expe.Civil;
+            cbTallaP.SelectedItem = expe.T_Pantalon.ToString();
+            cbTallaF.SelectedItem = expe.T_Filipina.ToString();
+            cbTallaB.SelectedItem = expe.T_Bata.ToString();
+            cbTallaZ.SelectedItem = expe.T_Zapato.ToString();
+            cbGuardia.SelectedItem = expe.Guardia;
+            txtCedula.Text = expe.Cedula;
+            cbTurno.SelectedItem = expe.Turno;
+            cbServicio.SelectedValue = expe.Servicio;
+            cbEscuelas.SelectedValue = expe.Escuela;
+            txtNombreReferencia.Text = expe.Per_Referencia;
+            txtTelefonoReferencia.Text = expe.Tel_Referencia;
+            txtAlergia.Text = expe.Alergias;
+            cbTipoSangre.SelectedItem = expe.Tipo_Sangre;
+            txtEnferCronica.Text = expe.Enf_Cronica;
+            txtMedCronica.Text = expe.Med_Cronico;
+
+        }
+        public void combos()
+        {
+            model.comboTipoAlumno(cbTipo);
+            model.comboEscuelas(cbEscuelas);
+            model.comboReligion(cbReligion);
+            model.comboServicios(cbServicio, expe.Tipo); 
+            cbTipo.Enabled = false;
+            dtInicio.Enabled = false;
+            dtTermino.Enabled = false;
+            inicial = 1;
+        }
+
+        // Valida que no tenga campos vacios que son obligatorios
+        public Boolean camposVacios()
+        {
+            Boolean tab1 = false;
+            Boolean tab3 = false;
+            Boolean flag = true;
+            foreach (Control x in tabPersonales.Controls)
+            {
+                if (x is MetroTextBox)
+                {
+                    if (x.Text == "")
+                    {
+                        tab1 = true;
+                    }
+                }
+            }
+            foreach (Control x in tabReferencia.Controls)
+            {
+                if (x is MetroTextBox)
+                {
+                    if (x.Text == "")
+                    {
+                        tab3 = true;
+                    }
+                }
+            }
+            if (tab1 == true || tab3 == true)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Existen campos que son obligatorios", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                flag = false;
+            }
+            return flag;
+        }
+
+        // Valida las fechas
+        public Boolean validaFechas()
+        {
+            Boolean flag = true;
+            if (date.ToShortDateString() == dtNacimiento.Value.ToShortDateString() || dtNacimiento.Value.Year > (date.Year - 18))
+            {
+                flag = false;
+                MetroFramework.MetroMessageBox.Show(this, "La fecha de nacimiento no debe ser igual o menor de 18 años que la actual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            return flag;
         }
 
 
@@ -682,11 +805,31 @@ namespace SoftBecarios
             }
         }
 
-        private void perfilExpediente_Load(object sender, EventArgs e)
+        private void txtAlergia_Leave(object sender, EventArgs e)
         {
-            model.mostrarExpediente(expe);
-            MetroFramework.MetroMessageBox.Show(this, Convert.ToString(expe.Numero));
+            if (txtAlergia.Text == "")
+            {
+                txtAlergia.Text = "*****";
+            }
         }
+
+        private void txtEnferCronica_Leave(object sender, EventArgs e)
+        {
+            if (txtEnferCronica.Text == "")
+            {
+                txtEnferCronica.Text = "*****";
+            }
+        }
+
+        private void txtMedCronica_Leave(object sender, EventArgs e)
+        {
+            if (txtMedCronica.Text == "")
+            {
+                txtMedCronica.Text = "*****";
+            }
+        }
+
+       
 
        
     }

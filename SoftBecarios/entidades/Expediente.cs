@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class Expediente
     {
+        private int id;
         private int tipo;
         private int numero;
         private string nombre;
@@ -47,6 +48,7 @@ namespace Entidades
         private string vac2_termino;
         private double promedio;
 
+        public int ID { get { return id; } set { id = value; } }
         public int Tipo { get { return tipo; } set { tipo = value; } }
         public int Numero { get { return numero; } set { numero = value; } }
         public string Nombre { get { return nombre; } set { nombre = value; } }
@@ -83,7 +85,7 @@ namespace Entidades
         public string Vac1_Inicio { get { return vac1_inicio; } set { vac1_inicio = value; } }
         public string Vac1_Termino { get { return vac1_termino; } set { vac1_termino = value; } }
         public string Vac2_Inicio { get { return vac2_inicio; } set { vac2_inicio = value; } }
-        public string vac2_Termino { get { return vac2_termino; } set { vac2_termino = value; } }
+        public string Vac2_Termino { get { return vac2_termino; } set { vac2_termino = value; } }
         public double Promedio { get { return promedio; } set { promedio = value; } }
 
 

@@ -134,9 +134,60 @@ namespace Negocio
             return flag;
         }
 
-        public void mostrarExpediente(Expediente expe)
+        public Expediente mostrarExpediente(Expediente expe)
         {
-
+            conector.abrirConexion();
+            /*
+            string sql = "SELECT alumnos.id, alumnos.numero, alumnos.nombre, alumnos.apellido_paterno, alumnos.apellido_materno, alumnos.nacimiento, alumnos.lugar, alumnos.fecha_inicio, alumnos.fecha_termino, alumnos.genero, alumnos.rfc, alumnos.curp, alumnos.domicilio, alumnos.colonia, alumnos.telefono, "
+                + "alumnos.email, alumnos.civil, alumnos.t_pantalon, alumnos.t_filipina, alumnos.t_bata, alumnos.t_zapato, alumnos.persona_referencia, alumnos.tel_referencia, alumnos.tipo_sangre, alumnos.alergias, alumnos.enf_cronica, alumnos.med_cronico, alumnos.vac1_inicio, alumnos.vac1_termino, alumnos.vac2_inicio, alumnos.vac2_termino, "
+                + "alumnos.guardia, alumnos.cedula, alumnos.promedio, tipo_alumnos.tipo, creencias.religion, escuelas.escuela, especialidades.especialidad "
+                + "FROM (especialidades INNER JOIN (tipo_alumnos INNER JOIN (creencias INNER JOIN (escuelas INNER JOIN alumnos on alumnos.escuelas_id = escuelas.id) on alumnos.creencias_id = creencias.id) on alumnos.tipo_alumnos_id = tipo_alumnos.id) on alumnos.especialidades_id = especialidades.id)";
+             * */
+            string sql = "SELECT * FROM alumnos WHERE numero = " + expe.Numero;
+            MySqlDataReader datos = conector.executeReader(sql);
+            while (datos.Read())
+            {
+                expe.ID = Convert.ToInt16(datos["id"]);
+                expe.Numero = Convert.ToInt16(datos["numero"]);
+                expe.Nombre = datos["nombre"].ToString();
+                expe.ApellidoP = datos["apellido_paterno"].ToString();
+                expe.ApellidoM = datos["apellido_materno"].ToString();
+                expe.Nacimiento = datos["nacimiento"].ToString();
+                expe.Lugar = datos["lugar"].ToString();
+                expe.Fec_Inicio = datos["fecha_inicio"].ToString();
+                expe.Fec_Termino = datos["fecha_termino"].ToString();
+                expe.Genero = datos["genero"].ToString();
+                expe.RFC = datos["rfc"].ToString();
+                expe.CURP = datos["curp"].ToString();
+                expe.Domicilio = datos["domicilio"].ToString();
+                expe.Colonia = datos["colonia"].ToString();
+                expe.Telefono = datos["telefono"].ToString();
+                expe.Mail = datos["email"].ToString();
+                expe.Civil = datos["civil"].ToString();
+                expe.T_Pantalon = Convert.ToInt16(datos["t_pantalon"]);
+                expe.T_Filipina = Convert.ToInt16(datos["t_filipina"]);
+                expe.T_Bata = Convert.ToInt16(datos["t_bata"]);
+                expe.T_Zapato = Convert.ToDouble(datos["t_zapato"]);
+                expe.Per_Referencia = datos["persona_referencia"].ToString();
+                expe.Tel_Referencia = datos["tel_referencia"].ToString();
+                expe.Tipo_Sangre = datos["tipo_sangre"].ToString();
+                expe.Alergias = datos["alergias"].ToString();
+                expe.Enf_Cronica = datos["enf_cronica"].ToString();
+                expe.Med_Cronico = datos["med_cronico"].ToString();
+                expe.Vac1_Inicio = datos["vac1_inicio"].ToString();
+                expe.Vac1_Termino = datos["vac1_termino"].ToString();
+                expe.Vac2_Inicio = datos["vac2_inicio"].ToString();
+                expe.Vac2_Termino = datos["vac2_termino"].ToString();
+                expe.Guardia = datos["guardia"].ToString();
+                expe.Cedula = datos["cedula"].ToString();
+                expe.Turno = datos["turno"].ToString();
+                expe.Tipo = Convert.ToInt16(datos["tipo_alumnos_id"]);
+                expe.Religion = Convert.ToInt16(datos["creencias_id"]);
+                expe.Escuela = Convert.ToInt16(datos["escuelas_id"]);
+                expe.Servicio = Convert.ToInt16(datos["especialidades_id"]);
+            }
+            conector.close();
+            return expe;
         }
         #endregion
     }

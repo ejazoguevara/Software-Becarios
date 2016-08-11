@@ -249,6 +249,7 @@ namespace SoftBecarios
                             limpiar();
                             MetroFramework.MetroMessageBox.Show(this, "Expediente guardado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             contador();
+                            tabExpedienteNuevo.SelectTab(0);
                         }
                         else
                         {
