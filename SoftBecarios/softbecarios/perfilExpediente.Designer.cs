@@ -33,6 +33,8 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.tabPerfilExpediente = new MetroFramework.Controls.MetroTabControl();
             this.tabPersonales = new MetroFramework.Controls.MetroTabPage();
+            this.cbTurno = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel32 = new MetroFramework.Controls.MetroLabel();
             this.dtTermino = new MetroFramework.Controls.MetroDateTime();
             this.dtInicio = new MetroFramework.Controls.MetroDateTime();
             this.dtNacimiento = new MetroFramework.Controls.MetroDateTime();
@@ -85,6 +87,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.lblNumero = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.cbTipo = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tabTallas = new MetroFramework.Controls.MetroTabPage();
@@ -206,9 +209,6 @@
             this.txtCom3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel69 = new MetroFramework.Controls.MetroLabel();
             this.txtCom1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.cbTurno = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel32 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.tabPerfilExpediente.SuspendLayout();
             this.tabPersonales.SuspendLayout();
@@ -268,6 +268,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // tabPerfilExpediente
             // 
@@ -282,7 +283,7 @@
             this.tabPerfilExpediente.ItemSize = new System.Drawing.Size(200, 40);
             this.tabPerfilExpediente.Location = new System.Drawing.Point(4, 3);
             this.tabPerfilExpediente.Name = "tabPerfilExpediente";
-            this.tabPerfilExpediente.SelectedIndex = 5;
+            this.tabPerfilExpediente.SelectedIndex = 3;
             this.tabPerfilExpediente.Size = new System.Drawing.Size(944, 378);
             this.tabPerfilExpediente.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabPerfilExpediente.TabIndex = 2;
@@ -361,11 +362,38 @@
             this.tabPersonales.VerticalScrollbarHighlightOnWheel = false;
             this.tabPersonales.VerticalScrollbarSize = 10;
             // 
+            // cbTurno
+            // 
+            this.cbTurno.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTurno.FormattingEnabled = true;
+            this.cbTurno.ItemHeight = 23;
+            this.cbTurno.Items.AddRange(new object[] {
+            "Matutino",
+            "Vespertino",
+            "Jornada A."});
+            this.cbTurno.Location = new System.Drawing.Point(790, 124);
+            this.cbTurno.Name = "cbTurno";
+            this.cbTurno.Size = new System.Drawing.Size(143, 29);
+            this.cbTurno.Style = MetroFramework.MetroColorStyle.Orange;
+            this.cbTurno.TabIndex = 62;
+            this.cbTurno.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cbTurno.UseSelectable = true;
+            // 
+            // metroLabel32
+            // 
+            this.metroLabel32.AutoSize = true;
+            this.metroLabel32.Location = new System.Drawing.Point(726, 134);
+            this.metroLabel32.Name = "metroLabel32";
+            this.metroLabel32.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel32.TabIndex = 63;
+            this.metroLabel32.Text = "Turno:";
+            // 
             // dtTermino
             // 
             this.dtTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTermino.Location = new System.Drawing.Point(481, 159);
-            this.dtTermino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtTermino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtTermino.Name = "dtTermino";
             this.dtTermino.Size = new System.Drawing.Size(210, 29);
             this.dtTermino.TabIndex = 59;
@@ -374,7 +402,7 @@
             // 
             this.dtInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtInicio.Location = new System.Drawing.Point(481, 124);
-            this.dtInicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtInicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Size = new System.Drawing.Size(210, 29);
             this.dtInicio.TabIndex = 58;
@@ -383,7 +411,7 @@
             // 
             this.dtNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNacimiento.Location = new System.Drawing.Point(134, 194);
-            this.dtNacimiento.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtNacimiento.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtNacimiento.Name = "dtNacimiento";
             this.dtNacimiento.Size = new System.Drawing.Size(210, 29);
             this.dtNacimiento.TabIndex = 57;
@@ -464,6 +492,7 @@
             this.txtCedula.UseSelectable = true;
             this.txtCedula.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtCedula.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
             // metroLabel48
             // 
@@ -534,6 +563,7 @@
             this.txtColonia.UseSelectable = true;
             this.txtColonia.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtColonia.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtColonia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColonia_KeyPress);
             // 
             // metroLabel40
             // 
@@ -728,6 +758,7 @@
             this.txtDomicilio.UseSelectable = true;
             this.txtDomicilio.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtDomicilio.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDomicilio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDomicilio_KeyPress);
             // 
             // txtMail
             // 
@@ -759,6 +790,7 @@
             this.txtMail.UseSelectable = true;
             this.txtMail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtMail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMail_KeyPress);
             // 
             // txtTelefono
             // 
@@ -790,6 +822,7 @@
             this.txtTelefono.UseSelectable = true;
             this.txtTelefono.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtTelefono.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // metroLabel16
             // 
@@ -924,6 +957,7 @@
             this.txtRFC.UseSelectable = true;
             this.txtRFC.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtRFC.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtRFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRFC_KeyPress);
             // 
             // txtCURP
             // 
@@ -955,6 +989,7 @@
             this.txtCURP.UseSelectable = true;
             this.txtCURP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtCURP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCURP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCURP_KeyPress);
             // 
             // txtLugar
             // 
@@ -986,6 +1021,7 @@
             this.txtLugar.UseSelectable = true;
             this.txtLugar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtLugar.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtLugar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLugar_KeyPress);
             // 
             // metroLabel10
             // 
@@ -1053,6 +1089,7 @@
             this.txtApellidoM.UseSelectable = true;
             this.txtApellidoM.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtApellidoM.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtApellidoM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoM_KeyPress);
             // 
             // txtApellidoP
             // 
@@ -1084,6 +1121,7 @@
             this.txtApellidoP.UseSelectable = true;
             this.txtApellidoP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtApellidoP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtApellidoP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoP_KeyPress);
             // 
             // txtNombre
             // 
@@ -1115,6 +1153,7 @@
             this.txtNombre.UseSelectable = true;
             this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // metroLabel6
             // 
@@ -1156,6 +1195,15 @@
             this.lblNumero.TabIndex = 5;
             this.lblNumero.Text = "00";
             this.lblNumero.UseStyleColors = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(834, 257);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
+            this.metroLabel2.TabIndex = 4;
+            this.metroLabel2.Text = "Número:";
             // 
             // cbTipo
             // 
@@ -1445,6 +1493,7 @@
             this.txtTelefonoReferencia.UseSelectable = true;
             this.txtTelefonoReferencia.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtTelefonoReferencia.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTelefonoReferencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoReferencia_KeyPress);
             // 
             // metroLabel36
             // 
@@ -1496,6 +1545,7 @@
             this.txtNombreReferencia.UseSelectable = true;
             this.txtNombreReferencia.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNombreReferencia.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombreReferencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreReferencia_KeyPress);
             // 
             // metroLabel34
             // 
@@ -1570,6 +1620,7 @@
             this.txtMedCronica.UseSelectable = true;
             this.txtMedCronica.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtMedCronica.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtMedCronica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMedCronica_KeyPress);
             this.txtMedCronica.Leave += new System.EventHandler(this.txtMedCronica_Leave);
             // 
             // metroLabel45
@@ -1614,6 +1665,7 @@
             this.txtEnferCronica.UseSelectable = true;
             this.txtEnferCronica.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEnferCronica.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEnferCronica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEnferCronica_KeyPress);
             this.txtEnferCronica.Leave += new System.EventHandler(this.txtEnferCronica_Leave);
             // 
             // metroLabel44
@@ -1658,6 +1710,7 @@
             this.txtAlergia.UseSelectable = true;
             this.txtAlergia.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtAlergia.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtAlergia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlergia_KeyPress);
             this.txtAlergia.Leave += new System.EventHandler(this.txtAlergia_Leave);
             // 
             // cbTipoSangre
@@ -1732,7 +1785,7 @@
             // 
             this.dtVac2Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac2Termino.Name = "dtVac2Termino";
             this.dtVac2Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Termino.TabIndex = 25;
@@ -1741,7 +1794,7 @@
             // 
             this.dtVac2Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac2Inicio.Name = "dtVac2Inicio";
             this.dtVac2Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Inicio.TabIndex = 24;
@@ -1796,7 +1849,7 @@
             // 
             this.dtVac1Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac1Termino.Name = "dtVac1Termino";
             this.dtVac1Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Termino.TabIndex = 23;
@@ -1805,7 +1858,7 @@
             // 
             this.dtVac1Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac1Inicio.Name = "dtVac1Inicio";
             this.dtVac1Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Inicio.TabIndex = 22;
@@ -3500,42 +3553,6 @@
             this.txtCom1.TextChanged += new System.EventHandler(this.txtCom1_TextChanged);
             this.txtCom1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCom1_KeyPress);
             this.txtCom1.Leave += new System.EventHandler(this.txtCom1_Leave);
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(834, 257);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
-            this.metroLabel2.TabIndex = 4;
-            this.metroLabel2.Text = "Número:";
-            // 
-            // cbTurno
-            // 
-            this.cbTurno.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cbTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTurno.FormattingEnabled = true;
-            this.cbTurno.ItemHeight = 23;
-            this.cbTurno.Items.AddRange(new object[] {
-            "Matutino",
-            "Vespertino",
-            "Jornada A."});
-            this.cbTurno.Location = new System.Drawing.Point(790, 124);
-            this.cbTurno.Name = "cbTurno";
-            this.cbTurno.Size = new System.Drawing.Size(143, 29);
-            this.cbTurno.Style = MetroFramework.MetroColorStyle.Orange;
-            this.cbTurno.TabIndex = 62;
-            this.cbTurno.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.cbTurno.UseSelectable = true;
-            // 
-            // metroLabel32
-            // 
-            this.metroLabel32.AutoSize = true;
-            this.metroLabel32.Location = new System.Drawing.Point(726, 134);
-            this.metroLabel32.Name = "metroLabel32";
-            this.metroLabel32.Size = new System.Drawing.Size(44, 19);
-            this.metroLabel32.TabIndex = 63;
-            this.metroLabel32.Text = "Turno:";
             // 
             // perfilExpediente
             // 

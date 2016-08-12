@@ -189,6 +189,13 @@ namespace Negocio
             conector.close();
             return expe;
         }
+
+        public Boolean actualizaExpediente(Expediente expe)
+        {
+            Boolean flag = false;
+
+            return flag;
+        }
         #endregion
     }
 }

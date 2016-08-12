@@ -19,8 +19,9 @@ namespace SoftBecarios
     {
         Expediente expe;
         modelo model = new modelo();
+        Calificaciones cal = new Calificaciones();
         DateTime date = DateTime.Today;
-        int inicial = 0;
+        
 
         public perfilExpediente(Expediente expe)
         {
@@ -45,11 +46,11 @@ namespace SoftBecarios
             asignaValores();
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1: { panelCalMip.Visible = false; break; }
-                case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false;  break; }
-                case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
-                case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
-                case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; }
+                case 1: { panelCalMip.Visible = false; break; } // Residentes
+                case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false;  break; } // Internos
+                case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Serv. Social
+                case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Estudiantes Med.
+                case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Practicas Prof.
             }
         }
 
@@ -89,6 +90,77 @@ namespace SoftBecarios
             txtMedCronica.Text = expe.Med_Cronico;
 
         }
+
+        public void actualizaValores()
+        {
+            expe.Nombre = txtNombre.Text.Trim();
+            expe.ApellidoP = txtApellidoP.Text.Trim();
+            expe.ApellidoM = txtApellidoM.Text.Trim();
+            expe.RFC = txtRFC.Text.Trim();
+            expe.CURP = txtCURP.Text.Trim();
+            expe.Domicilio = txtDomicilio.Text.Trim();
+            expe.Colonia = txtColonia.Text.Trim();
+            expe.Lugar = txtLugar.Text.Trim();
+            expe.Telefono = txtTelefono.Text.Trim();
+            expe.Mail = txtMail.Text.Trim();
+            expe.Cedula = txtCedula.Text.Trim();
+            expe.Per_Referencia = txtNombreReferencia.Text.Trim();
+            expe.Tel_Referencia = txtTelefonoReferencia.Text.Trim();
+            expe.Alergias = txtAlergia.Text.Trim();
+            expe.Enf_Cronica = txtEnferCronica.Text.Trim();
+            expe.Med_Cronico = txtMedCronica.Text.Trim();
+            expe.Genero = Convert.ToString(cbGenero.SelectedItem);
+            expe.Guardia = Convert.ToString(cbGuardia.SelectedItem);
+            expe.Civil = Convert.ToString(cbCivil.SelectedItem);
+            expe.Turno = Convert.ToString(cbTurno.SelectedItem);
+            expe.Tipo_Sangre = Convert.ToString(cbTipoSangre.SelectedItem);
+            expe.Nacimiento = dtNacimiento.Value.ToString("yyyy-MM-dd");
+            expe.Fec_Inicio = dtInicio.Value.ToString("yyyy-MM-dd");
+            expe.Fec_Termino = dtTermino.Value.ToString("yyyy-MM-dd");
+            expe.Tipo = Convert.ToInt16(cbTipo.SelectedValue);
+            expe.Numero = Convert.ToInt16(lblNumero.Text.Trim());
+            expe.Servicio = Convert.ToInt16(cbServicio.SelectedValue);
+            expe.Escuela = Convert.ToInt16(cbEscuelas.SelectedValue);
+            expe.Religion = Convert.ToInt16(cbReligion.SelectedValue);
+            expe.T_Bata = Convert.ToInt16(cbTallaB.SelectedItem);
+            expe.T_Filipina = Convert.ToInt16(cbTallaF.SelectedItem);
+            expe.T_Pantalon = Convert.ToInt16(cbTallaP.SelectedItem);
+            expe.T_Zapato = Convert.ToDouble(cbTallaZ.SelectedItem);
+
+            switch (Convert.ToInt16(cbTipo.SelectedValue))
+            {
+                case 1:
+                    {
+                        // Tab Vacaciones
+                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
+                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
+                        // Tab Calificaciones
+                    break; }
+                case 2:
+                    {
+                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
+                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
+                    break; }
+                case 3:
+                    {
+                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
+                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
+                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
+                    break; }
+            }
+
+            
+            
+
+
+            // Tab Calificaciones
+        }
+
         public void combos()
         {
             model.comboTipoAlumno(cbTipo);
@@ -98,7 +170,7 @@ namespace SoftBecarios
             cbTipo.Enabled = false;
             dtInicio.Enabled = false;
             dtTermino.Enabled = false;
-            inicial = 1;
+            
         }
 
         // Valida que no tenga campos vacios que son obligatorios
@@ -827,6 +899,106 @@ namespace SoftBecarios
             {
                 txtMedCronica.Text = "*****";
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (camposVacios())
+            {
+                if(validaFechas())
+                {
+                    if (Validar.ComprobarEmail(txtMail.Text))
+                    {
+                        // Vamos a actualizar los cambios y guardar vacaciones y calificaciones
+                        actualizaValores();
+                        if (model.actualizaExpediente(expe))
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Expediente actualizado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            this.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtApellidoP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtApellidoM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtLugar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtRFC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.letrasynumeros(e.KeyChar);
+        }
+
+        private void txtCURP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.letrasynumeros(e.KeyChar);
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.telefono(e.KeyChar);
+        }
+
+        private void txtMail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.correo(e.KeyChar);
+        }
+
+        private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.letrasSignos(e.KeyChar);
+        }
+
+        private void txtColonia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloNumeros(e.KeyChar);
+        }
+
+        private void txtNombreReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtTelefonoReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.telefono(e.KeyChar);
+        }
+
+        private void txtAlergia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtEnferCronica_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void txtMedCronica_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Validar.soloLetras(e.KeyChar);
         }
 
        

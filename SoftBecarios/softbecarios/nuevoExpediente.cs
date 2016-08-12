@@ -49,6 +49,7 @@ namespace SoftBecarios
             cbCivil.SelectedIndex = 0;
             cbGuardia.SelectedIndex = 0;
             cbTurno.SelectedIndex = 0;
+            cbTurno.Enabled = false;
             cbTallaB.SelectedIndex = 0;
             cbTallaF.SelectedIndex = 0;
             cbTallaP.SelectedIndex = 0;
@@ -201,11 +202,11 @@ namespace SoftBecarios
                 int op = Convert.ToInt16(cbTipo.SelectedValue);
                 switch (op)
                 {
-                    case 1: {cbGuardia.Enabled = true; txtCedula.Enabled = true; break;}
-                    case 2: { cbGuardia.Enabled = true; txtCedula.Enabled = false; break; }
-                    case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; break; }
-                    case 4: { cbGuardia.Enabled = false; txtCedula.Enabled = false; break; }
-                    case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; break; }
+                    case 1: { cbGuardia.Enabled = true; txtCedula.Enabled = true; cbTurno.SelectedIndex = 0; cbTurno.Enabled = false; break; }  // Residentes
+                    case 2: { cbGuardia.Enabled = true; txtCedula.Enabled = false; txtCedula.Text = "S/N"; cbTurno.SelectedIndex = 0; cbTurno.Enabled = false; break; } // Internos
+                    case 3: { cbGuardia.Enabled = false; cbGuardia.SelectedIndex = 0; txtCedula.Enabled = false; txtCedula.Text = "S/N"; cbTurno.SelectedIndex = 0; cbTurno.Enabled = true; break; } // Serv. Social
+                    case 4: { cbGuardia.Enabled = false; cbGuardia.SelectedIndex = 0; cbTurno.SelectedIndex = 0; cbTurno.Enabled = false; txtCedula.Enabled = false; txtCedula.Text = "S/N"; break; } // Estudiantes Medicina
+                    case 5: { cbGuardia.Enabled = false; cbGuardia.SelectedIndex = 0; txtCedula.Enabled = false; txtCedula.Text = "S/N"; cbTurno.SelectedIndex = 0; cbTurno.Enabled = true; break; } // Practicas Prof.
                 }
             }
             

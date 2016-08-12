@@ -97,7 +97,7 @@ namespace Datos
                 cm.ExecuteNonQuery();
                 _bandera = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 _bandera = false;
@@ -133,11 +133,11 @@ namespace Datos
             //reader = cmd.ExecuteReader();
             using (var reader = cm.ExecuteReader())
             {
-                bool encontrado = false;
+                //bool encontrado = false;
                 while (reader.Read())
                 {
                     yield return (IDataRecord)reader;
-                    encontrado = true;
+                    //encontrado = true;
                 }
 
             }
