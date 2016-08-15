@@ -83,5 +83,11 @@ namespace SoftBecarios
             
         }
 
+        private void btnVacaciones_Click(object sender, EventArgs e)
+        {
+            mostrarVacaciones abrir = new mostrarVacaciones();
+            abrir.Show();
+        }
+
     }
 }

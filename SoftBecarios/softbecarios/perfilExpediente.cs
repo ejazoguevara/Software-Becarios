@@ -35,10 +35,10 @@ namespace SoftBecarios
             dtNacimiento.MaxDate = date;
             dtTermino.MinDate = date;
             dtTermino.MaxDate = date.AddYears(1);
-            dtInicio.MinDate = date.AddMonths(-2);
+            dtInicio.MinDate = date.AddYears(-1);
             dtInicio.MaxDate = date;
-            dtVac1Inicio.MinDate = date.AddMonths(-1);
-            dtVac2Inicio.MinDate = date.AddMonths(-1);
+            dtVac1Inicio.MinDate = date.AddYears(-1);
+            dtVac2Inicio.MinDate = date.AddYears(-1);
             dtVac1Termino.MaxDate = date.AddYears(1);
             dtVac2Termino.MaxDate = date.AddYears(1);
             model.mostrarExpediente(expe);
@@ -46,14 +46,15 @@ namespace SoftBecarios
             asignaValores();
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1: { panelCalMip.Visible = false; break; } // Residentes
-                case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false;  break; } // Internos
+                case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; break; } // Residentes
+                case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Internos
                 case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Serv. Social
-                case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Estudiantes Med.
+                case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Estudiantes Med.
                 case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Practicas Prof.
             }
         }
 
+        // Coloca los datos correspondientes en cada campo
         public void asignaValores()
         {
             cbTipo.SelectedValue = expe.Tipo;
@@ -89,8 +90,15 @@ namespace SoftBecarios
             txtEnferCronica.Text = expe.Enf_Cronica;
             txtMedCronica.Text = expe.Med_Cronico;
 
+            // Tab Vacaciones
+            dtVac1Inicio.Text = expe.Vac1_Inicio;
+            dtVac1Termino.Text = expe.Vac1_Termino;
+            dtVac2Inicio.Text = expe.Vac2_Inicio;
+            dtVac2Termino.Text = expe.Vac2_Termino;
+
         }
 
+        // Asigna los valores a la clase para luego actualizar los datos en la BD
         public void actualizaValores()
         {
             expe.Nombre = txtNombre.Text.Trim();
@@ -125,40 +133,34 @@ namespace SoftBecarios
             expe.T_Bata = Convert.ToInt16(cbTallaB.SelectedItem);
             expe.T_Filipina = Convert.ToInt16(cbTallaF.SelectedItem);
             expe.T_Pantalon = Convert.ToInt16(cbTallaP.SelectedItem);
-            expe.T_Zapato = Convert.ToDouble(cbTallaZ.SelectedItem);
+            expe.T_Zapato = Convert.ToDouble(cbTallaZ.SelectedItem);            
+        }
 
+        // Asigna valores solo de Vacaciones a la clase para ser guardados en la BD
+        public void asignaVacaciones()
+        {
+            expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
+            expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
+            expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
+            expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
+        }
+
+        // Asigna valores solo de Calificaciones a la clase para ser guardado en la BD
+        public void asignaCalificaciones()
+        {
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
                 case 1:
                     {
-                        // Tab Vacaciones
-                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
-                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
-                        // Tab Calificaciones
-                    break; }
+                        
+                        break;
+                    }
                 case 2:
                     {
-                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
-                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
-                    break; }
-                case 3:
-                    {
-                        expe.Vac1_Inicio = dtVac1Inicio.Value.ToString("yyyy-MM-dd");
-                        expe.Vac1_Termino = dtVac1Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Termino = dtVac2Termino.Value.ToString("yyyy-MM-dd");
-                        expe.Vac2_Inicio = dtVac2Inicio.Value.ToString("yyyy-MM-dd");
-                    break; }
+                        
+                        break;
+                    }
             }
-
-            
-            
-
-
-            // Tab Calificaciones
         }
 
         public void combos()
@@ -414,7 +416,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtCir1.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCir1.Text = "0";
             }
         }
@@ -435,7 +437,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtCir2.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCir2.Text = "0";
             }
         }
@@ -456,7 +458,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtCir3.Text) > 20)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCir3.Text = "0";
             }
         }
@@ -477,7 +479,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtGin1.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtGin1.Text = "0";
             }
         }
@@ -498,7 +500,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtGin2.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtGin2.Text = "0";
             }
         }
@@ -519,7 +521,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtGin3.Text) > 20)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtGin3.Text = "0";
             }
         }
@@ -540,7 +542,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtMed1.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMed1.Text = "0";
             }
         }
@@ -561,7 +563,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtMed2.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMed2.Text = "0";
             }
         }
@@ -582,7 +584,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtMed3.Text) > 20)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMed3.Text = "0";
             }
         }
@@ -603,7 +605,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtPed1.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPed1.Text = "0";
             }
         }
@@ -624,7 +626,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtPed2.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPed2.Text = "0";
             }
         }
@@ -645,7 +647,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtPed3.Text) > 20)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPed3.Text = "0";
             }
         }
@@ -666,7 +668,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtUrg1.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUrg1.Text = "0";
             }
         }
@@ -687,7 +689,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtUrg2.Text) > 40)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUrg2.Text = "0";
             }
         }
@@ -708,7 +710,7 @@ namespace SoftBecarios
             }
             else if (Convert.ToInt16(txtUrg3.Text) > 20)
             {
-                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "La calificación no debe ser mayor a 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUrg3.Text = "0";
             }
         }
@@ -901,26 +903,6 @@ namespace SoftBecarios
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (camposVacios())
-            {
-                if(validaFechas())
-                {
-                    if (Validar.ComprobarEmail(txtMail.Text))
-                    {
-                        // Vamos a actualizar los cambios y guardar vacaciones y calificaciones
-                        actualizaValores();
-                        if (model.actualizaExpediente(expe))
-                        {
-                            MetroFramework.MetroMessageBox.Show(this, "Expediente actualizado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            this.Close();
-                        }
-                    }
-                }
-            }
-        }
-
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Validar.soloLetras(e.KeyChar);
@@ -999,6 +981,64 @@ namespace SoftBecarios
         private void txtMedCronica_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Validar.soloLetras(e.KeyChar);
+        }
+
+        private void btnGuardar2_Click(object sender, EventArgs e)
+        {
+            btnGuardar.PerformClick();
+        }
+
+        private void btnGuardar3_Click(object sender, EventArgs e)
+        {
+            btnGuardar.PerformClick();
+        }
+
+        private void btnGuardar4_Click(object sender, EventArgs e)
+        {
+            btnGuardar.PerformClick();
+        }
+
+        private void btnGuardaVaca_Click(object sender, EventArgs e)
+        {
+            asignaVacaciones();
+            if (model.guardaVacaciones(expe))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Vacaciones guardadas con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Ocurrio un error al intentar guardar, consulte al administrador", "¡Ooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuardaCalifica_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (camposVacios())
+            {
+                if (validaFechas())
+                {
+                    if (Validar.ComprobarEmail(txtMail.Text))
+                    {
+                        // Vamos a actualizar los cambios y guardar vacaciones y calificaciones
+                        actualizaValores();
+                        if (model.actualizaExpediente(expe))
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Expediente actualizado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Ocurrio un error al intentar guardar, consulte al administrador", "¡Ooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
 
        

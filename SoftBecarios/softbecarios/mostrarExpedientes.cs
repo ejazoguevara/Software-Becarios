@@ -39,11 +39,12 @@ namespace SoftBecarios
         {
             gridResultadosMostrar.Columns.Clear();
             model.llenarDataGridExpedientes(gridResultadosMostrar, Convert.ToInt16(cbTipo.SelectedValue));
-            gridResultadosMostrar.Columns[0].Width = 30;
-            gridResultadosMostrar.Columns[1].Width = 290;
-            gridResultadosMostrar.Columns[2].Width = 60;
-            gridResultadosMostrar.Columns[3].Width = 190;
-            gridResultadosMostrar.Columns[4].Width = 175;
+            gridResultadosMostrar.Columns[0].Visible = false;
+            gridResultadosMostrar.Columns[1].Width = 30;
+            gridResultadosMostrar.Columns[2].Width = 290;
+            gridResultadosMostrar.Columns[3].Width = 60;
+            gridResultadosMostrar.Columns[4].Width = 190;
+            gridResultadosMostrar.Columns[5].Width = 175;
             // Agregar columnas nuevas
             DataGridViewButtonColumn addcolumn = new DataGridViewButtonColumn();
             addcolumn.Name = "perfil";
@@ -53,10 +54,10 @@ namespace SoftBecarios
             DataGridViewButtonColumn addcolumn2 = new DataGridViewButtonColumn();
             addcolumn2.Name = "eliminar";
             addcolumn2.HeaderText = "Eliminar";
-            addcolumn2.Text = "Borrar";
+            addcolumn2.Text = "B";
             gridResultadosMostrar.Columns.Add(addcolumn2);
-            gridResultadosMostrar.Columns[5].Width = 50;
             gridResultadosMostrar.Columns[6].Width = 50;
+            gridResultadosMostrar.Columns[7].Width = 50;
             
         }
 
@@ -70,10 +71,11 @@ namespace SoftBecarios
 
         private void gridResultadosMostrar_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
-                expe.Numero = Convert.ToInt16(gridResultadosMostrar.Rows[e.RowIndex].Cells[0].Value);
+                expe.ID = Convert.ToInt16(gridResultadosMostrar.Rows[e.RowIndex].Cells[0].Value);
                 perfilExpediente ver = new perfilExpediente(expe);
+                this.Close();
                 ver.Show();
             }
         }

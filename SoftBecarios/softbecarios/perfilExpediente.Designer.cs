@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(perfilExpediente));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.tabPerfilExpediente = new MetroFramework.Controls.MetroTabControl();
             this.tabPersonales = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.cbTurno = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel32 = new MetroFramework.Controls.MetroLabel();
             this.dtTermino = new MetroFramework.Controls.MetroDateTime();
@@ -91,6 +91,7 @@
             this.cbTipo = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tabTallas = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardar2 = new System.Windows.Forms.Button();
             this.cbTallaZ = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
             this.cbTallaB = new MetroFramework.Controls.MetroComboBox();
@@ -100,6 +101,7 @@
             this.cbTallaP = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel29 = new MetroFramework.Controls.MetroLabel();
             this.tabReferencia = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardar3 = new System.Windows.Forms.Button();
             this.metroLabel39 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel38 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
@@ -109,6 +111,7 @@
             this.txtNombreReferencia = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
             this.tabMedicos = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardar4 = new System.Windows.Forms.Button();
             this.metroLabel46 = new MetroFramework.Controls.MetroLabel();
             this.txtMedCronica = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel45 = new MetroFramework.Controls.MetroLabel();
@@ -118,6 +121,7 @@
             this.cbTipoSangre = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel43 = new MetroFramework.Controls.MetroLabel();
             this.tabVacaciones = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardaVaca = new System.Windows.Forms.Button();
             this.panelVaca2 = new MetroFramework.Controls.MetroPanel();
             this.dtVac2Termino = new MetroFramework.Controls.MetroDateTime();
             this.dtVac2Inicio = new MetroFramework.Controls.MetroDateTime();
@@ -131,6 +135,7 @@
             this.metroLabel51 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel50 = new MetroFramework.Controls.MetroLabel();
             this.tabCalificaciones = new MetroFramework.Controls.MetroTabPage();
+            this.btnGuardaCalifica = new System.Windows.Forms.Button();
             this.panelCalR1 = new MetroFramework.Controls.MetroPanel();
             this.lblCalFinalRes = new MetroFramework.Controls.MetroLabel();
             this.metroLabel94 = new MetroFramework.Controls.MetroLabel();
@@ -232,7 +237,6 @@
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.metroPanel1.Controls.Add(this.btnGuardar);
             this.metroPanel1.Controls.Add(this.tabPerfilExpediente);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,25 +255,6 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(11, 438);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(135, 50);
-            this.btnGuardar.TabIndex = 3;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // tabPerfilExpediente
             // 
             this.tabPerfilExpediente.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -283,8 +268,8 @@
             this.tabPerfilExpediente.ItemSize = new System.Drawing.Size(200, 40);
             this.tabPerfilExpediente.Location = new System.Drawing.Point(4, 3);
             this.tabPerfilExpediente.Name = "tabPerfilExpediente";
-            this.tabPerfilExpediente.SelectedIndex = 3;
-            this.tabPerfilExpediente.Size = new System.Drawing.Size(944, 378);
+            this.tabPerfilExpediente.SelectedIndex = 0;
+            this.tabPerfilExpediente.Size = new System.Drawing.Size(944, 494);
             this.tabPerfilExpediente.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabPerfilExpediente.TabIndex = 2;
             this.tabPerfilExpediente.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -292,6 +277,7 @@
             // 
             // tabPersonales
             // 
+            this.tabPersonales.Controls.Add(this.btnGuardar);
             this.tabPersonales.Controls.Add(this.cbTurno);
             this.tabPersonales.Controls.Add(this.metroLabel32);
             this.tabPersonales.Controls.Add(this.dtTermino);
@@ -355,12 +341,31 @@
             this.tabPersonales.HorizontalScrollbarSize = 10;
             this.tabPersonales.Location = new System.Drawing.Point(4, 44);
             this.tabPersonales.Name = "tabPersonales";
-            this.tabPersonales.Size = new System.Drawing.Size(936, 330);
+            this.tabPersonales.Size = new System.Drawing.Size(936, 446);
             this.tabPersonales.TabIndex = 0;
             this.tabPersonales.Text = "Datos Personales";
             this.tabPersonales.VerticalScrollbarBarColor = true;
             this.tabPersonales.VerticalScrollbarHighlightOnWheel = false;
             this.tabPersonales.VerticalScrollbarSize = 10;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(135, 50);
+            this.btnGuardar.TabIndex = 64;
+            this.btnGuardar.Text = "Actualizar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cbTurno
             // 
@@ -393,7 +398,7 @@
             // 
             this.dtTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTermino.Location = new System.Drawing.Point(481, 159);
-            this.dtTermino.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtTermino.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtTermino.Name = "dtTermino";
             this.dtTermino.Size = new System.Drawing.Size(210, 29);
             this.dtTermino.TabIndex = 59;
@@ -402,7 +407,7 @@
             // 
             this.dtInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtInicio.Location = new System.Drawing.Point(481, 124);
-            this.dtInicio.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtInicio.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Size = new System.Drawing.Size(210, 29);
             this.dtInicio.TabIndex = 58;
@@ -411,7 +416,7 @@
             // 
             this.dtNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNacimiento.Location = new System.Drawing.Point(134, 194);
-            this.dtNacimiento.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtNacimiento.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtNacimiento.Name = "dtNacimiento";
             this.dtNacimiento.Size = new System.Drawing.Size(210, 29);
             this.dtNacimiento.TabIndex = 57;
@@ -1230,6 +1235,7 @@
             // 
             // tabTallas
             // 
+            this.tabTallas.Controls.Add(this.btnGuardar2);
             this.tabTallas.Controls.Add(this.cbTallaZ);
             this.tabTallas.Controls.Add(this.metroLabel33);
             this.tabTallas.Controls.Add(this.cbTallaB);
@@ -1243,12 +1249,31 @@
             this.tabTallas.HorizontalScrollbarSize = 2;
             this.tabTallas.Location = new System.Drawing.Point(4, 44);
             this.tabTallas.Name = "tabTallas";
-            this.tabTallas.Size = new System.Drawing.Size(936, 330);
+            this.tabTallas.Size = new System.Drawing.Size(936, 446);
             this.tabTallas.TabIndex = 1;
             this.tabTallas.Text = "Tallas";
             this.tabTallas.VerticalScrollbarBarColor = true;
             this.tabTallas.VerticalScrollbarHighlightOnWheel = false;
             this.tabTallas.VerticalScrollbarSize = 3;
+            // 
+            // btnGuardar2
+            // 
+            this.btnGuardar2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardar2.FlatAppearance.BorderSize = 0;
+            this.btnGuardar2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar2.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar2.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar2.Image")));
+            this.btnGuardar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar2.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardar2.Name = "btnGuardar2";
+            this.btnGuardar2.Size = new System.Drawing.Size(135, 50);
+            this.btnGuardar2.TabIndex = 65;
+            this.btnGuardar2.Text = "Actualizar";
+            this.btnGuardar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar2.UseVisualStyleBackColor = false;
+            this.btnGuardar2.Click += new System.EventHandler(this.btnGuardar2_Click);
             // 
             // cbTallaZ
             // 
@@ -1404,6 +1429,7 @@
             // 
             // tabReferencia
             // 
+            this.tabReferencia.Controls.Add(this.btnGuardar3);
             this.tabReferencia.Controls.Add(this.metroLabel39);
             this.tabReferencia.Controls.Add(this.metroLabel38);
             this.tabReferencia.Controls.Add(this.metroLabel37);
@@ -1417,12 +1443,31 @@
             this.tabReferencia.HorizontalScrollbarSize = 2;
             this.tabReferencia.Location = new System.Drawing.Point(4, 44);
             this.tabReferencia.Name = "tabReferencia";
-            this.tabReferencia.Size = new System.Drawing.Size(936, 330);
+            this.tabReferencia.Size = new System.Drawing.Size(936, 446);
             this.tabReferencia.TabIndex = 2;
             this.tabReferencia.Text = "Referencia";
             this.tabReferencia.VerticalScrollbarBarColor = true;
             this.tabReferencia.VerticalScrollbarHighlightOnWheel = false;
             this.tabReferencia.VerticalScrollbarSize = 3;
+            // 
+            // btnGuardar3
+            // 
+            this.btnGuardar3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardar3.FlatAppearance.BorderSize = 0;
+            this.btnGuardar3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardar3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar3.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar3.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar3.Image")));
+            this.btnGuardar3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar3.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardar3.Name = "btnGuardar3";
+            this.btnGuardar3.Size = new System.Drawing.Size(135, 50);
+            this.btnGuardar3.TabIndex = 65;
+            this.btnGuardar3.Text = "Actualizar";
+            this.btnGuardar3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar3.UseVisualStyleBackColor = false;
+            this.btnGuardar3.Click += new System.EventHandler(this.btnGuardar3_Click);
             // 
             // metroLabel39
             // 
@@ -1558,6 +1603,7 @@
             // 
             // tabMedicos
             // 
+            this.tabMedicos.Controls.Add(this.btnGuardar4);
             this.tabMedicos.Controls.Add(this.metroLabel46);
             this.tabMedicos.Controls.Add(this.txtMedCronica);
             this.tabMedicos.Controls.Add(this.metroLabel45);
@@ -1571,12 +1617,31 @@
             this.tabMedicos.HorizontalScrollbarSize = 2;
             this.tabMedicos.Location = new System.Drawing.Point(4, 44);
             this.tabMedicos.Name = "tabMedicos";
-            this.tabMedicos.Size = new System.Drawing.Size(936, 330);
+            this.tabMedicos.Size = new System.Drawing.Size(936, 446);
             this.tabMedicos.TabIndex = 3;
             this.tabMedicos.Text = "Datos Médicos";
             this.tabMedicos.VerticalScrollbarBarColor = true;
             this.tabMedicos.VerticalScrollbarHighlightOnWheel = false;
             this.tabMedicos.VerticalScrollbarSize = 3;
+            // 
+            // btnGuardar4
+            // 
+            this.btnGuardar4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardar4.FlatAppearance.BorderSize = 0;
+            this.btnGuardar4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardar4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar4.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar4.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar4.Image")));
+            this.btnGuardar4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar4.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardar4.Name = "btnGuardar4";
+            this.btnGuardar4.Size = new System.Drawing.Size(135, 50);
+            this.btnGuardar4.TabIndex = 65;
+            this.btnGuardar4.Text = "Actualizar";
+            this.btnGuardar4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar4.UseVisualStyleBackColor = false;
+            this.btnGuardar4.Click += new System.EventHandler(this.btnGuardar4_Click);
             // 
             // metroLabel46
             // 
@@ -1749,6 +1814,7 @@
             // 
             // tabVacaciones
             // 
+            this.tabVacaciones.Controls.Add(this.btnGuardaVaca);
             this.tabVacaciones.Controls.Add(this.panelVaca2);
             this.tabVacaciones.Controls.Add(this.panelVaca1);
             this.tabVacaciones.HorizontalScrollbarBarColor = true;
@@ -1756,12 +1822,31 @@
             this.tabVacaciones.HorizontalScrollbarSize = 10;
             this.tabVacaciones.Location = new System.Drawing.Point(4, 44);
             this.tabVacaciones.Name = "tabVacaciones";
-            this.tabVacaciones.Size = new System.Drawing.Size(936, 330);
+            this.tabVacaciones.Size = new System.Drawing.Size(936, 446);
             this.tabVacaciones.TabIndex = 4;
             this.tabVacaciones.Text = "Vacaciones";
             this.tabVacaciones.VerticalScrollbarBarColor = true;
             this.tabVacaciones.VerticalScrollbarHighlightOnWheel = false;
             this.tabVacaciones.VerticalScrollbarSize = 10;
+            // 
+            // btnGuardaVaca
+            // 
+            this.btnGuardaVaca.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardaVaca.FlatAppearance.BorderSize = 0;
+            this.btnGuardaVaca.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardaVaca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardaVaca.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardaVaca.ForeColor = System.Drawing.Color.White;
+            this.btnGuardaVaca.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardaVaca.Image")));
+            this.btnGuardaVaca.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardaVaca.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardaVaca.Name = "btnGuardaVaca";
+            this.btnGuardaVaca.Size = new System.Drawing.Size(213, 50);
+            this.btnGuardaVaca.TabIndex = 65;
+            this.btnGuardaVaca.Text = "Guardar Vacaciones";
+            this.btnGuardaVaca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardaVaca.UseVisualStyleBackColor = false;
+            this.btnGuardaVaca.Click += new System.EventHandler(this.btnGuardaVaca_Click);
             // 
             // panelVaca2
             // 
@@ -1785,7 +1870,7 @@
             // 
             this.dtVac2Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtVac2Termino.Name = "dtVac2Termino";
             this.dtVac2Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Termino.TabIndex = 25;
@@ -1794,7 +1879,7 @@
             // 
             this.dtVac2Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtVac2Inicio.Name = "dtVac2Inicio";
             this.dtVac2Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Inicio.TabIndex = 24;
@@ -1849,7 +1934,7 @@
             // 
             this.dtVac1Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtVac1Termino.Name = "dtVac1Termino";
             this.dtVac1Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Termino.TabIndex = 23;
@@ -1858,7 +1943,7 @@
             // 
             this.dtVac1Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtVac1Inicio.Name = "dtVac1Inicio";
             this.dtVac1Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Inicio.TabIndex = 22;
@@ -1893,6 +1978,7 @@
             // 
             // tabCalificaciones
             // 
+            this.tabCalificaciones.Controls.Add(this.btnGuardaCalifica);
             this.tabCalificaciones.Controls.Add(this.panelCalR1);
             this.tabCalificaciones.Controls.Add(this.panelCalMip);
             this.tabCalificaciones.HorizontalScrollbarBarColor = true;
@@ -1900,12 +1986,31 @@
             this.tabCalificaciones.HorizontalScrollbarSize = 10;
             this.tabCalificaciones.Location = new System.Drawing.Point(4, 44);
             this.tabCalificaciones.Name = "tabCalificaciones";
-            this.tabCalificaciones.Size = new System.Drawing.Size(936, 330);
+            this.tabCalificaciones.Size = new System.Drawing.Size(936, 446);
             this.tabCalificaciones.TabIndex = 5;
             this.tabCalificaciones.Text = "Calificaciones";
             this.tabCalificaciones.VerticalScrollbarBarColor = true;
             this.tabCalificaciones.VerticalScrollbarHighlightOnWheel = false;
             this.tabCalificaciones.VerticalScrollbarSize = 10;
+            // 
+            // btnGuardaCalifica
+            // 
+            this.btnGuardaCalifica.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardaCalifica.FlatAppearance.BorderSize = 0;
+            this.btnGuardaCalifica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnGuardaCalifica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardaCalifica.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardaCalifica.ForeColor = System.Drawing.Color.White;
+            this.btnGuardaCalifica.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardaCalifica.Image")));
+            this.btnGuardaCalifica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardaCalifica.Location = new System.Drawing.Point(3, 380);
+            this.btnGuardaCalifica.Name = "btnGuardaCalifica";
+            this.btnGuardaCalifica.Size = new System.Drawing.Size(213, 50);
+            this.btnGuardaCalifica.TabIndex = 65;
+            this.btnGuardaCalifica.Text = "Guardar Calificación";
+            this.btnGuardaCalifica.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardaCalifica.UseVisualStyleBackColor = false;
+            this.btnGuardaCalifica.Click += new System.EventHandler(this.btnGuardaCalifica_Click);
             // 
             // panelCalR1
             // 
@@ -3609,7 +3714,6 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private System.Windows.Forms.Button btnGuardar;
         private MetroFramework.Controls.MetroTabControl tabPerfilExpediente;
         private MetroFramework.Controls.MetroTabPage tabPersonales;
         private MetroFramework.Controls.MetroComboBox cbServicio;
@@ -3788,6 +3892,12 @@
         private MetroFramework.Controls.MetroComboBox cbTurno;
         private MetroFramework.Controls.MetroLabel metroLabel32;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnGuardaVaca;
+        private System.Windows.Forms.Button btnGuardaCalifica;
+        private System.Windows.Forms.Button btnGuardar2;
+        private System.Windows.Forms.Button btnGuardar3;
+        private System.Windows.Forms.Button btnGuardar4;
 
     }
 }

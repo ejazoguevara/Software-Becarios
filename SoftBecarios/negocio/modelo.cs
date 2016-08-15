@@ -80,18 +80,26 @@ namespace Negocio
         
         public void llenarDataGridExpedientes(System.Windows.Forms.DataGridView datagrid, int id)
         {
-            string sql = "SELECT alumnos.numero as '#', CONCAT(alumnos.nombre, ' ', alumnos.apellido_paterno, ' ', alumnos.apellido_materno) "
+            string sql = "SELECT alumnos.id as ID, alumnos.numero as '#', CONCAT(alumnos.nombre, ' ', alumnos.apellido_paterno, ' ', alumnos.apellido_materno) "
                 + "as 'Nombre Completo', alumnos.guardia as Guardia, escuelas.corto as Universidad, especialidades.especialidad as Servicio FROM "
                 + "especialidades INNER JOIN alumnos on alumnos.especialidades_id = especialidades.id INNER JOIN escuelas on escuelas.id = alumnos.escuelas_id WHERE alumnos.tipo_alumnos_id = " + id;
             funcion.LlenarDataGrid(datagrid, sql);
         }
 
+        public void llenarDataGridVacaciones(System.Windows.Forms.DataGridView datagrid, int id)
+        {
+            string sql = "SELECT numero as '#', CONCAT(nombre, ' ', apellido_paterno, ' ', apellido_materno) "
+                + "as 'Nombre Completo', vac1_inicio as 'Vac1_Inicio', vac1_termino as 'Vac1_Termino', vac2_inicio as 'Vac2_Inicio', vac2_termino as 'Vac2_Termino' FROM alumnos WHERE alumnos.tipo_alumnos_id = " + id;
+            funcion.LlenarDataGrid(datagrid, sql);
+        }
+
 
         // Obtiene el número del siguiente alumno
-        public int contadorExp()
+        public int contadorExp(int id)
         {
+            conector.abrirConexion();
             int valor = 0;
-            string sql = "SELECT COUNT(*) as Contador FROM alumnos";
+            string sql = "SELECT COUNT(*) as Contador FROM alumnos WHERE tipo_alumnos_id = " + id;
             MySqlDataReader dato = conector.executeReader(sql);
             while (dato.Read())
             {
@@ -105,7 +113,7 @@ namespace Negocio
             else
             {
                 conector.abrirConexion();
-                sql = "SELECT numero FROM alumnos";
+                sql = "SELECT numero FROM alumnos WHERE tipo_alumnos_id = " + id + " ORDER BY numero";
                 MySqlDataReader num =  conector.executeReader(sql);
                 while(num.Read())
                 {
@@ -143,7 +151,7 @@ namespace Negocio
                 + "alumnos.guardia, alumnos.cedula, alumnos.promedio, tipo_alumnos.tipo, creencias.religion, escuelas.escuela, especialidades.especialidad "
                 + "FROM (especialidades INNER JOIN (tipo_alumnos INNER JOIN (creencias INNER JOIN (escuelas INNER JOIN alumnos on alumnos.escuelas_id = escuelas.id) on alumnos.creencias_id = creencias.id) on alumnos.tipo_alumnos_id = tipo_alumnos.id) on alumnos.especialidades_id = especialidades.id)";
              * */
-            string sql = "SELECT * FROM alumnos WHERE numero = " + expe.Numero;
+            string sql = "SELECT * FROM alumnos WHERE id = " + expe.ID;
             MySqlDataReader datos = conector.executeReader(sql);
             while (datos.Read())
             {
@@ -192,8 +200,42 @@ namespace Negocio
 
         public Boolean actualizaExpediente(Expediente expe)
         {
+            conector.abrirConexion();
             Boolean flag = false;
+            string sql = string.Format("UPDATE alumnos SET "
+                + "nombre = '{0}', apellido_paterno = '{1}', apellido_materno = '{2}', nacimiento = '{3}', lugar = '{4}', fecha_inicio = '{5}', fecha_termino = '{6}', genero = '{7}', rfc = '{8}', curp = '{9}', domicilio = '{10}', colonia = '{11}', telefono = '{12}', email = '{13}', "
+                + "civil = '{14}', t_pantalon = '{15}', t_filipina = '{16}', t_bata = '{17}', t_zapato = '{18}', persona_referencia = '{19}', tel_referencia = '{20}', tipo_sangre = '{21}', alergias = '{22}', enf_cronica = '{23}', med_cronico = '{24}', guardia = '{25}', turno = '{26}', "
+                + "cedula = '{27}', creencias_id = '{28}', escuelas_id = '{29}', especialidades_id = '{30}' WHERE id = '{31}'",
+                expe.Nombre, expe.ApellidoP, expe.ApellidoM, expe.Nacimiento, expe.Lugar, expe.Fec_Inicio, expe.Fec_Termino, expe.Genero, expe.RFC, expe.CURP, expe.Domicilio, expe.Colonia, expe.Telefono, expe.Mail, expe.Civil,
+                expe.T_Pantalon, expe.T_Filipina, expe.T_Bata, expe.T_Zapato, expe.Per_Referencia, expe.Tel_Referencia, expe.Tipo_Sangre, expe.Alergias, expe.Enf_Cronica, expe.Med_Cronico, expe.Guardia, expe.Turno, expe.Cedula, expe.Religion, expe.Escuela, expe.Servicio, expe.ID);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
 
+        public Boolean guardaVacaciones(Expediente expe)
+        {
+            conector.abrirConexion();
+            Boolean flag = false;
+            string sql = string.Format("UPDATE alumnos SET vac1_inicio = '{0}', vac1_termino = '{1}', vac2_inicio = '{2}', vac2_termino = '{3}' WHERE id = '{4}'", expe.Vac1_Inicio, expe.Vac1_Termino, expe.Vac2_Inicio, expe.Vac2_Termino, expe.ID);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean guardaCalificacionesMIP(Calificaciones cal)
+        {
+            Boolean flag = false;
+            return flag;
+        }
+
+        public Boolean guardaCalificacionesR1(Calificaciones cal)
+        {
+            Boolean flag = false;
             return flag;
         }
         #endregion

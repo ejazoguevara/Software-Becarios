@@ -161,6 +161,7 @@
             this.btnVacaciones.Text = "Vacaciones";
             this.btnVacaciones.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnVacaciones.UseVisualStyleBackColor = false;
+            this.btnVacaciones.Click += new System.EventHandler(this.btnVacaciones_Click);
             // 
             // btnCalificaciones
             // 
