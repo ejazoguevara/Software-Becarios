@@ -154,7 +154,7 @@
             this.panelCalMip = new MetroFramework.Controls.MetroPanel();
             this.lblCalFinalMip = new MetroFramework.Controls.MetroLabel();
             this.metroLabel92 = new MetroFramework.Controls.MetroLabel();
-            this.metroPanel9 = new MetroFramework.Controls.MetroPanel();
+            this.panelUrgencias = new MetroFramework.Controls.MetroPanel();
             this.metroLabel87 = new MetroFramework.Controls.MetroLabel();
             this.txtUrgTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel88 = new MetroFramework.Controls.MetroLabel();
@@ -164,7 +164,7 @@
             this.txtUrg3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel91 = new MetroFramework.Controls.MetroLabel();
             this.txtUrg1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel8 = new MetroFramework.Controls.MetroPanel();
+            this.panelPediatria = new MetroFramework.Controls.MetroPanel();
             this.metroLabel82 = new MetroFramework.Controls.MetroLabel();
             this.txtPedTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel83 = new MetroFramework.Controls.MetroLabel();
@@ -174,7 +174,7 @@
             this.txtPed3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel86 = new MetroFramework.Controls.MetroLabel();
             this.txtPed1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel7 = new MetroFramework.Controls.MetroPanel();
+            this.panelMedInterna = new MetroFramework.Controls.MetroPanel();
             this.metroLabel77 = new MetroFramework.Controls.MetroLabel();
             this.txtMedTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel78 = new MetroFramework.Controls.MetroLabel();
@@ -184,7 +184,7 @@
             this.txtMed3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel81 = new MetroFramework.Controls.MetroLabel();
             this.txtMed1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.panelGineco = new MetroFramework.Controls.MetroPanel();
             this.metroLabel72 = new MetroFramework.Controls.MetroLabel();
             this.txtGinTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel73 = new MetroFramework.Controls.MetroLabel();
@@ -194,7 +194,7 @@
             this.txtGin3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel76 = new MetroFramework.Controls.MetroLabel();
             this.txtGin1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.panelCirugia = new MetroFramework.Controls.MetroPanel();
             this.metroLabel66 = new MetroFramework.Controls.MetroLabel();
             this.txtCirTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel67 = new MetroFramework.Controls.MetroLabel();
@@ -204,7 +204,7 @@
             this.txtCir3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel71 = new MetroFramework.Controls.MetroLabel();
             this.txtCir1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.panelComunidad = new MetroFramework.Controls.MetroPanel();
             this.metroLabel65 = new MetroFramework.Controls.MetroLabel();
             this.txtComTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel64 = new MetroFramework.Controls.MetroLabel();
@@ -226,12 +226,12 @@
             this.tabCalificaciones.SuspendLayout();
             this.panelCalR1.SuspendLayout();
             this.panelCalMip.SuspendLayout();
-            this.metroPanel9.SuspendLayout();
-            this.metroPanel8.SuspendLayout();
-            this.metroPanel7.SuspendLayout();
-            this.metroPanel6.SuspendLayout();
-            this.metroPanel5.SuspendLayout();
-            this.metroPanel4.SuspendLayout();
+            this.panelUrgencias.SuspendLayout();
+            this.panelPediatria.SuspendLayout();
+            this.panelMedInterna.SuspendLayout();
+            this.panelGineco.SuspendLayout();
+            this.panelCirugia.SuspendLayout();
+            this.panelComunidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -268,7 +268,7 @@
             this.tabPerfilExpediente.ItemSize = new System.Drawing.Size(200, 40);
             this.tabPerfilExpediente.Location = new System.Drawing.Point(4, 3);
             this.tabPerfilExpediente.Name = "tabPerfilExpediente";
-            this.tabPerfilExpediente.SelectedIndex = 0;
+            this.tabPerfilExpediente.SelectedIndex = 5;
             this.tabPerfilExpediente.Size = new System.Drawing.Size(944, 494);
             this.tabPerfilExpediente.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabPerfilExpediente.TabIndex = 2;
@@ -438,6 +438,7 @@
             this.cbServicio.TabIndex = 56;
             this.cbServicio.Theme = MetroFramework.MetroThemeStyle.Light;
             this.cbServicio.UseSelectable = true;
+            this.cbServicio.SelectedIndexChanged += new System.EventHandler(this.cbServicio_SelectedIndexChanged);
             // 
             // metroLabel49
             // 
@@ -1870,7 +1871,7 @@
             // 
             this.dtVac2Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac2Termino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac2Termino.Name = "dtVac2Termino";
             this.dtVac2Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Termino.TabIndex = 25;
@@ -1879,7 +1880,7 @@
             // 
             this.dtVac2Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac2Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac2Inicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac2Inicio.Name = "dtVac2Inicio";
             this.dtVac2Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac2Inicio.TabIndex = 24;
@@ -1934,7 +1935,7 @@
             // 
             this.dtVac1Termino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Termino.Location = new System.Drawing.Point(81, 105);
-            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac1Termino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac1Termino.Name = "dtVac1Termino";
             this.dtVac1Termino.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Termino.TabIndex = 23;
@@ -1943,7 +1944,7 @@
             // 
             this.dtVac1Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtVac1Inicio.Location = new System.Drawing.Point(81, 70);
-            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtVac1Inicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtVac1Inicio.Name = "dtVac1Inicio";
             this.dtVac1Inicio.Size = new System.Drawing.Size(210, 29);
             this.dtVac1Inicio.TabIndex = 22;
@@ -2341,12 +2342,12 @@
             // 
             this.panelCalMip.Controls.Add(this.lblCalFinalMip);
             this.panelCalMip.Controls.Add(this.metroLabel92);
-            this.panelCalMip.Controls.Add(this.metroPanel9);
-            this.panelCalMip.Controls.Add(this.metroPanel8);
-            this.panelCalMip.Controls.Add(this.metroPanel7);
-            this.panelCalMip.Controls.Add(this.metroPanel6);
-            this.panelCalMip.Controls.Add(this.metroPanel5);
-            this.panelCalMip.Controls.Add(this.metroPanel4);
+            this.panelCalMip.Controls.Add(this.panelUrgencias);
+            this.panelCalMip.Controls.Add(this.panelPediatria);
+            this.panelCalMip.Controls.Add(this.panelMedInterna);
+            this.panelCalMip.Controls.Add(this.panelGineco);
+            this.panelCalMip.Controls.Add(this.panelCirugia);
+            this.panelCalMip.Controls.Add(this.panelComunidad);
             this.panelCalMip.HorizontalScrollbarBarColor = true;
             this.panelCalMip.HorizontalScrollbarHighlightOnWheel = false;
             this.panelCalMip.HorizontalScrollbarSize = 10;
@@ -2380,27 +2381,27 @@
             this.metroLabel92.TabIndex = 36;
             this.metroLabel92.Text = "Calificación Final:";
             // 
-            // metroPanel9
+            // panelUrgencias
             // 
-            this.metroPanel9.Controls.Add(this.metroLabel87);
-            this.metroPanel9.Controls.Add(this.txtUrgTotal);
-            this.metroPanel9.Controls.Add(this.metroLabel88);
-            this.metroPanel9.Controls.Add(this.metroLabel89);
-            this.metroPanel9.Controls.Add(this.metroLabel90);
-            this.metroPanel9.Controls.Add(this.txtUrg2);
-            this.metroPanel9.Controls.Add(this.txtUrg3);
-            this.metroPanel9.Controls.Add(this.metroLabel91);
-            this.metroPanel9.Controls.Add(this.txtUrg1);
-            this.metroPanel9.HorizontalScrollbarBarColor = true;
-            this.metroPanel9.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel9.HorizontalScrollbarSize = 10;
-            this.metroPanel9.Location = new System.Drawing.Point(693, 3);
-            this.metroPanel9.Name = "metroPanel9";
-            this.metroPanel9.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel9.TabIndex = 35;
-            this.metroPanel9.VerticalScrollbarBarColor = true;
-            this.metroPanel9.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel9.VerticalScrollbarSize = 10;
+            this.panelUrgencias.Controls.Add(this.metroLabel87);
+            this.panelUrgencias.Controls.Add(this.txtUrgTotal);
+            this.panelUrgencias.Controls.Add(this.metroLabel88);
+            this.panelUrgencias.Controls.Add(this.metroLabel89);
+            this.panelUrgencias.Controls.Add(this.metroLabel90);
+            this.panelUrgencias.Controls.Add(this.txtUrg2);
+            this.panelUrgencias.Controls.Add(this.txtUrg3);
+            this.panelUrgencias.Controls.Add(this.metroLabel91);
+            this.panelUrgencias.Controls.Add(this.txtUrg1);
+            this.panelUrgencias.HorizontalScrollbarBarColor = true;
+            this.panelUrgencias.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelUrgencias.HorizontalScrollbarSize = 10;
+            this.panelUrgencias.Location = new System.Drawing.Point(693, 3);
+            this.panelUrgencias.Name = "panelUrgencias";
+            this.panelUrgencias.Size = new System.Drawing.Size(132, 153);
+            this.panelUrgencias.TabIndex = 35;
+            this.panelUrgencias.VerticalScrollbarBarColor = true;
+            this.panelUrgencias.VerticalScrollbarHighlightOnWheel = false;
+            this.panelUrgencias.VerticalScrollbarSize = 10;
             // 
             // metroLabel87
             // 
@@ -2593,27 +2594,27 @@
             this.txtUrg1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUrg1_KeyPress);
             this.txtUrg1.Leave += new System.EventHandler(this.txtUrg1_Leave);
             // 
-            // metroPanel8
+            // panelPediatria
             // 
-            this.metroPanel8.Controls.Add(this.metroLabel82);
-            this.metroPanel8.Controls.Add(this.txtPedTotal);
-            this.metroPanel8.Controls.Add(this.metroLabel83);
-            this.metroPanel8.Controls.Add(this.metroLabel84);
-            this.metroPanel8.Controls.Add(this.metroLabel85);
-            this.metroPanel8.Controls.Add(this.txtPed2);
-            this.metroPanel8.Controls.Add(this.txtPed3);
-            this.metroPanel8.Controls.Add(this.metroLabel86);
-            this.metroPanel8.Controls.Add(this.txtPed1);
-            this.metroPanel8.HorizontalScrollbarBarColor = true;
-            this.metroPanel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel8.HorizontalScrollbarSize = 10;
-            this.metroPanel8.Location = new System.Drawing.Point(555, 3);
-            this.metroPanel8.Name = "metroPanel8";
-            this.metroPanel8.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel8.TabIndex = 34;
-            this.metroPanel8.VerticalScrollbarBarColor = true;
-            this.metroPanel8.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel8.VerticalScrollbarSize = 10;
+            this.panelPediatria.Controls.Add(this.metroLabel82);
+            this.panelPediatria.Controls.Add(this.txtPedTotal);
+            this.panelPediatria.Controls.Add(this.metroLabel83);
+            this.panelPediatria.Controls.Add(this.metroLabel84);
+            this.panelPediatria.Controls.Add(this.metroLabel85);
+            this.panelPediatria.Controls.Add(this.txtPed2);
+            this.panelPediatria.Controls.Add(this.txtPed3);
+            this.panelPediatria.Controls.Add(this.metroLabel86);
+            this.panelPediatria.Controls.Add(this.txtPed1);
+            this.panelPediatria.HorizontalScrollbarBarColor = true;
+            this.panelPediatria.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelPediatria.HorizontalScrollbarSize = 10;
+            this.panelPediatria.Location = new System.Drawing.Point(555, 3);
+            this.panelPediatria.Name = "panelPediatria";
+            this.panelPediatria.Size = new System.Drawing.Size(132, 153);
+            this.panelPediatria.TabIndex = 34;
+            this.panelPediatria.VerticalScrollbarBarColor = true;
+            this.panelPediatria.VerticalScrollbarHighlightOnWheel = false;
+            this.panelPediatria.VerticalScrollbarSize = 10;
             // 
             // metroLabel82
             // 
@@ -2806,27 +2807,27 @@
             this.txtPed1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPed1_KeyPress);
             this.txtPed1.Leave += new System.EventHandler(this.txtPed1_Leave);
             // 
-            // metroPanel7
+            // panelMedInterna
             // 
-            this.metroPanel7.Controls.Add(this.metroLabel77);
-            this.metroPanel7.Controls.Add(this.txtMedTotal);
-            this.metroPanel7.Controls.Add(this.metroLabel78);
-            this.metroPanel7.Controls.Add(this.metroLabel79);
-            this.metroPanel7.Controls.Add(this.metroLabel80);
-            this.metroPanel7.Controls.Add(this.txtMed2);
-            this.metroPanel7.Controls.Add(this.txtMed3);
-            this.metroPanel7.Controls.Add(this.metroLabel81);
-            this.metroPanel7.Controls.Add(this.txtMed1);
-            this.metroPanel7.HorizontalScrollbarBarColor = true;
-            this.metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel7.HorizontalScrollbarSize = 10;
-            this.metroPanel7.Location = new System.Drawing.Point(417, 3);
-            this.metroPanel7.Name = "metroPanel7";
-            this.metroPanel7.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel7.TabIndex = 33;
-            this.metroPanel7.VerticalScrollbarBarColor = true;
-            this.metroPanel7.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel7.VerticalScrollbarSize = 10;
+            this.panelMedInterna.Controls.Add(this.metroLabel77);
+            this.panelMedInterna.Controls.Add(this.txtMedTotal);
+            this.panelMedInterna.Controls.Add(this.metroLabel78);
+            this.panelMedInterna.Controls.Add(this.metroLabel79);
+            this.panelMedInterna.Controls.Add(this.metroLabel80);
+            this.panelMedInterna.Controls.Add(this.txtMed2);
+            this.panelMedInterna.Controls.Add(this.txtMed3);
+            this.panelMedInterna.Controls.Add(this.metroLabel81);
+            this.panelMedInterna.Controls.Add(this.txtMed1);
+            this.panelMedInterna.HorizontalScrollbarBarColor = true;
+            this.panelMedInterna.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelMedInterna.HorizontalScrollbarSize = 10;
+            this.panelMedInterna.Location = new System.Drawing.Point(417, 3);
+            this.panelMedInterna.Name = "panelMedInterna";
+            this.panelMedInterna.Size = new System.Drawing.Size(132, 153);
+            this.panelMedInterna.TabIndex = 33;
+            this.panelMedInterna.VerticalScrollbarBarColor = true;
+            this.panelMedInterna.VerticalScrollbarHighlightOnWheel = false;
+            this.panelMedInterna.VerticalScrollbarSize = 10;
             // 
             // metroLabel77
             // 
@@ -3019,27 +3020,27 @@
             this.txtMed1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMed1_KeyPress);
             this.txtMed1.Leave += new System.EventHandler(this.txtMed1_Leave);
             // 
-            // metroPanel6
+            // panelGineco
             // 
-            this.metroPanel6.Controls.Add(this.metroLabel72);
-            this.metroPanel6.Controls.Add(this.txtGinTotal);
-            this.metroPanel6.Controls.Add(this.metroLabel73);
-            this.metroPanel6.Controls.Add(this.metroLabel74);
-            this.metroPanel6.Controls.Add(this.metroLabel75);
-            this.metroPanel6.Controls.Add(this.txtGin2);
-            this.metroPanel6.Controls.Add(this.txtGin3);
-            this.metroPanel6.Controls.Add(this.metroLabel76);
-            this.metroPanel6.Controls.Add(this.txtGin1);
-            this.metroPanel6.HorizontalScrollbarBarColor = true;
-            this.metroPanel6.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel6.HorizontalScrollbarSize = 10;
-            this.metroPanel6.Location = new System.Drawing.Point(279, 3);
-            this.metroPanel6.Name = "metroPanel6";
-            this.metroPanel6.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel6.TabIndex = 32;
-            this.metroPanel6.VerticalScrollbarBarColor = true;
-            this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel6.VerticalScrollbarSize = 10;
+            this.panelGineco.Controls.Add(this.metroLabel72);
+            this.panelGineco.Controls.Add(this.txtGinTotal);
+            this.panelGineco.Controls.Add(this.metroLabel73);
+            this.panelGineco.Controls.Add(this.metroLabel74);
+            this.panelGineco.Controls.Add(this.metroLabel75);
+            this.panelGineco.Controls.Add(this.txtGin2);
+            this.panelGineco.Controls.Add(this.txtGin3);
+            this.panelGineco.Controls.Add(this.metroLabel76);
+            this.panelGineco.Controls.Add(this.txtGin1);
+            this.panelGineco.HorizontalScrollbarBarColor = true;
+            this.panelGineco.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelGineco.HorizontalScrollbarSize = 10;
+            this.panelGineco.Location = new System.Drawing.Point(279, 3);
+            this.panelGineco.Name = "panelGineco";
+            this.panelGineco.Size = new System.Drawing.Size(132, 153);
+            this.panelGineco.TabIndex = 32;
+            this.panelGineco.VerticalScrollbarBarColor = true;
+            this.panelGineco.VerticalScrollbarHighlightOnWheel = false;
+            this.panelGineco.VerticalScrollbarSize = 10;
             // 
             // metroLabel72
             // 
@@ -3232,27 +3233,27 @@
             this.txtGin1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGin1_KeyPress);
             this.txtGin1.Leave += new System.EventHandler(this.txtGin1_Leave);
             // 
-            // metroPanel5
+            // panelCirugia
             // 
-            this.metroPanel5.Controls.Add(this.metroLabel66);
-            this.metroPanel5.Controls.Add(this.txtCirTotal);
-            this.metroPanel5.Controls.Add(this.metroLabel67);
-            this.metroPanel5.Controls.Add(this.metroLabel68);
-            this.metroPanel5.Controls.Add(this.metroLabel70);
-            this.metroPanel5.Controls.Add(this.txtCir2);
-            this.metroPanel5.Controls.Add(this.txtCir3);
-            this.metroPanel5.Controls.Add(this.metroLabel71);
-            this.metroPanel5.Controls.Add(this.txtCir1);
-            this.metroPanel5.HorizontalScrollbarBarColor = true;
-            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(141, 3);
-            this.metroPanel5.Name = "metroPanel5";
-            this.metroPanel5.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel5.TabIndex = 31;
-            this.metroPanel5.VerticalScrollbarBarColor = true;
-            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.VerticalScrollbarSize = 10;
+            this.panelCirugia.Controls.Add(this.metroLabel66);
+            this.panelCirugia.Controls.Add(this.txtCirTotal);
+            this.panelCirugia.Controls.Add(this.metroLabel67);
+            this.panelCirugia.Controls.Add(this.metroLabel68);
+            this.panelCirugia.Controls.Add(this.metroLabel70);
+            this.panelCirugia.Controls.Add(this.txtCir2);
+            this.panelCirugia.Controls.Add(this.txtCir3);
+            this.panelCirugia.Controls.Add(this.metroLabel71);
+            this.panelCirugia.Controls.Add(this.txtCir1);
+            this.panelCirugia.HorizontalScrollbarBarColor = true;
+            this.panelCirugia.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelCirugia.HorizontalScrollbarSize = 10;
+            this.panelCirugia.Location = new System.Drawing.Point(141, 3);
+            this.panelCirugia.Name = "panelCirugia";
+            this.panelCirugia.Size = new System.Drawing.Size(132, 153);
+            this.panelCirugia.TabIndex = 31;
+            this.panelCirugia.VerticalScrollbarBarColor = true;
+            this.panelCirugia.VerticalScrollbarHighlightOnWheel = false;
+            this.panelCirugia.VerticalScrollbarSize = 10;
             // 
             // metroLabel66
             // 
@@ -3445,27 +3446,27 @@
             this.txtCir1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCir1_KeyPress);
             this.txtCir1.Leave += new System.EventHandler(this.txtCir1_Leave);
             // 
-            // metroPanel4
+            // panelComunidad
             // 
-            this.metroPanel4.Controls.Add(this.metroLabel65);
-            this.metroPanel4.Controls.Add(this.txtComTotal);
-            this.metroPanel4.Controls.Add(this.metroLabel64);
-            this.metroPanel4.Controls.Add(this.metroLabel57);
-            this.metroPanel4.Controls.Add(this.metroLabel56);
-            this.metroPanel4.Controls.Add(this.txtCom2);
-            this.metroPanel4.Controls.Add(this.txtCom3);
-            this.metroPanel4.Controls.Add(this.metroLabel69);
-            this.metroPanel4.Controls.Add(this.txtCom1);
-            this.metroPanel4.HorizontalScrollbarBarColor = true;
-            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(3, 3);
-            this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(132, 153);
-            this.metroPanel4.TabIndex = 30;
-            this.metroPanel4.VerticalScrollbarBarColor = true;
-            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.VerticalScrollbarSize = 10;
+            this.panelComunidad.Controls.Add(this.metroLabel65);
+            this.panelComunidad.Controls.Add(this.txtComTotal);
+            this.panelComunidad.Controls.Add(this.metroLabel64);
+            this.panelComunidad.Controls.Add(this.metroLabel57);
+            this.panelComunidad.Controls.Add(this.metroLabel56);
+            this.panelComunidad.Controls.Add(this.txtCom2);
+            this.panelComunidad.Controls.Add(this.txtCom3);
+            this.panelComunidad.Controls.Add(this.metroLabel69);
+            this.panelComunidad.Controls.Add(this.txtCom1);
+            this.panelComunidad.HorizontalScrollbarBarColor = true;
+            this.panelComunidad.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelComunidad.HorizontalScrollbarSize = 10;
+            this.panelComunidad.Location = new System.Drawing.Point(3, 3);
+            this.panelComunidad.Name = "panelComunidad";
+            this.panelComunidad.Size = new System.Drawing.Size(132, 153);
+            this.panelComunidad.TabIndex = 30;
+            this.panelComunidad.VerticalScrollbarBarColor = true;
+            this.panelComunidad.VerticalScrollbarHighlightOnWheel = false;
+            this.panelComunidad.VerticalScrollbarSize = 10;
             // 
             // metroLabel65
             // 
@@ -3695,18 +3696,18 @@
             this.panelCalR1.PerformLayout();
             this.panelCalMip.ResumeLayout(false);
             this.panelCalMip.PerformLayout();
-            this.metroPanel9.ResumeLayout(false);
-            this.metroPanel9.PerformLayout();
-            this.metroPanel8.ResumeLayout(false);
-            this.metroPanel8.PerformLayout();
-            this.metroPanel7.ResumeLayout(false);
-            this.metroPanel7.PerformLayout();
-            this.metroPanel6.ResumeLayout(false);
-            this.metroPanel6.PerformLayout();
-            this.metroPanel5.ResumeLayout(false);
-            this.metroPanel5.PerformLayout();
-            this.metroPanel4.ResumeLayout(false);
-            this.metroPanel4.PerformLayout();
+            this.panelUrgencias.ResumeLayout(false);
+            this.panelUrgencias.PerformLayout();
+            this.panelPediatria.ResumeLayout(false);
+            this.panelPediatria.PerformLayout();
+            this.panelMedInterna.ResumeLayout(false);
+            this.panelMedInterna.PerformLayout();
+            this.panelGineco.ResumeLayout(false);
+            this.panelGineco.PerformLayout();
+            this.panelCirugia.ResumeLayout(false);
+            this.panelCirugia.PerformLayout();
+            this.panelComunidad.ResumeLayout(false);
+            this.panelComunidad.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3826,7 +3827,7 @@
         private MetroFramework.Controls.MetroTextBox txtCom2;
         private MetroFramework.Controls.MetroTextBox txtCom1;
         private MetroFramework.Controls.MetroLabel metroLabel69;
-        private MetroFramework.Controls.MetroPanel metroPanel9;
+        private MetroFramework.Controls.MetroPanel panelUrgencias;
         private MetroFramework.Controls.MetroLabel metroLabel87;
         private MetroFramework.Controls.MetroTextBox txtUrgTotal;
         private MetroFramework.Controls.MetroLabel metroLabel88;
@@ -3836,7 +3837,7 @@
         private MetroFramework.Controls.MetroTextBox txtUrg3;
         private MetroFramework.Controls.MetroLabel metroLabel91;
         private MetroFramework.Controls.MetroTextBox txtUrg1;
-        private MetroFramework.Controls.MetroPanel metroPanel8;
+        private MetroFramework.Controls.MetroPanel panelPediatria;
         private MetroFramework.Controls.MetroLabel metroLabel82;
         private MetroFramework.Controls.MetroTextBox txtPedTotal;
         private MetroFramework.Controls.MetroLabel metroLabel83;
@@ -3846,7 +3847,7 @@
         private MetroFramework.Controls.MetroTextBox txtPed3;
         private MetroFramework.Controls.MetroLabel metroLabel86;
         private MetroFramework.Controls.MetroTextBox txtPed1;
-        private MetroFramework.Controls.MetroPanel metroPanel7;
+        private MetroFramework.Controls.MetroPanel panelMedInterna;
         private MetroFramework.Controls.MetroLabel metroLabel77;
         private MetroFramework.Controls.MetroTextBox txtMedTotal;
         private MetroFramework.Controls.MetroLabel metroLabel78;
@@ -3856,7 +3857,7 @@
         private MetroFramework.Controls.MetroTextBox txtMed3;
         private MetroFramework.Controls.MetroLabel metroLabel81;
         private MetroFramework.Controls.MetroTextBox txtMed1;
-        private MetroFramework.Controls.MetroPanel metroPanel6;
+        private MetroFramework.Controls.MetroPanel panelGineco;
         private MetroFramework.Controls.MetroLabel metroLabel72;
         private MetroFramework.Controls.MetroTextBox txtGinTotal;
         private MetroFramework.Controls.MetroLabel metroLabel73;
@@ -3866,7 +3867,7 @@
         private MetroFramework.Controls.MetroTextBox txtGin3;
         private MetroFramework.Controls.MetroLabel metroLabel76;
         private MetroFramework.Controls.MetroTextBox txtGin1;
-        private MetroFramework.Controls.MetroPanel metroPanel5;
+        private MetroFramework.Controls.MetroPanel panelCirugia;
         private MetroFramework.Controls.MetroLabel metroLabel66;
         private MetroFramework.Controls.MetroTextBox txtCirTotal;
         private MetroFramework.Controls.MetroLabel metroLabel67;
@@ -3876,7 +3877,7 @@
         private MetroFramework.Controls.MetroTextBox txtCir3;
         private MetroFramework.Controls.MetroLabel metroLabel71;
         private MetroFramework.Controls.MetroTextBox txtCir1;
-        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private MetroFramework.Controls.MetroPanel panelComunidad;
         private MetroFramework.Controls.MetroLabel metroLabel65;
         private MetroFramework.Controls.MetroTextBox txtComTotal;
         private MetroFramework.Controls.MetroLabel metroLabel64;

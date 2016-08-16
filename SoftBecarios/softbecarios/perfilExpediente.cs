@@ -52,6 +52,15 @@ namespace SoftBecarios
                 case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Estudiantes Med.
                 case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Practicas Prof.
             }
+            switch (Convert.ToInt16(cbServicio.SelectedValue))
+            {
+                case 3: { if (txtCirTotal.Text == "0") { desactivaPanelMIP(); panelCirugia.Enabled = true; } break; }
+                case 5: { if (txtComTotal.Text == "0") { desactivaPanelMIP(); panelComunidad.Enabled = true; } break; }
+                case 10: { if (txtGinTotal.Text == "0") { desactivaPanelMIP(); panelGineco.Enabled = true; } break; }
+                case 13: { if (txtMedTotal.Text == "0") { desactivaPanelMIP(); panelMedInterna.Enabled = true; } break; }
+                case 19: { if (txtPedTotal.Text == "0") { desactivaPanelMIP(); panelPediatria.Enabled = true; } break; }
+                case 29: { if (txtUrgTotal.Text == "0") { desactivaPanelMIP(); panelUrgencias.Enabled = true; } break; }
+            }
         }
 
         // Coloca los datos correspondientes en cada campo
@@ -219,6 +228,17 @@ namespace SoftBecarios
                 MetroFramework.MetroMessageBox.Show(this, "La fecha de nacimiento no debe ser igual o menor de 18 años que la actual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             return flag;
+        }
+
+        public void desactivaPanelMIP()
+        {
+            foreach(Control x in panelCalMip.Controls)
+            {
+                if (x is MetroPanel)
+                {
+                    x.Enabled = false;
+                }
+            }
         }
 
 
@@ -1038,6 +1058,31 @@ namespace SoftBecarios
                         }
                     }
                 }
+            }
+        }
+
+        private void cbServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (Convert.ToInt16(cbTipo.SelectedValue))
+            {
+                case 1:
+                    {
+                        
+                        break;
+                    }
+                case 2:
+                    {
+                        switch (Convert.ToInt16(cbServicio.SelectedValue))
+                        {
+                            case 3: { if (txtCirTotal.Text == "0") { desactivaPanelMIP(); panelCirugia.Enabled = true; } break; }
+                            case 5: { if (txtComTotal.Text == "0") { desactivaPanelMIP(); panelComunidad.Enabled = true; } break; }
+                            case 10: { if (txtGinTotal.Text == "0") { desactivaPanelMIP(); panelGineco.Enabled = true; } break; }
+                            case 13: { if (txtMedTotal.Text == "0") { desactivaPanelMIP(); panelMedInterna.Enabled = true; } break; }
+                            case 19: { if (txtPedTotal.Text == "0") { desactivaPanelMIP(); panelPediatria.Enabled = true; } break; }
+                            case 29: { if (txtUrgTotal.Text == "0") { desactivaPanelMIP(); panelUrgencias.Enabled = true; } break; }
+                        }
+                        break;
+                    }
             }
         }
 
