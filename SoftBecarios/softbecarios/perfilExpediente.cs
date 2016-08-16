@@ -44,6 +44,7 @@ namespace SoftBecarios
             model.mostrarExpediente(expe);
             combos();
             asignaValores();
+            mostrarCalificacionesMIP();
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
                 case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; break; } // Residentes
@@ -52,15 +53,114 @@ namespace SoftBecarios
                 case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Estudiantes Med.
                 case 5: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Practicas Prof.
             }
+            desactivaPanelMIP();
             switch (Convert.ToInt16(cbServicio.SelectedValue))
             {
-                case 3: { if (txtCirTotal.Text == "0") { desactivaPanelMIP(); panelCirugia.Enabled = true; } break; }
-                case 5: { if (txtComTotal.Text == "0") { desactivaPanelMIP(); panelComunidad.Enabled = true; } break; }
-                case 10: { if (txtGinTotal.Text == "0") { desactivaPanelMIP(); panelGineco.Enabled = true; } break; }
-                case 13: { if (txtMedTotal.Text == "0") { desactivaPanelMIP(); panelMedInterna.Enabled = true; } break; }
-                case 19: { if (txtPedTotal.Text == "0") { desactivaPanelMIP(); panelPediatria.Enabled = true; } break; }
-                case 29: { if (txtUrgTotal.Text == "0") { desactivaPanelMIP(); panelUrgencias.Enabled = true; } break; }
+                
+                case 3: { 
+                    if (txtCirTotal.Text == "0") 
+                    { panelCirugia.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                case 5: { 
+                    if (txtComTotal.Text == "0") 
+                    { panelComunidad.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                case 10: { 
+                    if (txtGinTotal.Text == "0") 
+                    { panelGineco.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                case 13: { 
+                    if (txtMedTotal.Text == "0") 
+                    { panelMedInterna.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                case 19: { 
+                    if (txtPedTotal.Text == "0") 
+                    { panelPediatria.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                case 29: { 
+                    if (txtUrgTotal.Text == "0") 
+                    { panelUrgencias.Enabled = true;
+                    btnGuardaCalifica.Enabled = true;
+                    } break; }
+                
             }
+        }
+
+        public void mostrarCalificacionesMIP()
+        {
+            // Calificaciones de Cirugía
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 3;
+            if(model.existeCalificacionMIP(cal))
+            {
+                model.mostrarCalificacionesMIP(cal);
+                txtCir1.Text = cal.Cal_Cogno.ToString();
+                txtCir2.Text = cal.Cal_Psico.ToString();
+                txtCir3.Text = cal.Cal_Afect.ToString();
+                txtCirTotal.Text = cal.Cal_Final.ToString();
+            }
+            // Calificaciones de Comunidad
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 5;
+            if (model.existeCalificacionMIP(cal))
+            {
+                model.mostrarCalificacionesMIP(cal);
+                txtCom1.Text = cal.Cal_Cogno.ToString();
+                txtCom2.Text = cal.Cal_Psico.ToString();
+                txtCom3.Text = cal.Cal_Afect.ToString();
+                txtComTotal.Text = cal.Cal_Final.ToString();
+            }
+            // Calificaciones de Ginecología
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 10;
+            if(model.existeCalificacionMIP(cal))
+            {
+                 model.mostrarCalificacionesMIP(cal);
+                txtGin1.Text = cal.Cal_Cogno.ToString();
+                txtGin2.Text = cal.Cal_Psico.ToString();
+                txtGin3.Text = cal.Cal_Afect.ToString();
+                txtGinTotal.Text = cal.Cal_Final.ToString();
+            }
+            // Calificaciones de Medicina Interna
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 13;
+            if (model.existeCalificacionMIP(cal))
+            {
+                 model.mostrarCalificacionesMIP(cal);
+                txtMed1.Text = cal.Cal_Cogno.ToString();
+                txtMed2.Text = cal.Cal_Psico.ToString();
+                txtMed3.Text = cal.Cal_Afect.ToString();
+                txtMedTotal.Text = cal.Cal_Final.ToString();
+            }
+            // Calificaciones de Pediatria
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 19;
+            if (model.existeCalificacionMIP(cal))
+            {
+                model.mostrarCalificacionesMIP(cal);
+                txtPed1.Text = cal.Cal_Cogno.ToString();
+                txtPed2.Text = cal.Cal_Psico.ToString();
+                txtPed3.Text = cal.Cal_Afect.ToString();
+                txtPedTotal.Text = cal.Cal_Final.ToString();
+            }
+            // Calificaciones de Urgencias
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = 29;
+            if (model.existeCalificacionMIP(cal))
+            {
+                model.mostrarCalificacionesMIP(cal);
+                txtUrg1.Text = cal.Cal_Cogno.ToString();
+                txtUrg2.Text = cal.Cal_Psico.ToString();
+                txtUrg3.Text = cal.Cal_Afect.ToString();
+                txtUrgTotal.Text = cal.Cal_Final.ToString();
+            }
+            
+
         }
 
         // Coloca los datos correspondientes en cada campo
@@ -106,6 +206,7 @@ namespace SoftBecarios
             dtVac2Termino.Text = expe.Vac2_Termino;
 
         }
+
 
         // Asigna los valores a la clase para luego actualizar los datos en la BD
         public void actualizaValores()
@@ -1034,7 +1135,152 @@ namespace SoftBecarios
 
         private void btnGuardaCalifica_Click(object sender, EventArgs e)
         {
-
+            switch (Convert.ToInt16(cbTipo.SelectedValue))
+            {
+                case 1:
+                    {
+                        break;
+                    }
+                case 2:
+                    {
+                        switch (Convert.ToInt16(cbServicio.SelectedValue))
+                        {
+                            case 3: {
+                                if (txtCirTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtCir1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtCir2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtCir3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtCirTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 3;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                            case 5: {
+                                if (txtComTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtCom1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtCom2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtCom3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtComTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 5;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                            case 10: {
+                                if (txtGinTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtGin1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtGin2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtGin3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtGinTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 10;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                            case 13: {
+                                if (txtMedTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtMed1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtMed2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtMed3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtMedTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 13;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                            case 19: {
+                                if (txtPedTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtPed1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtPed2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtPed3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtPedTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 19;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                            case 29: {
+                                if (txtUrgTotal.Text == "0")
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                else
+                                {
+                                    cal.Cal_Cogno = Convert.ToInt16(txtUrg1.Text);
+                                    cal.Cal_Psico = Convert.ToInt16(txtUrg2.Text);
+                                    cal.Cal_Afect = Convert.ToInt16(txtUrg3.Text);
+                                    cal.Cal_Final = Convert.ToInt16(txtUrgTotal.Text);
+                                    expe.Promedio = Convert.ToDouble(lblCalFinalMip.Text);
+                                    cal.ID_Alumno = expe.ID;
+                                    cal.ID_Servicio = 29;
+                                    if (model.guardaCalificacionesMIP(cal, expe))
+                                    {
+                                        MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        desactivaPanelMIP();
+                                        btnGuardaCalifica.Enabled = false;
+                                    }
+                                } break;
+                            }
+                        }
+                        break;
+                    }
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

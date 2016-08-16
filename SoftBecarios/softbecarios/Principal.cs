@@ -80,7 +80,8 @@ namespace SoftBecarios
 
         private void btnCalificaciones_Click(object sender, EventArgs e)
         {
-            
+            mostrarCalificaciones abrir = new mostrarCalificaciones();
+            abrir.Show();
         }
 
         private void btnVacaciones_Click(object sender, EventArgs e)

@@ -398,7 +398,7 @@
             // 
             this.dtTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTermino.Location = new System.Drawing.Point(481, 159);
-            this.dtTermino.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtTermino.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtTermino.Name = "dtTermino";
             this.dtTermino.Size = new System.Drawing.Size(210, 29);
             this.dtTermino.TabIndex = 59;
@@ -407,7 +407,7 @@
             // 
             this.dtInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtInicio.Location = new System.Drawing.Point(481, 124);
-            this.dtInicio.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtInicio.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Size = new System.Drawing.Size(210, 29);
             this.dtInicio.TabIndex = 58;
@@ -416,7 +416,7 @@
             // 
             this.dtNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNacimiento.Location = new System.Drawing.Point(134, 194);
-            this.dtNacimiento.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtNacimiento.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtNacimiento.Name = "dtNacimiento";
             this.dtNacimiento.Size = new System.Drawing.Size(210, 29);
             this.dtNacimiento.TabIndex = 57;
@@ -1997,6 +1997,7 @@
             // btnGuardaCalifica
             // 
             this.btnGuardaCalifica.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGuardaCalifica.Enabled = false;
             this.btnGuardaCalifica.FlatAppearance.BorderSize = 0;
             this.btnGuardaCalifica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnGuardaCalifica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

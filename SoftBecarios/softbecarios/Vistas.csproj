@@ -65,6 +65,12 @@
     <Compile Include="Escuelas.Designer.cs">
       <DependentUpon>Escuelas.cs</DependentUpon>
     </Compile>
+    <Compile Include="mostrarCalificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mostrarCalificaciones.Designer.cs">
+      <DependentUpon>mostrarCalificaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="mostrarExpedientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Escuelas.resx">
       <DependentUpon>Escuelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mostrarCalificaciones.resx">
+      <DependentUpon>mostrarCalificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mostrarExpedientes.resx">
       <DependentUpon>mostrarExpedientes.cs</DependentUpon>

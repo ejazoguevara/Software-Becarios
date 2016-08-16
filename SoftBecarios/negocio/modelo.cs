@@ -60,6 +60,12 @@ namespace Negocio
             funcion.llenarCombos(combobox, sql, "id", "tipo");
         }
 
+        public void comboTipoAlumnoCalif(System.Windows.Forms.ComboBox combobox)
+        {
+            string sql = "SELECT id, tipo FROM tipo_alumnos LIMIT 2";
+            funcion.llenarCombos(combobox, sql, "id", "tipo");
+        }
+
         public void comboEscuelas(System.Windows.Forms.ComboBox combobox)
         {
             string sql = "SELECT id, escuela FROM escuelas ORDER BY escuela";
@@ -198,6 +204,52 @@ namespace Negocio
             return expe;
         }
 
+        public Calificaciones mostrarCalificacionesMIP(Calificaciones cal)
+        {
+            conector.abrirConexion();
+            string sql = "SELECT cal_cogno, cal_psico, cal_afect, cal_final FROM calificaciones WHERE alumnos_id = " + cal.ID_Alumno + " AND especialidades_id = " + cal.ID_Servicio;
+            MySqlDataReader datos = conector.executeReader(sql);
+            while (datos.Read())
+            {
+                cal.Cal_Cogno = Convert.ToInt16(datos["cal_cogno"]);
+                cal.Cal_Psico = Convert.ToInt16(datos["cal_psico"]);
+                cal.Cal_Afect = Convert.ToInt16(datos["cal_afect"]);
+                cal.Cal_Final = Convert.ToInt16(datos["cal_final"]);
+            }
+            conector.close();
+            return cal;
+        }
+
+        public Boolean existeCalificacionMIP(Calificaciones cal)
+        {
+            conector.abrirConexion();
+            Boolean flag = false;
+            string sql = "SELECT COUNT(*) as contador FROM calificaciones WHERE alumnos_id = " + cal.ID_Alumno + " AND especialidades_id = " + cal.ID_Servicio;
+            MySqlDataReader datos = conector.executeReader(sql);
+            while(datos.Read())
+            {
+                if (Convert.ToInt16(datos["contador"]) != 0)
+                {
+                    flag = true;
+                }
+            }
+            conector.close();
+            return flag;
+        }
+
+        public Expediente sacaPromedio(int id)
+        {
+            conector.abrirConexion();
+            Expediente expe = new Expediente();
+            string sql = "SELECT promedio FROM alumnos WHERE id = " + id;
+            MySqlDataReader datos = conector.executeReader(sql);
+            while (datos.Read())
+            {
+                expe.Promedio = Convert.ToDouble(datos["promedio"]);
+            }
+            return expe;
+        }
+
         public Boolean actualizaExpediente(Expediente expe)
         {
             conector.abrirConexion();
@@ -227,9 +279,16 @@ namespace Negocio
             return flag;
         }
 
-        public Boolean guardaCalificacionesMIP(Calificaciones cal)
+        public Boolean guardaCalificacionesMIP(Calificaciones cal, Expediente expe)
         {
             Boolean flag = false;
+            conector.abrirConexion();
+            string sql = string.Format("INSERT INTO calificaciones (cal_cogno, cal_psico, cal_afect, cal_final, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", cal.Cal_Cogno, cal.Cal_Psico, cal.Cal_Afect,cal.Cal_Final,cal.ID_Alumno,cal.ID_Servicio);
+            string sql2 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", expe.Promedio, cal.ID_Alumno);
+            if (conector.executeSQL(sql) && conector.executeSQL(sql2))
+            {
+                flag = true;
+            }
             return flag;
         }
 
