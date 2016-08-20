@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using Datos;
 using Entidades;
+using System.Collections;
 
 namespace Negocio
 {
@@ -128,6 +129,57 @@ namespace Negocio
                 conector.close();
             }
             return valor;
+        }
+
+        // Obtiene las ID de los Alumnos para guardarlos en un ArrayList
+        public ArrayList obtieneIDalumnos(ArrayList list, int id)
+        {
+            conector.abrirConexion();
+            string sql ="SELECT id FROM alumnos WHERE tipo_alumnos_id = " + id;
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                list.Add(dato["id"]);
+            }
+            conector.close();
+            return list;
+        }
+
+        public Calificaciones obtieneCalificaciones(Calificaciones cal, int idA, int idT)
+        {
+            conector.abrirConexion();
+            cal.Califica.Clear();
+            string sql = string.Format("SELECT alumnos.numero, CONCAT(alumnos.nombre,' ',alumnos.apellido_paterno,' ',alumnos.apellido_materno) as nombre, alumnos.promedio, especialidades.especialidad, calificaciones.cal_final "
+                    + "FROM especialidades LEFT JOIN alumnos ON especialidades.tipo_alumnos_id = alumnos.tipo_alumnos_id LEFT JOIN calificaciones ON calificaciones.especialidades_id = especialidades.id "
+                    + "AND calificaciones.alumnos_id = alumnos.id WHERE alumnos.tipo_alumnos_id = '{0}' AND alumnos.id = '{1}' ORDER BY especialidades.especialidad", idT, idA);
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                cal.Numero = Convert.ToInt16(dato["numero"]);
+                cal.Nombre = dato["nombre"].ToString();
+                cal.Promedio = Convert.ToDouble(dato["promedio"]);
+                cal.Califica.Add(dato["cal_final"]);
+            }
+            conector.close();
+            return cal;
+        }
+
+        public Calificaciones obtieneCalificacionesR1(Calificaciones cal, int idA, int idT)
+        {
+            conector.abrirConexion();
+            cal.Califica.Clear();
+            string sql = string.Format("SELECT alumnos.numero, CONCAT(alumnos.nombre,' ',alumnos.apellido_paterno,' ',alumnos.apellido_materno) as nombre, alumnos.promedio, calificaciones.bimestre, calificaciones.cal_final "
+                    + "FROM calificaciones LEFT JOIN alumnos ON calificaciones.alumnos_id = alumnos.id WHERE alumnos.id = '{0}' AND alumnos.tipo_alumnos_id = '{1}' ", idA, idT);
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                cal.Numero = Convert.ToInt16(dato["numero"]);
+                cal.Nombre = dato["nombre"].ToString();
+                cal.Promedio = Convert.ToDouble(dato["promedio"]);
+                cal.Califica.Add(dato["cal_final"]);
+            }
+            conector.close();
+            return cal;
         }
 
         // Guarda nuevo expediente
@@ -295,6 +347,13 @@ namespace Negocio
         public Boolean guardaCalificacionesR1(Calificaciones cal)
         {
             Boolean flag = false;
+            conector.abrirConexion();
+            string sql = string.Format("INSERT INTO calificaciones (bimestre, cal_final, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}')", cal.Bimestre, cal.Cal_Final, cal.ID_Alumno, cal.ID_Servicio);
+            string sql2 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", cal.Promedio, cal.ID_Alumno);
+            if (conector.executeSQL(sql) && conector.executeSQL(sql2))
+            {
+                flag = true;
+            }
             return flag;
         }
         #endregion

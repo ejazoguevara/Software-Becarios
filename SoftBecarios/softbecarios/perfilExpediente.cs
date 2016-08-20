@@ -12,6 +12,7 @@ using MetroFramework.Forms;
 using MetroFramework.Controls;
 using Entidades;
 using Negocio;
+using System.Collections;
 
 namespace SoftBecarios
 {
@@ -21,7 +22,8 @@ namespace SoftBecarios
         modelo model = new modelo();
         Calificaciones cal = new Calificaciones();
         DateTime date = DateTime.Today;
-        
+        ArrayList bimestre = new ArrayList();
+        ArrayList calRes = new ArrayList();
 
         public perfilExpediente(Expediente expe)
         {
@@ -47,7 +49,7 @@ namespace SoftBecarios
             mostrarCalificacionesMIP();
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; break; } // Residentes
+                case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; validaCalVacias(); break; } // Residentes
                 case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Internos
                 case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Serv. Social
                 case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Estudiantes Med.
@@ -89,6 +91,16 @@ namespace SoftBecarios
                     } break; }
                 
             }
+        }
+
+        public void validaCalVacias()
+        {
+            if (txtCalRes1.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes2.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes3.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes4.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes5.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes6.Text == "0") { btnGuardaCalifica.Enabled = true; }
         }
 
         public void mostrarCalificacionesMIP()
@@ -338,6 +350,20 @@ namespace SoftBecarios
                 if (x is MetroPanel)
                 {
                     x.Enabled = false;
+                }
+            }
+        }
+
+        public void desactivaCalRes()
+        {
+            foreach (Control x in panelCalR1.Controls)
+            {
+                if (x is MetroTextBox)
+                {
+                    if (x.Text != "0")
+                    {
+                        x.Enabled = false;
+                    }
                 }
             }
         }
@@ -885,6 +911,11 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes1.Text = "0";
             }
+            else
+            {
+                bimestre.Add("Mar/Abr");
+                calRes.Add(Convert.ToInt16(txtCalRes1.Text));
+            }
         }
 
         private void txtCalRes2_Leave(object sender, EventArgs e)
@@ -897,6 +928,11 @@ namespace SoftBecarios
             {
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes2.Text = "0";
+            }
+            else
+            {
+                bimestre.Add("May/Jun");
+                calRes.Add(Convert.ToInt16(txtCalRes2.Text));
             }
         }
 
@@ -911,6 +947,11 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes3.Text = "0";
             }
+            else
+            {
+                bimestre.Add("Jul/Ago");
+                calRes.Add(Convert.ToInt16(txtCalRes3.Text));
+            }
         }
 
         private void txtCalRes4_Leave(object sender, EventArgs e)
@@ -923,6 +964,11 @@ namespace SoftBecarios
             {
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes4.Text = "0";
+            }
+            else
+            {
+                bimestre.Add("Sep/Oct");
+                calRes.Add(Convert.ToInt16(txtCalRes4.Text));
             }
         }
 
@@ -937,6 +983,11 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes5.Text = "0";
             }
+            else
+            {
+                bimestre.Add("Nov/Dic");
+                calRes.Add(Convert.ToInt16(txtCalRes5.Text));
+            }
         }
 
         private void txtCalRes6_Leave(object sender, EventArgs e)
@@ -949,6 +1000,11 @@ namespace SoftBecarios
             {
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes6.Text = "0";
+            }
+            else
+            {
+                bimestre.Add("Ene/Feb");
+                calRes.Add(Convert.ToInt16(txtCalRes6.Text));
             }
         }
 
@@ -1137,11 +1193,38 @@ namespace SoftBecarios
         {
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1:
+                case 1: // Guarda calificación de Medicos Resintes
                     {
+                        if (calRes.Count == 0)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+                            Boolean flag = false;
+                            for(int i = 0; i < calRes.Count; i++)
+                            {
+                                cal.Bimestre = bimestre[i].ToString();
+                                cal.Cal_Final = Convert.ToInt16(calRes[i]);
+                                cal.Promedio = Convert.ToDouble(lblCalFinalRes.Text);
+                                cal.ID_Alumno = expe.ID;
+                                cal.ID_Servicio = Convert.ToInt16(cbServicio.SelectedValue);
+                                if (model.guardaCalificacionesR1(cal))
+                                {
+                                    flag = true;
+                                }
+                            }
+                            if (flag == true)
+                            {
+                                MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                bimestre.Clear();
+                                calRes.Clear();
+                                desactivaCalRes();
+                            }
+                        }
                         break;
                     }
-                case 2:
+                case 2: // Guarda calificación de Medicos Internos
                     {
                         switch (Convert.ToInt16(cbServicio.SelectedValue))
                         {
