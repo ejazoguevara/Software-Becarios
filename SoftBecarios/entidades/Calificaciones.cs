@@ -9,7 +9,7 @@ namespace Entidades
 {
     public class Calificaciones
     {
-        private string bimestre;
+        private int bimestre;
         private int cal_cogno;
         private int cal_psico;
         private int cal_afect;
@@ -20,8 +20,9 @@ namespace Entidades
         private double promedio;
         private int numero;
         private ArrayList califica = new ArrayList();
+        private ArrayList nombimestre = new ArrayList();
 
-        public string Bimestre { get { return bimestre; } set { bimestre = value; } }
+        public int Bimestre { get { return bimestre; } set { bimestre = value; } }
         public int Cal_Cogno { get { return cal_cogno; } set { cal_cogno = value; } }
         public int Cal_Psico { get { return cal_psico; } set { cal_psico = value; } }
         public int Cal_Afect { get { return cal_afect; } set { cal_afect = value; } }
@@ -32,5 +33,6 @@ namespace Entidades
         public double Promedio { get { return promedio; } set { promedio = value; } }
         public int Numero { get { return numero; } set { numero = value; } }
         public ArrayList Califica { get { return califica; } set { califica = value; } }
+        public ArrayList NomBimestre { get { return nombimestre; } set { nombimestre = value; } }
     }
 }

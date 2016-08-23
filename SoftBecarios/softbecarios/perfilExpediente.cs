@@ -103,6 +103,11 @@ namespace SoftBecarios
             if (txtCalRes6.Text == "0") { btnGuardaCalifica.Enabled = true; }
         }
 
+        public void mostrarCalificacionesR1()
+        {
+
+        }
+
         public void mostrarCalificacionesMIP()
         {
             // Calificaciones de Cirugía
@@ -911,9 +916,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes1.Text = "0";
             }
-            else
+            else if (txtCalRes1.Text != "0")
             {
-                bimestre.Add("Mar/Abr");
+                bimestre.Add("1");
                 calRes.Add(Convert.ToInt16(txtCalRes1.Text));
             }
         }
@@ -929,9 +934,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes2.Text = "0";
             }
-            else
+            else if (txtCalRes2.Text != "0")
             {
-                bimestre.Add("May/Jun");
+                bimestre.Add("2");
                 calRes.Add(Convert.ToInt16(txtCalRes2.Text));
             }
         }
@@ -947,9 +952,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes3.Text = "0";
             }
-            else
+            else if(txtCalRes3.Text != "0")
             {
-                bimestre.Add("Jul/Ago");
+                bimestre.Add("3");
                 calRes.Add(Convert.ToInt16(txtCalRes3.Text));
             }
         }
@@ -965,9 +970,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes4.Text = "0";
             }
-            else
+            else if (txtCalRes4.Text != "0")
             {
-                bimestre.Add("Sep/Oct");
+                bimestre.Add("4");
                 calRes.Add(Convert.ToInt16(txtCalRes4.Text));
             }
         }
@@ -983,9 +988,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes5.Text = "0";
             }
-            else
+            else if (txtCalRes5.Text != "0")
             {
-                bimestre.Add("Nov/Dic");
+                bimestre.Add("5");
                 calRes.Add(Convert.ToInt16(txtCalRes5.Text));
             }
         }
@@ -1001,9 +1006,9 @@ namespace SoftBecarios
                 MetroMessageBox.Show(this, "El rango de calificación es de 1 a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtCalRes6.Text = "0";
             }
-            else
+            else if (txtCalRes6.Text != "0")
             {
-                bimestre.Add("Ene/Feb");
+                bimestre.Add("6");
                 calRes.Add(Convert.ToInt16(txtCalRes6.Text));
             }
         }
@@ -1204,7 +1209,7 @@ namespace SoftBecarios
                             Boolean flag = false;
                             for(int i = 0; i < calRes.Count; i++)
                             {
-                                cal.Bimestre = bimestre[i].ToString();
+                                cal.Bimestre = Convert.ToInt16(bimestre[i]);
                                 cal.Cal_Final = Convert.ToInt16(calRes[i]);
                                 cal.Promedio = Convert.ToDouble(lblCalFinalRes.Text);
                                 cal.ID_Alumno = expe.ID;

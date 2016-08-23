@@ -14,7 +14,7 @@ namespace Negocio
     public class modelo
     {
         
-        conexion conector = new conexion("localhost", "becarios", "root", "");
+        conexion conector = new conexion("192.168.0.9", "becarios", "efrainjazo", "guevara82");
         funciones funcion = new funciones();
         Expediente expe = new Expediente();
         MySqlDataReader leer;
@@ -348,7 +348,7 @@ namespace Negocio
         {
             Boolean flag = false;
             conector.abrirConexion();
-            string sql = string.Format("INSERT INTO calificaciones (bimestre, cal_final, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}')", cal.Bimestre, cal.Cal_Final, cal.ID_Alumno, cal.ID_Servicio);
+            string sql = string.Format("INSERT INTO calificaciones (bimestres_id, cal_final, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}')", cal.Bimestre, cal.Cal_Final, cal.ID_Alumno, cal.ID_Servicio);
             string sql2 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", cal.Promedio, cal.ID_Alumno);
             if (conector.executeSQL(sql) && conector.executeSQL(sql2))
             {

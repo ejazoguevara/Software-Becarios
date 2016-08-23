@@ -13,8 +13,8 @@ namespace Negocio
 {
     public class funciones
     {
-        
-        conexion conector = new conexion("localhost", "becarios", "root", "");
+
+        conexion conector = new conexion("192.168.0.9", "becarios", "efrainjazo", "guevara82");
         public BindingSource BindingSource1 = new BindingSource();
         public MySqlDataAdapter da;
         public DataTable dt;
