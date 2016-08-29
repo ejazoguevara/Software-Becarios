@@ -54,7 +54,16 @@ namespace SoftBecarios
                             gridCalificacionesR1.Rows.Add(list.Count);
                             for (int i = 0; i < list.Count; i++)
                             {
-                                
+                                model.obtieneCalificacionesR1(cal, Convert.ToInt16(list[i]), 1);
+                                gridCalificacionesR1.Rows[i].Cells[0].Value = cal.Numero;
+                                gridCalificacionesR1.Rows[i].Cells[1].Value = cal.Nombre;
+                                gridCalificacionesR1.Rows[i].Cells[2].Value = cal.Cal_Bimestre1;
+                                gridCalificacionesR1.Rows[i].Cells[3].Value = cal.Cal_Bimestre2;
+                                gridCalificacionesR1.Rows[i].Cells[4].Value = cal.Cal_Bimestre3;
+                                gridCalificacionesR1.Rows[i].Cells[5].Value = cal.Cal_Bimestre4;
+                                gridCalificacionesR1.Rows[i].Cells[6].Value = cal.Cal_Bimestre5;
+                                gridCalificacionesR1.Rows[i].Cells[7].Value = cal.Cal_Bimestre6;
+                                gridCalificacionesR1.Rows[i].Cells[8].Value = cal.Promedio;
                             }
                         }
                         break;
@@ -87,15 +96,12 @@ namespace SoftBecarios
             }
         }
 
-        public void agregarAlumnoDataGrid()
-        {
-            
-        }
-
         private void cbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (inicial == 1)
             {
+                gridCalificacionesR1.Rows.Clear();
+                gridResultadosCalifMIP.Rows.Clear();
                 cargarDataGrid();
             }
         }

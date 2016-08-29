@@ -13,23 +13,23 @@ using Negocio;
 
 namespace SoftBecarios
 {
-    public partial class nuevaEscuela : MetroForm
+    public partial class editarEscuela : MetroForm
     {
         Escuela esc = new Escuela();
         modelo model = new modelo();
-        public nuevaEscuela()
+        int id;
+        public editarEscuela(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
-        private void txtCorto_KeyPress(object sender, KeyPressEventArgs e)
+        private void editarEscuela_Load(object sender, EventArgs e)
         {
-            e.Handled = Validar.letrasSignos(e.KeyChar);   
-        }
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = Validar.letrasSignos(e.KeyChar); 
+            esc.Id = id;
+            model.obtenerEscuela(esc);
+            txtNombre.Text = esc.Nombre;
+            txtCorto.Text = esc.Corto;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -43,9 +43,9 @@ namespace SoftBecarios
             {
                 esc.Nombre = txtNombre.Text.Trim();
                 esc.Corto = txtCorto.Text.Trim();
-                if(model.guardarEscuela(esc))
+                if(model.modificarEscuela(esc))
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "Escuela guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, 150);
+                    MetroFramework.MetroMessageBox.Show(this, "Escuela modificada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, 150);
                     this.Close();
                     Escuelas abrir = new Escuelas();
                     abrir.Show();

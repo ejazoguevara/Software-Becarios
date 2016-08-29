@@ -76,7 +76,19 @@ namespace SoftBecarios
                 expe.ID = Convert.ToInt16(gridResultadosMostrar.Rows[e.RowIndex].Cells[0].Value);
                 perfilExpediente ver = new perfilExpediente(expe);
                 this.Close();
-                ver.Show();
+                ver.ShowDialog();
+            }
+            if(e.ColumnIndex == 7)
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Esta seguro que desea eliminar a: " + gridResultadosMostrar.Rows[e.RowIndex].Cells[2].Value.ToString() + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question,150) == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt16(gridResultadosMostrar.Rows[e.RowIndex].Cells[0].Value);
+                    if (model.eliminarAlumno(id))
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Alumno eliminado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, 150);
+                        cargarDataGrid();
+                    }
+                }
             }
         }
         

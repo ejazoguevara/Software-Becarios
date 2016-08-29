@@ -9,7 +9,12 @@ namespace Entidades
 {
     public class Calificaciones
     {
-        private int bimestre;
+        private int cal_bimestre1;
+        private int cal_bimestre2;
+        private int cal_bimestre3;
+        private int cal_bimestre4;
+        private int cal_bimestre5;
+        private int cal_bimestre6;
         private int cal_cogno;
         private int cal_psico;
         private int cal_afect;
@@ -22,7 +27,12 @@ namespace Entidades
         private ArrayList califica = new ArrayList();
         private ArrayList nombimestre = new ArrayList();
 
-        public int Bimestre { get { return bimestre; } set { bimestre = value; } }
+        public int Cal_Bimestre1 { get { return cal_bimestre1; } set { cal_bimestre1 = value; } }
+        public int Cal_Bimestre2 { get { return cal_bimestre2; } set { cal_bimestre2 = value; } }
+        public int Cal_Bimestre3 { get { return cal_bimestre3; } set { cal_bimestre3 = value; } }
+        public int Cal_Bimestre4 { get { return cal_bimestre4; } set { cal_bimestre4 = value; } }
+        public int Cal_Bimestre5 { get { return cal_bimestre5; } set { cal_bimestre5 = value; } }
+        public int Cal_Bimestre6 { get { return cal_bimestre6; } set { cal_bimestre6 = value; } }
         public int Cal_Cogno { get { return cal_cogno; } set { cal_cogno = value; } }
         public int Cal_Psico { get { return cal_psico; } set { cal_psico = value; } }
         public int Cal_Afect { get { return cal_afect; } set { cal_afect = value; } }

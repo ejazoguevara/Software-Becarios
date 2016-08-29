@@ -1,6 +1,6 @@
 ﻿namespace SoftBecarios
 {
-    partial class nuevaEscuela
+    partial class editarEscuela
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevaEscuela));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editarEscuela));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombre = new MetroFramework.Controls.MetroTextBox();
@@ -52,7 +52,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(441, 142);
-            this.metroPanel1.TabIndex = 0;
+            this.metroPanel1.TabIndex = 1;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
@@ -106,7 +106,6 @@
             this.txtNombre.UseSelectable = true;
             this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtCorto
             // 
@@ -139,7 +138,6 @@
             this.txtCorto.UseSelectable = true;
             this.txtCorto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtCorto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCorto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCorto_KeyPress);
             // 
             // metroLabel2
             // 
@@ -159,7 +157,7 @@
             this.metroLabel1.TabIndex = 10;
             this.metroLabel1.Text = "Nombre:";
             // 
-            // nuevaEscuela
+            // editarEscuela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,10 +167,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Movable = false;
-            this.Name = "nuevaEscuela";
+            this.Name = "editarEscuela";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "Nueva Escuela";
+            this.Text = "Modificar Escuela";
+            this.Load += new System.EventHandler(this.editarEscuela_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -182,10 +181,10 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private System.Windows.Forms.Button btnGuardar;
         private MetroFramework.Controls.MetroTextBox txtNombre;
         private MetroFramework.Controls.MetroTextBox txtCorto;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.Button btnGuardar;
     }
 }

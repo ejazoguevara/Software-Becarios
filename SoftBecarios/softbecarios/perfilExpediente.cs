@@ -49,7 +49,7 @@ namespace SoftBecarios
             mostrarCalificacionesMIP();
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; validaCalVacias(); break; } // Residentes
+                case 1: { panelCalMip.Visible = false; cbTurno.Enabled = false; mostrarCalificacionesR1(); validaCalVacias(); break; } // Residentes
                 case 2: { txtCedula.Enabled = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Internos
                 case 3: { cbGuardia.Enabled = false; txtCedula.Enabled = false; panelCalMip.Visible = false; panelCalR1.Visible = false; break; } // Serv. Social
                 case 4: { txtCedula.Enabled = false; panelVaca1.Visible = false; panelVaca2.Visible = false; panelCalMip.Visible = false; panelCalR1.Visible = false; cbTurno.Enabled = false; break; } // Estudiantes Med.
@@ -95,17 +95,46 @@ namespace SoftBecarios
 
         public void validaCalVacias()
         {
-            if (txtCalRes1.Text == "0") { btnGuardaCalifica.Enabled = true; }
-            if (txtCalRes2.Text == "0") { btnGuardaCalifica.Enabled = true; }
-            if (txtCalRes3.Text == "0") { btnGuardaCalifica.Enabled = true; }
-            if (txtCalRes4.Text == "0") { btnGuardaCalifica.Enabled = true; }
-            if (txtCalRes5.Text == "0") { btnGuardaCalifica.Enabled = true; }
-            if (txtCalRes6.Text == "0") { btnGuardaCalifica.Enabled = true; }
+            if (txtCalRes1.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes1.Enabled = false; }
+            if (txtCalRes2.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes2.Enabled = false; }
+            if (txtCalRes3.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes3.Enabled = false; }
+            if (txtCalRes4.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes4.Enabled = false; }
+            if (txtCalRes5.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes5.Enabled = false; }
+            if (txtCalRes6.Text == "0") { btnGuardaCalifica.Enabled = true; } else { txtCalRes6.Enabled = false; }
         }
 
+        public Boolean verificaCalVacias()
+        {
+            Boolean flag = true;
+            foreach(Control x in panelCalR1.Controls)
+            {
+                if(x is MetroTextBox)
+                {
+                    if(x.Enabled == true)
+                    {
+                        if(x.Text != "0")
+                        {
+                            flag = false;
+                        }
+                    }
+                }
+            }
+            return flag;
+        }
         public void mostrarCalificacionesR1()
         {
-
+            cal.ID_Alumno = expe.ID;
+            cal.ID_Servicio = Convert.ToInt16(cbServicio.SelectedValue);
+            if(model.existeCalificacion(cal))
+            {
+                model.mostrarCalificacionesR1(cal);
+                txtCalRes1.Text = cal.Cal_Bimestre1.ToString();
+                txtCalRes2.Text = cal.Cal_Bimestre2.ToString();
+                txtCalRes3.Text = cal.Cal_Bimestre3.ToString();
+                txtCalRes4.Text = cal.Cal_Bimestre4.ToString();
+                txtCalRes5.Text = cal.Cal_Bimestre5.ToString();
+                txtCalRes6.Text = cal.Cal_Bimestre6.ToString();
+            }
         }
 
         public void mostrarCalificacionesMIP()
@@ -113,7 +142,7 @@ namespace SoftBecarios
             // Calificaciones de Cirugía
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 3;
-            if(model.existeCalificacionMIP(cal))
+            if(model.existeCalificacion(cal))
             {
                 model.mostrarCalificacionesMIP(cal);
                 txtCir1.Text = cal.Cal_Cogno.ToString();
@@ -124,7 +153,7 @@ namespace SoftBecarios
             // Calificaciones de Comunidad
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 5;
-            if (model.existeCalificacionMIP(cal))
+            if (model.existeCalificacion(cal))
             {
                 model.mostrarCalificacionesMIP(cal);
                 txtCom1.Text = cal.Cal_Cogno.ToString();
@@ -135,7 +164,7 @@ namespace SoftBecarios
             // Calificaciones de Ginecología
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 10;
-            if(model.existeCalificacionMIP(cal))
+            if(model.existeCalificacion(cal))
             {
                  model.mostrarCalificacionesMIP(cal);
                 txtGin1.Text = cal.Cal_Cogno.ToString();
@@ -146,7 +175,7 @@ namespace SoftBecarios
             // Calificaciones de Medicina Interna
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 13;
-            if (model.existeCalificacionMIP(cal))
+            if (model.existeCalificacion(cal))
             {
                  model.mostrarCalificacionesMIP(cal);
                 txtMed1.Text = cal.Cal_Cogno.ToString();
@@ -157,7 +186,7 @@ namespace SoftBecarios
             // Calificaciones de Pediatria
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 19;
-            if (model.existeCalificacionMIP(cal))
+            if (model.existeCalificacion(cal))
             {
                 model.mostrarCalificacionesMIP(cal);
                 txtPed1.Text = cal.Cal_Cogno.ToString();
@@ -168,7 +197,7 @@ namespace SoftBecarios
             // Calificaciones de Urgencias
             cal.ID_Alumno = expe.ID;
             cal.ID_Servicio = 29;
-            if (model.existeCalificacionMIP(cal))
+            if (model.existeCalificacion(cal))
             {
                 model.mostrarCalificacionesMIP(cal);
                 txtUrg1.Text = cal.Cal_Cogno.ToString();
@@ -1198,8 +1227,30 @@ namespace SoftBecarios
         {
             switch (Convert.ToInt16(cbTipo.SelectedValue))
             {
-                case 1: // Guarda calificación de Medicos Resintes
+                case 1: // Guarda calificación de Medicos Residentes
                     {
+                        if (verificaCalVacias())
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+                            cal.Cal_Bimestre1 = Convert.ToInt16(txtCalRes1.Text);
+                            cal.Cal_Bimestre2 = Convert.ToInt16(txtCalRes2.Text);
+                            cal.Cal_Bimestre3 = Convert.ToInt16(txtCalRes3.Text);
+                            cal.Cal_Bimestre4 = Convert.ToInt16(txtCalRes4.Text);
+                            cal.Cal_Bimestre5 = Convert.ToInt16(txtCalRes5.Text);
+                            cal.Cal_Bimestre6 = Convert.ToInt16(txtCalRes6.Text);
+                            cal.Promedio = Convert.ToDouble(lblCalFinalRes.Text);
+                            cal.ID_Alumno = expe.ID;
+                            cal.ID_Servicio = Convert.ToInt16(cbServicio.SelectedValue);
+                            if(model.guardaCalificacionesR1(cal))
+                            {
+                                MetroFramework.MetroMessageBox.Show(this, "Calificación guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                desactivaCalRes();
+                            }
+                        }
+                        /*
                         if (calRes.Count == 0)
                         {
                             MetroFramework.MetroMessageBox.Show(this, "Debe capturar la calificación para poder guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -1209,7 +1260,7 @@ namespace SoftBecarios
                             Boolean flag = false;
                             for(int i = 0; i < calRes.Count; i++)
                             {
-                                cal.Bimestre = Convert.ToInt16(bimestre[i]);
+                                //cal.Bimestre = Convert.ToInt16(bimestre[i]);
                                 cal.Cal_Final = Convert.ToInt16(calRes[i]);
                                 cal.Promedio = Convert.ToDouble(lblCalFinalRes.Text);
                                 cal.ID_Alumno = expe.ID;
@@ -1227,6 +1278,7 @@ namespace SoftBecarios
                                 desactivaCalRes();
                             }
                         }
+                         * */
                         break;
                     }
                 case 2: // Guarda calificación de Medicos Internos

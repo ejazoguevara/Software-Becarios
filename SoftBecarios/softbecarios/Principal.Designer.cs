@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblFooter = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -41,6 +41,7 @@
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.lblHeader = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +51,8 @@
             // 
             this.metroPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroPanel1.BackgroundImage")));
             this.metroPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.metroPanel1.Controls.Add(this.metroLabel1);
+            this.metroPanel1.Controls.Add(this.lblHeader);
+            this.metroPanel1.Controls.Add(this.lblFooter);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -63,18 +65,18 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroLabel1
+            // lblFooter
             // 
-            this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 647);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(789, 41);
-            this.metroLabel1.TabIndex = 9;
-            this.metroLabel1.Text = "Enseñanza © 2016";
-            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.metroLabel1.UseCustomBackColor = true;
-            this.metroLabel1.UseCustomForeColor = true;
+            this.lblFooter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblFooter.Location = new System.Drawing.Point(0, 663);
+            this.lblFooter.Name = "lblFooter";
+            this.lblFooter.Size = new System.Drawing.Size(789, 25);
+            this.lblFooter.TabIndex = 9;
+            this.lblFooter.Text = "Enseñanza © 2016";
+            this.lblFooter.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblFooter.UseCustomBackColor = true;
+            this.lblFooter.UseCustomForeColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -105,6 +107,7 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnAgregar.BackColor = System.Drawing.Color.Teal;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -118,6 +121,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(186, 90);
             this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.TabStop = false;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -125,6 +129,7 @@
             // 
             // btnMostrar
             // 
+            this.btnMostrar.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnMostrar.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnMostrar.FlatAppearance.BorderSize = 0;
             this.btnMostrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -138,6 +143,7 @@
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(90, 90);
             this.btnMostrar.TabIndex = 3;
+            this.btnMostrar.TabStop = false;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnMostrar.UseVisualStyleBackColor = false;
@@ -145,6 +151,7 @@
             // 
             // btnVacaciones
             // 
+            this.btnVacaciones.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnVacaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(53)))), ((int)(((byte)(15)))));
             this.btnVacaciones.FlatAppearance.BorderSize = 0;
             this.btnVacaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -158,6 +165,7 @@
             this.btnVacaciones.Name = "btnVacaciones";
             this.btnVacaciones.Size = new System.Drawing.Size(90, 90);
             this.btnVacaciones.TabIndex = 4;
+            this.btnVacaciones.TabStop = false;
             this.btnVacaciones.Text = "Vacaciones";
             this.btnVacaciones.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnVacaciones.UseVisualStyleBackColor = false;
@@ -165,6 +173,7 @@
             // 
             // btnCalificaciones
             // 
+            this.btnCalificaciones.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnCalificaciones.BackColor = System.Drawing.Color.Coral;
             this.btnCalificaciones.FlatAppearance.BorderSize = 0;
             this.btnCalificaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -178,6 +187,7 @@
             this.btnCalificaciones.Name = "btnCalificaciones";
             this.btnCalificaciones.Size = new System.Drawing.Size(186, 90);
             this.btnCalificaciones.TabIndex = 5;
+            this.btnCalificaciones.TabStop = false;
             this.btnCalificaciones.Text = "Calificaciones";
             this.btnCalificaciones.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnCalificaciones.UseVisualStyleBackColor = false;
@@ -185,6 +195,7 @@
             // 
             // btnEscuelas
             // 
+            this.btnEscuelas.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnEscuelas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(167)))), ((int)(((byte)(195)))));
             this.btnEscuelas.FlatAppearance.BorderSize = 0;
             this.btnEscuelas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -198,6 +209,7 @@
             this.btnEscuelas.Name = "btnEscuelas";
             this.btnEscuelas.Size = new System.Drawing.Size(90, 90);
             this.btnEscuelas.TabIndex = 10;
+            this.btnEscuelas.TabStop = false;
             this.btnEscuelas.Text = "Escuelas";
             this.btnEscuelas.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnEscuelas.UseVisualStyleBackColor = false;
@@ -205,6 +217,7 @@
             // 
             // btnUsuarios
             // 
+            this.btnUsuarios.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(77)))), ((int)(((byte)(60)))));
             this.btnUsuarios.FlatAppearance.BorderSize = 0;
             this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -218,6 +231,7 @@
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(90, 90);
             this.btnUsuarios.TabIndex = 11;
+            this.btnUsuarios.TabStop = false;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnUsuarios.UseVisualStyleBackColor = false;
@@ -238,6 +252,7 @@
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(90, 90);
             this.btnAyuda.TabIndex = 6;
+            this.btnAyuda.TabStop = false;
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnAyuda.UseVisualStyleBackColor = false;
@@ -258,9 +273,23 @@
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(90, 90);
             this.btnCerrar.TabIndex = 7;
+            this.btnCerrar.TabStop = false;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // lblHeader
+            // 
+            this.lblHeader.BackColor = System.Drawing.Color.Transparent;
+            this.lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(789, 25);
+            this.lblHeader.TabIndex = 10;
+            this.lblHeader.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblHeader.UseCustomBackColor = true;
+            this.lblHeader.UseCustomForeColor = true;
             // 
             // Principal
             // 
@@ -270,6 +299,7 @@
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Movable = false;
@@ -277,6 +307,8 @@
             this.Resizable = false;
             this.Text = "Control de Expedientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Principal_KeyDown);
             this.metroPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -295,9 +327,10 @@
         private System.Windows.Forms.Button btnCalificaciones;
         private System.Windows.Forms.Button btnAyuda;
         private System.Windows.Forms.Button btnCerrar;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lblFooter;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEscuelas;
         private System.Windows.Forms.Button btnUsuarios;
+        private MetroFramework.Controls.MetroLabel lblHeader;
     }
 }

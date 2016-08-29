@@ -18,6 +18,7 @@ namespace SoftBecarios
     {
         modelo model = new modelo();
         Expediente expe = new Expediente();
+        Calificaciones cal = new Calificaciones();
         int inicial = 0;
         DateTime date = DateTime.Today;
 
@@ -289,6 +290,12 @@ namespace SoftBecarios
                         asignarValores();
                         if (model.guardarExpediente(expe))
                         {
+                            if (Convert.ToInt16(cbTipo.SelectedValue) == 1)
+                            {
+                                cal.ID_Alumno = model.obtieneR1agregado();
+                                cal.ID_Servicio = Convert.ToInt16(cbServicio.SelectedValue);
+                                model.guardaCalificacionesR1Vacio(cal);           
+                            }
                             limpiar();
                             MetroFramework.MetroMessageBox.Show(this, "Expediente guardado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             contador();

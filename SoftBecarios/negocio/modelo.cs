@@ -14,16 +14,18 @@ namespace Negocio
     public class modelo
     {
         
-        conexion conector = new conexion("192.168.0.9", "becarios", "efrainjazo", "guevara82");
+        conexion conector = new conexion("localhost", "becarios", "root", "");
         funciones funcion = new funciones();
         Expediente expe = new Expediente();
+        Encrypt encript = new Encrypt();
         MySqlDataReader leer;
         
 
         public bool login(Session log)
         {
             bool encontrado = false;
-            string sql = string.Format("SELECT * FROM medicos WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Password);
+            log.Password = encript.EncryptKey(log.Password);
+            string sql = string.Format("SELECT * FROM usuarios WHERE user = '{0}' AND password = '{1}'", log.Usuario, log.Password);
             leer = conector.executeReader(sql);
             if (leer.Read())
             {
@@ -33,21 +35,162 @@ namespace Negocio
             conector.abrirConexion();
             if (encontrado == true)
             {
-                sql = string.Format("UPDATE medicos SET activo = 1 WHERE usuario = '{0}' AND password = '{1}'", log.Usuario, log.Password);
+                sql = string.Format("UPDATE usuarios SET activo = 1 WHERE user = '{0}' AND password = '{1}'", log.Usuario, log.Password);
                 conector.executeSQL(sql);
             }
             leer.Close();
             return encontrado;
         }
 
+        #region Usuarios
+
+        public void cargarDataGridUsuarios(System.Windows.Forms.DataGridView datagrid)
+        {
+            string sql = "SELECT usuarios.id, usuarios.nombre as Nombre, permisos.permiso as Permiso FROM usuarios INNER JOIN permisos ON usuarios.permisos_id = permisos.id";
+            funcion.LlenarDataGrid(datagrid, sql);
+        }
+
+        public void comboTipoUsuario(System.Windows.Forms.ComboBox combobox)
+        {
+            string sql = "SELECT id, permiso FROM permisos";
+            funcion.llenarCombos(combobox, sql, "id", "permiso");
+        }
+
+        public Boolean guardarUsuario(Usuario user)
+        {
+            Boolean flag = false;
+            conector.abrirConexion();
+            user.Password = encript.EncryptKey(user.Password);
+            string sql = string.Format("INSERT INTO usuarios (nombre, user, password, permisos_id) VALUE ('{0}','{1}','{2}','{3}')", user.Nombre, user.User, user.Password, user.Permisos);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean eliminaUsuario(int id)
+        {
+            conector.abrirConexion();
+            Boolean flag = false;
+            string sql = "DELETE FROM usuarios WHERE id = " + id;
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean modificarUsuario(Usuario user)
+        {
+            conector.abrirConexion();
+            Boolean flag = false;
+            user.Password = encript.EncryptKey(user.Password);
+            string sql = string.Format("UPDATE usuarios SET nombre = '{0}', user = '{1}', password = '{2}' WHERE id = '{3}'",user.Nombre, user.User, user.Password,user.ID);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Usuario obtieneUsuario(Usuario user)
+        {
+            conector.abrirConexion();
+            string sql = "SELECT * FROM usuarios WHERE id = " + user.ID;
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                user.ID = Convert.ToInt16(dato["id"]);
+                user.Nombre = dato["nombre"].ToString();
+                user.User = dato["user"].ToString();
+                user.Password = encript.DecryptKey(dato["password"].ToString());
+                user.Permisos = Convert.ToInt16(dato["permisos_id"]);
+            }
+            conector.close();
+            return user;
+        }
+
+        public Usuario usuarioActivo(Usuario user)
+        {
+            conector.abrirConexion();
+            string sql = "SELECT * FROM usuarios WHERE activo = 1";
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                user.ID = Convert.ToInt16(dato["id"]);
+                user.Nombre = dato["nombre"].ToString();
+                user.User = dato["user"].ToString();
+                user.Permisos = Convert.ToInt16(dato["permisos_id"]);
+            }
+            conector.close();
+            return user;
+        }
+
+        public void cierraSesiones()
+        {
+            conector.abrirConexion();
+            string sql = "UPDATE usuarios SET activo = 0";
+            conector.executeSQL(sql);
+        }
+
+        #endregion
 
         #region Escuelas
 
         // Muestra las escuelas en un DataGridView
         public void cargarDataGridEscuela(System.Windows.Forms.DataGridView datagrid)
         {
-            string sql = "SELECT escuela as 'Nombre de la Escuela' FROM escuelas";
+            string sql = "SELECT id, escuela as 'Nombre de la Escuela' FROM escuelas";
             funcion.LlenarDataGrid(datagrid, sql);
+        }
+
+        public Boolean guardarEscuela(Escuela esc)
+        {
+            Boolean flag = false;
+            string sql = string.Format("INSERT INTO escuelas (escuela,corto) VALUES ('{0}','{1}')", esc.Nombre, esc.Corto);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean eliminarEscuela(int id)
+        {
+            Boolean flag = false;
+            string sql = "DELETE FROM escuelas WHERE id = " + id;
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean modificarEscuela(Escuela esc)
+        {
+            conector.abrirConexion();
+            Boolean flag = false;
+            string sql = string.Format("UPDATE escuelas SET escuela = '{0}', corto = '{1}' WHERE id = '{2}'", esc.Nombre, esc.Corto,esc.Id);
+            if (conector.executeSQL(sql))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public Escuela obtenerEscuela(Escuela esc)
+        {
+            conector.abrirConexion();
+            string sql = "SELECT escuela, corto FROM escuelas WHERE id = " + esc.Id;
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                esc.Nombre = dato["escuela"].ToString();
+                esc.Corto = dato["corto"].ToString();
+            }
+            conector.close();
+            return esc;
         }
 
         #endregion
@@ -167,16 +310,20 @@ namespace Negocio
         public Calificaciones obtieneCalificacionesR1(Calificaciones cal, int idA, int idT)
         {
             conector.abrirConexion();
-            cal.Califica.Clear();
-            string sql = string.Format("SELECT alumnos.numero, CONCAT(alumnos.nombre,' ',alumnos.apellido_paterno,' ',alumnos.apellido_materno) as nombre, alumnos.promedio, calificaciones.bimestre, calificaciones.cal_final "
-                    + "FROM calificaciones LEFT JOIN alumnos ON calificaciones.alumnos_id = alumnos.id WHERE alumnos.id = '{0}' AND alumnos.tipo_alumnos_id = '{1}' ", idA, idT);
+            string sql = string.Format("SELECT alumnos.numero, CONCAT(alumnos.nombre,' ',alumnos.apellido_paterno,' ',alumnos.apellido_materno) as nombre, alumnos.promedio, calificaciones.cal_bimestre1, calificaciones.cal_bimestre2, "
+                    + "calificaciones.cal_bimestre3, calificaciones.cal_bimestre4, calificaciones.cal_bimestre5, calificaciones.cal_bimestre6 FROM calificaciones LEFT JOIN alumnos ON calificaciones.alumnos_id = alumnos.id WHERE alumnos.id = '{0}' AND alumnos.tipo_alumnos_id = '{1}' ", idA, idT);
             MySqlDataReader dato = conector.executeReader(sql);
-            while (dato.Read())
+            while(dato.Read())
             {
                 cal.Numero = Convert.ToInt16(dato["numero"]);
                 cal.Nombre = dato["nombre"].ToString();
                 cal.Promedio = Convert.ToDouble(dato["promedio"]);
-                cal.Califica.Add(dato["cal_final"]);
+                cal.Cal_Bimestre1 = Convert.ToInt16(dato["cal_bimestre1"]);
+                cal.Cal_Bimestre2 = Convert.ToInt16(dato["cal_bimestre2"]);
+                cal.Cal_Bimestre3 = Convert.ToInt16(dato["cal_bimestre3"]);
+                cal.Cal_Bimestre4 = Convert.ToInt16(dato["cal_bimestre4"]);
+                cal.Cal_Bimestre5 = Convert.ToInt16(dato["cal_bimestre5"]);
+                cal.Cal_Bimestre6 = Convert.ToInt16(dato["cal_bimestre6"]);
             }
             conector.close();
             return cal;
@@ -256,6 +403,24 @@ namespace Negocio
             return expe;
         }
 
+        public Calificaciones mostrarCalificacionesR1(Calificaciones cal)
+        {
+            conector.abrirConexion();
+            string sql = "SELECT cal_bimestre1, cal_bimestre2, cal_bimestre3, cal_bimestre4, cal_bimestre5, cal_bimestre6 FROM calificaciones WHERE alumnos_id = " + cal.ID_Alumno + " AND especialidades_id = " + cal.ID_Servicio;
+            MySqlDataReader datos = conector.executeReader(sql);
+            while (datos.Read())
+            {
+                cal.Cal_Bimestre1 = Convert.ToInt16(datos["cal_bimestre1"]);
+                cal.Cal_Bimestre2 = Convert.ToInt16(datos["cal_bimestre2"]);
+                cal.Cal_Bimestre3 = Convert.ToInt16(datos["cal_bimestre3"]);
+                cal.Cal_Bimestre4 = Convert.ToInt16(datos["cal_bimestre4"]);
+                cal.Cal_Bimestre5 = Convert.ToInt16(datos["cal_bimestre5"]);
+                cal.Cal_Bimestre6 = Convert.ToInt16(datos["cal_bimestre6"]);
+            }
+            conector.close();
+            return cal;
+        }
+
         public Calificaciones mostrarCalificacionesMIP(Calificaciones cal)
         {
             conector.abrirConexion();
@@ -272,7 +437,7 @@ namespace Negocio
             return cal;
         }
 
-        public Boolean existeCalificacionMIP(Calificaciones cal)
+        public Boolean existeCalificacion(Calificaciones cal)
         {
             conector.abrirConexion();
             Boolean flag = false;
@@ -344,13 +509,51 @@ namespace Negocio
             return flag;
         }
 
-        public Boolean guardaCalificacionesR1(Calificaciones cal)
+        public Boolean guardaCalificacionesR1Vacio(Calificaciones cal)
         {
             Boolean flag = false;
             conector.abrirConexion();
-            string sql = string.Format("INSERT INTO calificaciones (bimestres_id, cal_final, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}')", cal.Bimestre, cal.Cal_Final, cal.ID_Alumno, cal.ID_Servicio);
-            string sql2 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", cal.Promedio, cal.ID_Alumno);
-            if (conector.executeSQL(sql) && conector.executeSQL(sql2))
+            string sql2 = string.Format("INSERT INTO calificaciones (cal_bimestre1, cal_bimestre2, cal_bimestre3, cal_bimestre4, cal_bimestre5, cal_bimestre6, alumnos_id, especialidades_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", 0, 0, 0, 0, 0, 0, cal.ID_Alumno, cal.ID_Servicio);
+            string sql3 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", 0.0, cal.ID_Alumno);
+            if (conector.executeSQL(sql2) && conector.executeSQL(sql3))
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
+        public int obtieneR1agregado()
+        {
+            conector.abrirConexion();
+            int id = 0;
+            string sql = "SELECT id FROM alumnos";
+            MySqlDataReader dato = conector.executeReader(sql);
+            while (dato.Read())
+            {
+                id = Convert.ToInt16(dato["id"]);
+            }
+            return id;
+        }
+
+        public Boolean guardaCalificacionesR1(Calificaciones cal)
+        {
+            Boolean flag = false;
+            conector.abrirConexion(); 
+            string sql2 = string.Format("UPDATE calificaciones SET cal_bimestre1 = '{0}', cal_bimestre2 = '{1}', cal_bimestre3 = '{2}', cal_bimestre4 = '{3}', cal_bimestre5 = '{4}', cal_bimestre6 = '{5}' WHERE alumnos_id = '{6}'", cal.Cal_Bimestre1, cal.Cal_Bimestre2, cal.Cal_Bimestre3, cal.Cal_Bimestre4, cal.Cal_Bimestre5, cal.Cal_Bimestre6, cal.ID_Alumno);
+            string sql3 = string.Format("UPDATE alumnos SET promedio = '{0}' WHERE id = '{1}'", cal.Promedio, cal.ID_Alumno);
+            if (conector.executeSQL(sql2) && conector.executeSQL(sql3))
+            {
+               flag = true;
+            }
+            return flag;
+        }
+
+        public Boolean eliminarAlumno(int id)
+        {
+            Boolean flag = false;
+            string sql2 = "DELETE FROM calificaciones WHERE alumnos_id = " + id;
+            string sql3 = "DELETE FROM alumnos WHERE id = " + id;
+            if(conector.executeSQL(sql2) && conector.executeSQL(sql3))
             {
                 flag = true;
             }

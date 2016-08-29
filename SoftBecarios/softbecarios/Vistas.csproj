@@ -59,11 +59,29 @@
     <Compile Include="Acerca.Designer.cs">
       <DependentUpon>Acerca.cs</DependentUpon>
     </Compile>
+    <Compile Include="editarEscuela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editarEscuela.Designer.cs">
+      <DependentUpon>editarEscuela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editarUsuario.Designer.cs">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Escuelas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Escuelas.Designer.cs">
       <DependentUpon>Escuelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="mostrarCalificaciones.cs">
       <SubType>Form</SubType>
@@ -113,18 +131,6 @@
     <Compile Include="Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Principal3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Principal3.Designer.cs">
-      <DependentUpon>Principal3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Principal2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Principal2.Designer.cs">
-      <DependentUpon>Principal2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios.cs">
@@ -137,8 +143,17 @@
     <EmbeddedResource Include="Acerca.resx">
       <DependentUpon>Acerca.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editarEscuela.resx">
+      <DependentUpon>editarEscuela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editarUsuario.resx">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Escuelas.resx">
       <DependentUpon>Escuelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mostrarCalificaciones.resx">
       <DependentUpon>mostrarCalificaciones.cs</DependentUpon>
@@ -163,12 +178,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Principal3.resx">
-      <DependentUpon>Principal3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Principal2.resx">
-      <DependentUpon>Principal2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
